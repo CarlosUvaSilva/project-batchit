@@ -10,7 +10,13 @@
           <p><strong>City 1: </strong> <%= @project.cities.first.name  %></p>
           <p><strong>City 2: </strong> <%= @project.cities.second.name  %></p>
         </div>
-      <%= link_to 'Sign-up to continue', new_user_registration_path, class: "btn btn-lg btn-success"%>
+      <div class="show-project-btn-container">
+        <% if user_signed_in? %>
+          <%= link_to 'Continue', projects_path, class: "btn btn-lg btn-success"%>
+        <% else %>
+          <%= link_to 'Sign-up to continue', new_user_registration_path, class: "btn btn-lg btn-success"%>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

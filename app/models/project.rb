@@ -7,5 +7,10 @@ class Project < ApplicationRecord
   validates :end_date, presence: true
 
   has_many :participants
+  has_many :users, through: :participants
   has_many :cities
+
+  def leader
+    self.participants.where(is_leader: true).user
+  end
 end
