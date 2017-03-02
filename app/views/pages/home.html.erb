@@ -1,6 +1,39 @@
-
 <%= render "banner" %>
 <% @project = Project.new %>
-<div class="hidden">
+
+<div class="hidden" id="hidden-form">
+  <div id="hidden-form_details">
   <%= render "projects/new_project_form" %>
-</div>
+  </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+
+<% content_for(:after_js) do %>
+  <script>
+    $("#create").click(function(){
+        $("#hidden-form").toggleClass("hidden");
+        $('html, body').animate({
+          scrollTop: $("#hidden-form").offset().top
+        }, 1000);
+    });
+
+    /* create datepicker for start date and end date */
+    <% min_date = Date.today.strftime('%-m-%-d-%Y')  %>
+
+    $('#datepicker_end_date').datepicker({
+      dateFormat: 'dd/mm/yy',
+      constrainInput: true
+    });
+
+    $('#datepicker_start_date').datepicker({
+      dateFormat: 'dd/mm/yy',
+      constrainInput: true,
+      minDate: new Date(<%= raw [min_date] %>),
+      onClose: function(selectedDate) {
+        $("#datepicker_end_date").datepicker("option", "minDate", selectedDate );
+        $("#datepicker_end_date").focus();
+      }
+    });
+  </script>
+<% end %>
+

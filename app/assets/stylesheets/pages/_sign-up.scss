@@ -1,0 +1,54 @@
+
+.form-container {
+  margin-top: 50px;
+  height: 350px;
+  width: 400px;
+  background-color: #E3E3E6;
+  border-radius: 5px;
+  margin: auto;
+  padding: 10px;
+  background: rgba(204, 204, 204, .8);
+  label{
+    text-align: left;
+    color: $gray;
+  }
+  .help-block{
+    font-size: 12px;
+    color: $brand-color;
+  }
+}
+
+.signup-background {
+  height: calc(100vh - 70px);
+  h2{
+    font-size: 38px;
+  }
+}
+
+.signup-container {
+  height: 450px;
+  width: 700px;
+  background-color: #E3E3E6;
+  border-radius: 5px;
+  text-align: center;
+  margin: auto;
+  padding: 10px;
+  background: rgba(204, 204, 204, .8);
+  h2{
+    color: $brand-color;
+    font-size: 28px;
+  }
+}
+
+.inside-signup {
+  text-align: left;
+  width: 95%;
+  padding: 20px;
+  text-align: justify;
+  margin: 20px;
+  p{
+    font-size: 18px;
+    color: $gray;
+    margin-bottom: 13px;
+  }
+}

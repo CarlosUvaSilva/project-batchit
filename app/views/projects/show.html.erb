@@ -1,17 +1,15 @@
-<h1><%= @project.name %></h1>
-<p><strong>Description: </strong> <%= @project.description  %></p>
-<p><strong>Group size: </strong> <%= @project.group_size  %></p>
-<p><strong>Start date: </strong> <%= @project.start_date  %></p>
-<p><strong>End date: </strong> <%= @project.end_date  %></p>
-
-<br>
-<br>
-<br>
-<br>
-<%= render "shared/thingcard", thing: Thing.new(name:'blah', description:'blah',price_range:5, address:'blah', tag:'lmdqlsmldq', thing_type: "restaurant")  %>
-<br>
-<br>
-<br>
-<br>
-<%= render "shared/thingcard-small", thing: Thing.new(name:'blah', description:'blah',price_range:5, address:'blah', tag:'lmdqlsmldq', thing_type: "restaurant")  %>
-
+<div class="banner signup-background" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('<%= image_path "background.jpg"%>');">
+  <div>
+    <h2><%= @project.name %></h2>
+    <div class="signup-container">
+        <h2>We are preparing the best tips for your trip with the following information</h2><br>
+        <div class="inside-signup">
+          <p><strong>Description: </strong> <%= @project.description  %></p>
+          <p><strong>Group size: </strong> <%= @project.group_size  %></p>
+          <p><strong>Start date: </strong> <%= @project.start_date  %></p>
+          <p><strong>End date: </strong> <%= @project.end_date  %></p>
+        </div>
+      <%= link_to 'Sign-up to continue', new_user_registration_path, class: "btn btn-lg btn-success"%>
+    </div>
+  </div>
+</div>

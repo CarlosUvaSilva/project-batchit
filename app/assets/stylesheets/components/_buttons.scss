@@ -5,7 +5,7 @@
   font-weight: bold;
   font-size: 20px;
   background: #6AD58B;
-  transition: background 0.3s ease;
+  transition: background 0.1s ease;
   text-decoration: none;
 }
 
@@ -13,4 +13,12 @@
   background: #3ac162;
   text-decoration: none;
   color: white;
+}
+
+
+.button_red{
+  background-color:$brand-color;
+  color:white;
+  margin:0 auto;
+  display:block;
 }

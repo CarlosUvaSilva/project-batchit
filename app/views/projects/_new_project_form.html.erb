@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-8 col-md-offset-2 col-xs-10 col-xs-offset-1">
-      <%= simple_form_for @project do |f| %>
+      <%= simple_form_for @project, method: "post", url: projects_path do |f| %>
         <div class="form-group">
           <%= f.input :name, label: "Please name your Batch: ", input_html: {class: "form-control"} %>
         </div>
@@ -18,7 +18,7 @@
           <%= f.input :end_date, as: :string, label: "Please enter the end date: ", input_html: {class: "form-control", id: "datepicker_end_date"}, placeholder: "dd/mm/yyyy" %>
         </div>
         <br>
-        <%= f.button :submit, class: "btn btn-primary" %>
+        <%= f.button :submit, class: "btn btn-success" %>
       <% end %>
     </div>
   </div>
