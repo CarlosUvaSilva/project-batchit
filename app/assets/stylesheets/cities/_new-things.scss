@@ -1,0 +1,145 @@
+.thing-creation{
+  position: fixed;
+  top: 70px;
+  left: 450px;
+  height: calc(100vh - 70px);
+  width: calc(100vw - 450px);
+  background-color: #FBFBFB;
+  z-index: -1;
+  padding: 0px;
+
+  #thing-creation-content{
+    position:absolute;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+    .card-container{
+      border-radius: 5px;
+      width:500px;
+      height: 175px;
+      margin: 0px auto;
+      margin-bottom: 15px;
+      background-color: $gray-very-very-light;
+      padding: 0px;
+      position: relative;
+      .empty-card{
+        position: absolute;
+        right: 0px;
+        left: 0px;
+        bottom: 0px;
+        top: 0px;
+        background-color: $gray-very-light;
+        border-radius: 5px;
+        border: dashed 5px $gray-medium;
+        margin: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+      }
+    }
+  }
+}
+
+.search-bar{
+  background-color: $gray;
+  min-height: calc(100vh - 70px);
+  width: 450px;
+  padding: 10px;
+  h3{
+    color: $gray-background;
+  }
+}
+
+.add-card{
+  display: flex;
+  align-items:center;
+  justify-content: space-around;
+  width: 380px;
+  height: 175px;
+  border-radius: 5px;
+  position: relative;
+  background-color: $gray-very-very-light;
+  margin: 25px auto;
+  &:hover{
+    cursor: pointer;
+  }
+  .thingcard-small {
+    width:99%;
+    height:173px;
+  }
+}
+
+.search-more{
+  text-align: center;
+  margin: 25px auto;
+  width: 130px;
+  height: 25px;
+  padding: 0px;
+  border-radius: 5px;
+  background-color: $gray-background;
+  span{
+    font-size: 12px;
+    color: $gray;
+    margin: 4px auto;
+    padding: 0px;
+  }
+}
+
+.add-perso{
+  display: flex;
+  align-items: center;
+  &:hover{
+    background-color: $gray-light;
+    .add-personal-card{
+      i{
+        color: $gray-light;
+      }
+    }
+  }
+}
+
+.add-personal-card{
+  text-align: center;
+  height: 70px;
+  width: 70px;
+  background-color: $brand-color;
+  border-radius: 35px;
+  margin: 0px auto;
+  i{
+    padding: 0px;
+    margin: 15px auto;
+    color: $gray-background;
+    font-size: 40px;
+  }
+}
+
+.modal-container{
+  display: flex;
+  align-items: center;
+  padding: 100px;
+  .create-thing-modal-form{
+    position: relative;
+    border-radius: 5px;
+    padding: 50px;
+    height: 500px;
+    width: 500px;
+    margin: 0px auto;
+    background-color: $gray-background;
+    i{
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 20px;
+      &:hover{
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+
