@@ -1,47 +1,34 @@
 Rails.application.routes.draw do
-  get 'things/create_restaurant'
+  resources :projects, only: [:index, :show, :new, :create] do
+    resources :participants, only: [:index, :create, :destroy]
+    resources :cities, only: [:show, :new, :create]
+  end
 
-  get 'things/create_bar'
-
-  get 'things/create_accommodation'
-
-  get 'things/create_activity'
-
-  get 'things/index'
-
-  get 'things/new_scraper'
-
-  get 'participants/index'
-
-  get 'participants/create'
-
-  get 'participants/destroy'
-
-  get 'cities/index'
-
-  get 'cities/new'
-
-  get 'cities/create'
-
-  get 'cities/show'
-
-  get 'cities/new_restaurants'
-
-  get 'cities/new_accommodations'
-
-  get 'cities/new_bars'
-
-  get 'cities/new_activities'
-
-  get 'projects/index'
-
-  get 'projects/show'
-
-  get 'projects/new'
-
-  get 'projects/create'
 
   devise_for :users
   root to: 'pages#home'
+
+  resources :things, only: [:index]
+
+
+
+
+
+  get 'cities/:id/new_scraper', to: "things#new_scraper", as: "new_scraper"
+
+  post 'cities/:id/create_restaurant', to: "things#create_restaurant", as: "create_restaurant"
+  post 'cities/:id/create_bar', to: "things#create_bar", as: "create_bar"
+  post 'cities/:id/create_accommodation', to: "things#create_accommodation", as: "create_accommodation"
+  post 'cities/:id/create_activity', to: "things#create_activity", as: "create_activity"
+
+  get 'cities/:id/new_restaurants', to: "cities#new_restaurants", as: "new_city_restaurants"
+  get 'cities/:id/new_accommodations', to: "cities#new_accommodations", as: "new_city_accommodations"
+  get 'cities/:id/new_bars', to: "cities#new_bars", as: "new_city_bars"
+  get 'cities/:id/new_activities', to: "cities#new_activities", as: "new_city_activities"
+
+
+
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
 end
