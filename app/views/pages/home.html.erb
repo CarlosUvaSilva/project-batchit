@@ -11,7 +11,7 @@
 <% content_for(:after_js) do %>
   <script>
     $("#create").click(function(){
-        $("#hidden-form").toggleClass("hidden");
+        $("#hidden-form").removeClass("hidden");
         $('html, body').animate({
           scrollTop: $("#hidden-form").offset().top
         }, 1000);

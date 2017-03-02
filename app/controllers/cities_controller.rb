@@ -9,6 +9,9 @@ class CitiesController < ApplicationController
   def new
     @project = Project.find(params[:project_id])
     @city = City.new
+    if @project.cities.size >= 2
+      redirect_to project_path(@project.id)
+    end
   end
 
   def create
@@ -16,7 +19,7 @@ class CitiesController < ApplicationController
     @project = Project.find(params[:project_id])
     @city.project = @project
     if @city.save
-      redirect_to project_city_path(@project, @city)
+      redirect_to new_project_city_path(@project)
     else
       @error = @city.errors
       render :new

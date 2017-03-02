@@ -17,12 +17,30 @@
         <div class="form-group">
           <%= f.input :end_date, as: :string, label: "Please enter the end date: ", input_html: {class: "form-control", id: "datepicker_end_date"}, placeholder: "dd/mm/yyyy" %>
         </div>
-        <br>
-        <%= f.button :submit, class: "btn btn-success" %>
+        <div class="form-group">
+          <%= f.input :city1, label: "Provide your first city choice" do %>
+            <%= text_field_tag 'city_1' %>
+          <% end %>
+        </div>
+        <div class="form-group">
+          <%= f.input :city2, label: "Provide your second city choice" do %>
+            <%= text_field_tag 'city_2' %>
+          <% end %>
+        </div>
+        <div class="text-center">
+          <%= f.button :submit, class: "btn btn-success btn-lg", value: "Create Trip" %>
+        </div>
       <% end %>
     </div>
   </div>
 </div>
+
+<% content_for(:after_js) do %>
+  <script>
+     $('input#city_1').addClass('form-control');
+     $('input#city_2').addClass('form-control');
+  </script>
+<% end %>
 
     <!-- <option value="Amsterdam">Amsterdam</option>
     <option value="Hamburg">Hamburg</option>

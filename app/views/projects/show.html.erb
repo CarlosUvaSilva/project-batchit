@@ -2,12 +2,13 @@
   <div>
     <h2><%= @project.name %></h2>
     <div class="signup-container">
-        <h2>We are preparing the best tips for your trip with the following information</h2><br>
+        <h2>We are preparing the best tips for your trip with the following information</h2>
         <div class="inside-signup">
           <p><strong>Description: </strong> <%= @project.description  %></p>
           <p><strong>Group size: </strong> <%= @project.group_size  %></p>
-          <p><strong>Start date: </strong> <%= @project.start_date  %></p>
-          <p><strong>End date: </strong> <%= @project.end_date  %></p>
+          <p><strong> From </strong> <%= @project.start_date  %><strong> to </strong> <%= @project.end_date  %></p>
+          <p><strong>City 1: </strong> <%= @project.cities.first.name  %></p>
+          <p><strong>City 2: </strong> <%= @project.cities.second.name  %></p>
         </div>
       <%= link_to 'Sign-up to continue', new_user_registration_path, class: "btn btn-lg btn-success"%>
     </div>
