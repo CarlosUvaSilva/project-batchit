@@ -1,0 +1,35 @@
+<div class="thing-creation">
+  <div id="thing-creation-content">
+    <h3 class="text-center" style="color: #B42A25; margin: 0px">Your <%= type %> selection</h3>
+    <div id="card-1" class="card-container">
+      <% @thing = @city.send(plural_type).first %>
+      <% if @thing.nil? %>
+        <div class="empty-card">
+          <h4>empty</h4>
+        </div>
+      <% else %>
+        <%= render "shared/thingcard", thing: @thing  %>
+      <% end %>
+    </div>
+    <div id="card-2" class="card-container">
+      <% @thing = @city.send(plural_type).second %>
+      <% if @thing.nil? %>
+        <div class="empty-card">
+          <h4>empty</h4>
+        </div>
+      <% else %>
+        <%= render "shared/thingcard", thing: @thing  %>
+      <% end %>
+    </div>
+    <div id="card-3" class="card-container">
+      <% @thing = @city.send(plural_type).third %>
+      <% if @thing.nil? %>
+        <div class="empty-card">
+          <h4>empty</h4>
+        </div>
+      <% else %>
+        <%= render "shared/thingcard", thing: @thing  %>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,17 @@
+
+<%= simple_form_for @thing, method: "post", url: create_activity_path, remote: true do |f| %>
+  <div class="form-group">
+    <%= f.input :name, label: "What's the activity's name?", input_html: {class: "form-control"} %>
+  </div>
+  <div class="form-group">
+    <%= f.input :description, label: "Describe the activity: ", as: :text, input_html: {class: "form-control"} %>
+  </div>
+  <div class="form-group">
+    <%= f.input :price_range, label: "What's the expected price? ", input_html: {class: "form-control"} %>
+  </div>
+  <div class="form-group">
+    <%= f.input :address, label: "Fill in the address:", input_html: {class: "form-control"} %>
+  </div>
+  <br>
+  <%= f.button :submit, class: "btn btn-primary", value: "Add activity" %>
+<% end %>

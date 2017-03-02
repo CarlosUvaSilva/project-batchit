@@ -1,2 +1,28 @@
-<h1>Cities#new_accommodations</h1>
-<p>Find me in app/views/cities/new_accommodations.html.erb</p>
+<%= render "thing_selection", type: "accommodation", plural_type: "accommodations"  %>
+
+<div class="search-bar">
+  <h3 class="text-center">Our selection</h3>
+    <% @house_listing.each do |thing|  %>
+      <div class="add-card">
+        <%= render "shared/thingcard-small", type: "accommodation", thing: thing %>
+      </div>
+    <% end %>
+  <div class="add-card add-perso" data-toggle="modal" data-target="#new_thing_modal">
+    <div class="add-personal-card">
+      <i class="fa fa-plus"></i>
+    </div>
+  </div>
+  <div class="search-more"><span>See more</span></div>
+</div>
+
+
+
+<div class="modal fade" id="new_thing_modal">
+  <div class="modal-container">
+    <div class="create-thing-modal-form">
+      <% @thing = Thing.new() %>
+      <%= render "new_accommodation_form"  %>
+      <i class="fa fa-close" data-dismiss="modal"></i>
+    </div>
+  </div>
+</div>

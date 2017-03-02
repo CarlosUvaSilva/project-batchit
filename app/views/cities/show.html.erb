@@ -1,2 +1,14 @@
-<h1>Cities#show</h1>
-<p>Find me in app/views/cities/show.html.erb</p>
+
+
+
+<h1> <%= @city.name %> -- <%= @city.project_id %> </h1>
+<% @city.things.each do |thing| %>
+  <ul>
+    <li> <%= thing.name %> --- <%= thing.thing_type %></li>
+    <li> <%= thing.is_restaurant? || thing.is_bar? %></li>
+    <li> <%= thing.city.name %> <%= thing.city.project.group_size %></li>
+  </ul>
+<% end %>
+
+<p> <%= link_to 'Scrape New Accomodation', new_scraper_path(@city) %></p>
+

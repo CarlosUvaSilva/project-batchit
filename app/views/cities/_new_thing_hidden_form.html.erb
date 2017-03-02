@@ -1,0 +1,12 @@
+<%= simple_form_for thing, method: "post", url: send("create_" + type + "_path"), remote: true do |f| %>
+  <%= f.input :name, as: :hidden %>
+  <%= f.input :description, as: :hidden %>
+  <%= f.input :price_range, as: :hidden %>
+  <%= f.input :address, as: :hidden %>
+  <%= f.input :tag, as: :hidden %>
+  <%= f.input :link, as: :hidden %>
+  <%= f.button :submit, id: "btn-hidden-form-submit", value: "add" do %>
+    <i class="fa fa-plus"></i>
+  <% end %>
+<% end %>
+
