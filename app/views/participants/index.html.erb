@@ -1,2 +1,24 @@
-<h1>Participants#index</h1>
-<p>Find me in app/views/participants/index.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-6 col-xs-offset-3">
+      <h1>List of buddies for your trip</h1>
+      <ol id="participants-list">
+        <% @participants.each do |participant| %>
+          <li> <%= participant.email %> </li>
+        <% end %>
+      </ol>
+      <% if @participants.empty? %>
+        <p id="no-participants">No participants yet :'( </p>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-6 col-xs-offset-3">
+      <h2>Add a buddy to your trip</h2>
+    </div>
+  </div>
+</div>
+
+<div id="new-participant-form">
+<%= render 'new_participant_form'%>
+</div>
