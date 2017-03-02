@@ -1,2 +1,6 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+
+<%= render "banner" %>
+<% @project = Project.new %>
+<div class="hidden">
+  <%= render "projects/new_project_form" %>
+</div>
