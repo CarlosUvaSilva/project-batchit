@@ -1,0 +1,33 @@
+<% if @thing.errors.any? %>
+  // Render new review form with errors
+  $('#new_thing').html('<%= j render "cities/new_restaurant_form" %>')
+<% else %>
+  // Add it to the DOM, at the end of the existing reviews. It's still hidden.
+  var new_card = $('<%= j render "shared/content-cards-test" %>').hide();
+  if ($("#card-1>div>h4").html() == "empty"){
+    $('#card-1').html('');
+    $('#card-1').append(new_card);
+    new_card.slideDown();
+  } else if ($("#card-2>div>h4").html() == "empty") {
+    $('#card-2').html('');
+    $('#card-2').append(new_card);
+    new_card.slideDown();
+  } else if ($("#card-3>div>h4").html() == "empty") {
+    $('#card-3').html('');
+    $('#card-3').append(new_card);
+    new_card.slideDown();
+  } else {
+    var new_card1 = $($('#card-2').html()).hide();
+    var new_card2 = $($('#card-3').html()).hide();
+    $('#card-1').html('');
+    $('#card-1').append(new_card1);
+    $('#card-2').html('');
+    $('#card-2').append(new_card2);
+    $('#card-3').html('');
+    $('#card-3').append(new_card);
+    new_card1.fadeIn();
+    new_card2.fadeIn();
+    new_card.fadeIn();
+  }
+  $('#new_thing_modal').modal("hide");
+<% end %>

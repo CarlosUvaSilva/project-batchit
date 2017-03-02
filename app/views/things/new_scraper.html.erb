@@ -1,2 +1,19 @@
-<h1>Things#new_scraper</h1>
-<p>Find me in app/views/things/new_scraper.html.erb</p>
+<h1> <strong> LIST </strong></h1>
+<br>
+<br>
+<p> <%= @url %> </p>
+
+
+
+<% @house_listing.each do |house| %>
+    <p> <%= house.name %> </p>
+    <p> <%= house.address %> </p>
+    <ol> <%= house.tag.html_safe %> </ol>
+    <p> <%= house.description %> </p>
+    <p> <%= house.price_range %> </p>
+    <p> <%= house.link %> </p>
+
+
+
+<% end %>
+

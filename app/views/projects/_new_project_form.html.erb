@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2 col-xs-10 col-xs-offset-1">
+      <%= simple_form_for @project do |f| %>
+        <div class="form-group">
+          <%= f.input :name, label: "Please name your Batch: ", input_html: {class: "form-control"} %>
+        </div>
+        <div class="form-group">
+          <%= f.input :description, label: "Please describe your project for your buddies: ", input_html: {class: "form-control"} %>
+        </div>
+        <div class="form-group">
+          <%= f.input :group_size, as: :integer, label: "Please enter the expected number of participants: ", input_html: {class: "form-control"} %>
+        </div>
+        <div class="form-group">
+          <%= f.input :start_date, as: :string, label: "Please enter the start date: ", input_html: {class: "form-control", id: "datepicker_start_date" }, placeholder: "dd/mm/yyyy" %>
+        </div>
+        <div class="form-group">
+          <%= f.input :end_date, as: :string, label: "Please enter the end date: ", input_html: {class: "form-control", id: "datepicker_end_date"}, placeholder: "dd/mm/yyyy" %>
+        </div>
+        <br>
+        <%= f.button :submit, class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+    <!-- <option value="Amsterdam">Amsterdam</option>
+    <option value="Hamburg">Hamburg</option>
+    <option value="Berlin">Berlin</option>
+    <option value="Ibiza">Ibiza</option>
+    <option value="Prague">Prague</option>
+    <option value="Budapest">Budapest</option>
+    <option value="London">London</option>
+    <option value="Barcelona">Barcelona</option>
+    <option value="Madrid">Madrid</option> -->
+

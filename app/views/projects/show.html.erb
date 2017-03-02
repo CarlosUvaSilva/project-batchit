@@ -1,2 +1,17 @@
-<h1>Projects#show</h1>
-<p>Find me in app/views/projects/show.html.erb</p>
+<h1><%= @project.name %></h1>
+<p><strong>Description: </strong> <%= @project.description  %></p>
+<p><strong>Group size: </strong> <%= @project.group_size  %></p>
+<p><strong>Start date: </strong> <%= @project.start_date  %></p>
+<p><strong>End date: </strong> <%= @project.end_date  %></p>
+
+<br>
+<br>
+<br>
+<br>
+<%= render "shared/thingcard", thing: Thing.first  %>
+<br>
+<br>
+<br>
+<br>
+<%= render "shared/thingcard-small", thing: Thing.first  %>
+

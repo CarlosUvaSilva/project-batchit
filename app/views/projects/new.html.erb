@@ -1,2 +1,26 @@
-<h1>Projects#new</h1>
-<p>Find me in app/views/projects/new.html.erb</p>
+<h1>Please fill in the following form to create your project</h1>
+
+<%= render 'new_project_form' %>
+
+
+<% content_for(:after_js) do %>
+  <script>
+    /* create datepicker for start date and end date */
+    <% min_date = Date.today.strftime('%-m-%-d-%Y')  %>
+
+    $('#datepicker_end_date').datepicker({
+      dateFormat: 'dd/mm/yy',
+      constrainInput: true
+    });
+
+    $('#datepicker_start_date').datepicker({
+      dateFormat: 'dd/mm/yy',
+      constrainInput: true,
+      minDate: new Date(<%= raw [min_date] %>),
+      onClose: function(selectedDate) {
+        $("#datepicker_end_date").datepicker("option", "minDate", selectedDate );
+        $("#datepicker_end_date").focus();
+      }
+    });
+  </script>
+<% end %>

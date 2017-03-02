@@ -1,0 +1,22 @@
+<div class='thingcard-small'>
+  <div class='thingcard-small_left'>
+    <img src='https://unsplash.it/175/150/?random'>
+  </div>
+  <div class='thingcard-small_right'>
+    <div class="thingcard-small_right_header">
+      <h5>
+        <%= thing.name %>
+      </h5>
+    </div>
+    <div class='thingcard-small_right_details'>
+      <div class='thingcard-small_right_review'>
+        <p><%= thing.address %></p>
+        <p><%= thing.price_range %> dollars per night</p>
+      </div>
+    </div>
+    <div class='thingcard_right_button'>
+        <%= render "cities/new_thing_hidden_form", type: thing.thing_type, thing: thing %>
+    </div>
+  </div>
+</div>
+

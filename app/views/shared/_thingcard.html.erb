@@ -1,0 +1,34 @@
+<div class='thingcard'>
+  <div class='thingcard_left'>
+    <img src='https://unsplash.it/175/200/?random'>
+  </div>
+  <div class='thingcard_right'>
+    <div class="thingcard_right_header">
+      <h4>
+        <%= thing.name %>
+      </h4>
+    </div>
+    <div class='thingcard_right_details'>
+      <div class='thingcard_right_review'>
+          <p><%= thing.address %></p>
+          <p><%= thing.price_range %> dollars per night</p>
+      </div>
+    </div>
+    <div class='thingcard_right_rating'>
+      <div class='thingcard_right_rating_stars'>
+        <fieldset class='rating'>
+
+          <input id='star3' name='rating' type='radio' value='3'>
+          <label class='full' for='star3' title='3 stars'></label>
+
+          <input id='star2' name='rating' type='radio' value='2'>
+          <label class='full' for='star2' title='2 stars'></label>
+
+          <input id='star1' name='rating' type='radio' value='1'>
+          <label class='full' for='star1' title='1 star'></label>
+
+        </fieldset>
+      </div>
+    </div>
+  </div>
+</div>

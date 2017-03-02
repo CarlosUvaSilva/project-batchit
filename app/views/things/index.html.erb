@@ -1,2 +1,12 @@
 <h1>Things#index</h1>
 <p>Find me in app/views/things/index.html.erb</p>
+
+
+<% @things.each do |thing| %>
+
+<ul>
+<li> <%= thing.name %> -- <%= thing.city.name %> </li>
+<li> <%= thing.is_restaurant? %></li>
+</ul>
+
+<% end %>
