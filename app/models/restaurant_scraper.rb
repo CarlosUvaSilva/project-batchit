@@ -14,9 +14,10 @@ class RestaurantScraper
       address = restaurant["restaurant"]["location"]["address"]
       price_range = restaurant["restaurant"]["average_cost_for_two"]/2
       link = restaurant["restaurant"]["url"]
+      photo_link = restaurant["restaurant"]["thumb"]
       tag = "<li><strong>Cuisines:</strong> " + restaurant["restaurant"]["cuisines"]+ "</li>"
       tag += "<li><strong>Rating:</strong> " + restaurant["restaurant"]["user_rating"]["rating_text"]+ "</li>"
-      result_array << Thing.new(name: name, address: address, price_range: price_range, link: link, tag: tag, thing_type: "restaurant")
+      result_array << Thing.new(name: name, address: address, price_range: price_range, link: link, tag: tag, thing_type: "restaurant", photo_link: photo_link)
     end
     result_array
   end
