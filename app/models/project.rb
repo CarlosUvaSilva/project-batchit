@@ -8,7 +8,7 @@ class Project < ApplicationRecord
 
   has_many :participants
   has_many :users, through: :participants
-  has_many :cities
+  has_many :cities, dependent: :destroy
 
   def leader
     self.participants.where(is_leader: true).user

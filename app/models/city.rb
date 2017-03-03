@@ -1,6 +1,6 @@
 class City < ApplicationRecord
 
-  has_many :things
+  has_many :things, dependent: :destroy
   belongs_to :project
   validates :name, presence: true
 
