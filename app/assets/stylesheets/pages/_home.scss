@@ -6,10 +6,15 @@
 }
 
 #hidden-form_details{
+  // color: white;
   display: flex;
   align-items: center;
   justify-content: center;
   height:80%;
   width:50%;
-  background: white;
+  background-color: #E3E3E6;
+  background: rgba(204,204,204,.9);
+  // background: white;
+  // opacity: 0.5;
+  // filter: alpha(opacity=50);
 }

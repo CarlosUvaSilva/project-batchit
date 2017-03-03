@@ -1,5 +1,7 @@
-<%= render "banner" %>
-<% @project = Project.new %>
+<div id="banner-page">
+  <%= render "banner" %>
+  <% @project = Project.new %>
+</div>
 
 <div class="hidden" id="hidden-form">
   <div id="hidden-form_details">
@@ -11,6 +13,7 @@
 <% content_for(:after_js) do %>
   <script>
     $("#create").click(function(){
+        $("#banner-page").addClass("hidden");
         $("#hidden-form").removeClass("hidden");
         $('html, body').animate({
           scrollTop: $("#hidden-form").offset().top
@@ -36,4 +39,3 @@
     });
   </script>
 <% end %>
-
