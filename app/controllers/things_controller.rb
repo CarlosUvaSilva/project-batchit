@@ -37,7 +37,7 @@ class ThingsController < ApplicationController
 
 
   def thing_params
-    params.require(:thing).permit(:name,:description, :price_range, :address, :link, :tag)
+    params.require(:thing).permit(:name, :description, :price_range, :address, :link, :tag, :photo_link)
   end
 
 

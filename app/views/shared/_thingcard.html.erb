@@ -1,6 +1,10 @@
 <div class='thingcard'>
   <div class='thingcard_left'>
-    <img src='https://unsplash.it/175/200/?random'>
+    <% if thing.photo_link.nil? || thing.photo_link.strip == "" %>
+      <img src='https://unsplash.it/175/150/?random'>
+    <% else %>
+      <img src='<%= thing.photo_link %>'>
+    <% end %>
   </div>
   <div class='thingcard_right'>
     <div class="thingcard_right_header">
