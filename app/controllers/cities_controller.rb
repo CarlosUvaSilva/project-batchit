@@ -30,6 +30,7 @@ class CitiesController < ApplicationController
   end
 
   def new_restaurants
+    @things = RestaurantScraper.zomato_restaurants(@city.name)
   end
 
   def new_accommodations

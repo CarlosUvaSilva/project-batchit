@@ -3,7 +3,7 @@
   $('#new_thing').html('<%= j render "cities/new_bar_form" %>')
 <% else %>
   // Add it to the DOM, at the end of the existing reviews. It's still hidden.
-  var new_card = $('<%= j render "shared/content-cards-test" %>').hide();
+  var new_card = $('<%= j render "shared/thingcard", thing: @thing %>').hide();
   if ($("#card-1>div>h4").html() == "empty"){
     $('#card-1').html('');
     $('#card-1').append(new_card);

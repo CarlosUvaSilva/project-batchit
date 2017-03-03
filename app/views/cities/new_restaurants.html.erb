@@ -2,10 +2,11 @@
 
 <div class="search-bar">
   <h3 class="text-center">Our selection</h3>
-  <div class="add-card"></div>
-  <div class="add-card"></div>
-  <div class="add-card"></div>
-  <div class="add-card"></div>
+    <% @things.each do |thing|  %>
+      <div class="add-card">
+        <%= render "shared/thingcard-small", type: "restaurant", thing: thing %>
+      </div>
+    <% end %>
   <div class="add-card add-perso" data-toggle="modal" data-target="#new_thing_modal">
     <div class="add-personal-card">
       <i class="fa fa-plus"></i>
