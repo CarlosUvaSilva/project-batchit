@@ -5,4 +5,10 @@
     <!-- <a class="btn btn-success btn-lg", id="create", class="button_red" >Create Trip</a> -->
     <a class="btn btn-success btn-lg", id="create" >Create Trip</a>
   </div>
+  <div class="hidden" id="hidden-form">
+    <div id="hidden-form_details">
+    <% @project = Project.new %>
+    <%= render "projects/new_project_form" %>
+    </div>
+  </div>
 </div>

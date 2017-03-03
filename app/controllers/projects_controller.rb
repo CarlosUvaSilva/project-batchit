@@ -10,6 +10,7 @@ class ProjectsController < ApplicationController
 
   def new
     @project = Project.new()
+    @disable_nav = true
   end
 
   def create
@@ -23,6 +24,7 @@ class ProjectsController < ApplicationController
         redirect_to new_project_city_path(@project)
       end
     else
+      @disable_nav = true
       render "new"
     end
   end
