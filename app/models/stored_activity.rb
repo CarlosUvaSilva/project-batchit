@@ -29,7 +29,12 @@ class StoredActivity
       },
       {
       name: "Bubble Soccer",
-      description: "Bubble Ball Soccer is the newest trend sport! An exciting twist on the traditional game of soccer, you will be wrapped in a giant, soft inflatable Bubble Ball with shoulder harnesses and handles inside! Get ready to have a blast!"
-      }]
+      description: "Bubble Ball Soccer is the newest trend sport! An exciting twist on the traditional game of soccer. Get ready to have a blast!"
+      },
+      {
+      name: "Surfing",
+      description: "Experience one day of surf with your mates and be prepared to impress the crowds!"
+      }
+    ]
   end
 end
