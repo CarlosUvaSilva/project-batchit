@@ -11,7 +11,11 @@
     <div class='thingcard-small_right_details'>
       <div class='thingcard-small_right_review'>
         <p><%= thing.address %></p>
-        <p><%= thing.price_range %> dollars per night</p>
+        <% if thing.is_activity? %>
+          <p><%= thing.description %></p>
+        <% else %>
+          <p><%= thing.price_range %> dollars per person</p>
+        <% end %>
       </div>
     </div>
     <div class='thingcard_right_button'>
