@@ -40,6 +40,7 @@ class CitiesController < ApplicationController
   end
 
   def new_activities
+    @activities = StoredActivity.get_things(@city.name)
   end
 
   private

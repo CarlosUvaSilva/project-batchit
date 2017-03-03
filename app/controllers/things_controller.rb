@@ -60,3 +60,4 @@ class ThingsController < ApplicationController
     end
   end
 end
+
