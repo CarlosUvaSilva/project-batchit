@@ -2,7 +2,7 @@
 
 <div class="search-bar">
   <h3 class="text-center">Our selection</h3>
-    <% @house_listing.each do |thing|  %>
+    <% @things.each do |thing|  %>
       <div class="add-card">
         <%= render "shared/thingcard-small", type: "accommodation", thing: thing %>
       </div>

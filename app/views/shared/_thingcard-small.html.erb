@@ -14,12 +14,8 @@
     </div>
     <div class='thingcard-small_right_details'>
       <div class='thingcard-small_right_review'>
-        <p><%= thing.address %></p>
-        <% if thing.is_activity? %>
-          <p><%= thing.description %></p>
-        <% else %>
-          <p><%= thing.price_range %> dollars per person</p>
-        <% end %>
+        <p><%= thing.address.size <= 50 ? thing.address : thing.address[0..50] + "..." %></p>
+        <p><%= thing.description.size <= 75 ? thing.description : thing.description[0..75] + "..." %></p>
       </div>
     </div>
     <div class='thingcard_right_button'>
