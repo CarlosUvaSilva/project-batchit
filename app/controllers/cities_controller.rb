@@ -30,14 +30,16 @@ class CitiesController < ApplicationController
   end
 
   def new_restaurants
-    @things = RestaurantScraper.zomato_restaurants(@city.name)
+    @things = GooglePlaces.to_things(city: @city, limit:5)
   end
 
   def new_accommodations
-    @house_listing = scrape_to_thing(airbnb_scraper(5))
+    #@house_listing = scrape_to_thing(airbnb_scraper(5))
+    @things = GooglePlaces.to_things(city: @city, limit:5, type: "lodging", keyword: "hotel")
   end
 
   def new_bars
+    @things = GooglePlaces.to_things(city: @city, limit:5, type: "bar")
   end
 
   def new_activities
