@@ -1,5 +1,8 @@
 class Thing < ApplicationRecord
 
+
+  acts_as_votable
+
   belongs_to :city
 
   validates :name, presence: true
@@ -23,5 +26,9 @@ class Thing < ApplicationRecord
 
   def is_activity?
     self.thing_type == 'activity'
+  end
+
+  def total_votes
+    self.votes_for.sum(:vote_weight)
   end
 end

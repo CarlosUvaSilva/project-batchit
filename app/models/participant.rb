@@ -1,5 +1,8 @@
 class Participant < ApplicationRecord
 
+
+
+
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }
   validates_uniqueness_of :email, :scope => [:project_id], :message => "Buddy already invited for this trip"

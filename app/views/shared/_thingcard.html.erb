@@ -12,7 +12,34 @@
       <div class='thingcard_right_review'>
           <p><%= thing.address %></p>
           <p><%= thing.price_range %> dollars per night</p>
+          <p><%= current_user.id %></p>
+
+          <% if thing.city.project.participants.where(user: current_user.id) %>
+            <p> <%= true %> </p>
+          <% else %>
+            <p> <%= false %></p>
+          <% end %>
+          <% if thing.city.project.participants.where(user: 1) %>
+            <p> <%= true %> </p>
+          <% else %>
+            <p> <%= false %></p>
+          <% end %>
+          <% if thing.city.project.participants.where(user: 5) %>
+            <p> <%= true %> </p>
+          <% end %>
+
+
+
       </div>
+    </div>
+    <div>
+    <div>
+         <%= link_to vote_path(thing), class: "btn btn-success" do %>
+             upvote
+          <% end %>
+
+    </div>
+
     </div>
     <div class='thingcard_right_rating'>
       <div class='thingcard_right_rating_stars'>

@@ -29,6 +29,22 @@ class ThingsController < ApplicationController
     @house_listing = scrape_to_thing(airbnb_scraper(4))
   end
 
+
+
+
+
+
+  # def vote3
+  #   thing = Thing.find(params[:id])
+  #   thing.liked_by current_user, :vote_scope => thing.thing_type, :vote_weight => 3
+
+  #   redirect_to things_path
+  # end
+
+
+
+
+
   private
 
   def set_thing
@@ -58,5 +74,23 @@ class ThingsController < ApplicationController
         format.js  # <-- idem
       end
     end
+  end
+
+  def check_already_voted(thing,stars)
+    current_user.votes.any? { |h| h[:vote_weight] == stars && h[:vote_scope] == thing.thing_type}
+  end
+
+  def vote(thing,stars)
+    if check_already_voted(thing,stars)
+      redirect_to things_path, notice: " Already Voted"
+    else
+      thing.liked_by current_user, :vote_scope => thing.thing_type
+      redirect_to things_path
+    end
+  end
+
+  def unvote(thing)
+    thing.unliked_by current_user, :vote_scope => thing.thing_type
+    redirect_to things_path
   end
 end
