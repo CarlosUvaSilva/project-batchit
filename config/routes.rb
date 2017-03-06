@@ -31,6 +31,8 @@ Rails.application.routes.draw do
   get 'cities/:id/new_activities', to: "cities#new_activities", as: "new_city_activities"
 
 
+  get 'projects/:id/dashboard', to: "projects#dashboard", as: "project_dashboard"
+
 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
