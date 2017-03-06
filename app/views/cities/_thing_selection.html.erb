@@ -2,7 +2,7 @@
   <div id="thing-creation-content">
     <h3 class="text-center" style="color: #B42A25; margin: 0px">Your <%= type %> selection</h3>
     <div id="card-1" class="card-container">
-      <% @thing = @city.send(plural_type).first %>
+      <% @thing = @city.send(type.pluralize).first %>
       <% if @thing.nil? %>
         <div class="empty-card">
           <h4>empty</h4>
@@ -12,7 +12,7 @@
       <% end %>
     </div>
     <div id="card-2" class="card-container">
-      <% @thing = @city.send(plural_type).second %>
+      <% @thing = @city.send(type.pluralize).second %>
       <% if @thing.nil? %>
         <div class="empty-card">
           <h4>empty</h4>
@@ -22,7 +22,7 @@
       <% end %>
     </div>
     <div id="card-3" class="card-container">
-      <% @thing = @city.send(plural_type).third %>
+      <% @thing = @city.send(type.pluralize).third %>
       <% if @thing.nil? %>
         <div class="empty-card">
           <h4>empty</h4>
@@ -31,5 +31,8 @@
         <%= render "shared/thingcard", thing: @thing  %>
       <% end %>
     </div>
+    <% unless target = "" %>
+      <%= link_to "Choose #{target.pluralize}", send("new_city_#{target.pluralize}_path", @city), style: "position: absolute; top:10px; right: 10px;" %>
+    <% end %>
   </div>
 </div>

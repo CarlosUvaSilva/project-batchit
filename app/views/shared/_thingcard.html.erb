@@ -1,25 +1,20 @@
 <div class='thingcard'>
-  <div class='thingcard_left'>
-    <% if thing.photo_link.nil? || thing.photo_link.strip == "" %>
-      <img src='https://unsplash.it/175/150/?random'>
-    <% else %>
-      <img src='<%= thing.photo_link %>'>
-    <% end %>
+ <% if thing.photo_link.nil? || thing.photo_link.strip == "" %>
+    <div class='thingcard_left' style="background-image: url('https://unsplash.it/175/150/?random');">
+  <% else %>
+    <div class='thingcard_left' style="background-image: url('<%= thing.photo_link %>');">
+  <% end %>
   </div>
   <div class='thingcard_right'>
     <div class="thingcard_right_header">
       <h4>
-        <%= thing.name %>
+        <%= thing.name.capitalize %>
       </h4>
     </div>
     <div class='thingcard_right_details'>
       <div class='thingcard_right_review'>
-        <p><%= thing.address %></p>
-        <% if thing.is_activity? %>
-          <p><%= thing.description %></p>
-        <% else %>
-          <p><%= thing.price_range %> dollars per person</p>
-        <% end %>
+        <p><%= thing.address.size <= 50 ? thing.address : thing.address[0..50] + "..." %></p>
+        <p><%= thing.description.size <= 75 ? thing.description : thing.description[0..75] + "..." %></p>
       </div>
     </div>
     <div class='thingcard_right_rating'>

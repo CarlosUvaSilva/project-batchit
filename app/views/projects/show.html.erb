@@ -7,8 +7,8 @@
           <p><strong>Description: </strong> <%= @project.description  %></p>
           <p><strong>Group size: </strong> <%= @project.group_size  %></p>
           <p><strong> From </strong> <%= @project.start_date  %><strong> to </strong> <%= @project.end_date  %></p>
-          <p><strong>City 1: </strong> <%= @project.cities.first.name %> (<%= @project.cities.first.id %>)</p>
-          <p><strong>City 2: </strong> <%= @project.cities.second.name %> (<%= @project.cities.second.id %>)</p>
+          <p><strong>City 1: </strong> <%= @project.cities.first.name %> (<%= link_to "Start setting up city", new_city_restaurants_path(@project.cities.first) %>) </p>
+          <p><strong>City 2: </strong> <%= @project.cities.second.name %> (<%= link_to "Start setting up city", new_city_restaurants_path(@project.cities.second) %>)</p>
         </div>
       <div class="show-project-btn-container">
         <% if user_signed_in? %>

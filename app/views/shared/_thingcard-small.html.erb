@@ -1,15 +1,14 @@
 <div class='thingcard-small'>
-  <div class='thingcard-small_left'>
-    <% if thing.photo_link.nil? || thing.photo_link.strip == "" %>
-      <img src='https://unsplash.it/175/150/?random'>
-    <% else %>
-      <img src='<%= thing.photo_link %>'>
-    <% end %>
+  <% if thing.photo_link.nil? || thing.photo_link.strip == "" %>
+    <div class='thingcard-small_left' style="background-image: url('https://unsplash.it/175/150/?random');">
+  <% else %>
+    <div class='thingcard-small_left' style="background-image: url('<%= thing.photo_link %>');">
+  <% end %>
   </div>
   <div class='thingcard-small_right'>
     <div class="thingcard-small_right_header">
       <h5>
-        <%= thing.name %>
+        <%= thing.name.capitalize %>
       </h5>
     </div>
     <div class='thingcard-small_right_details'>
