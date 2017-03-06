@@ -1,0 +1,41 @@
+.results-card {
+  display: flex;
+  direction: column;
+  color: grey;
+  height: 210px;
+  background: white;
+  width:450px;
+  margin: 30px;
+  padding: 2px;
+}
+
+.result-line1 {
+  position: absolute;
+  display: flex;
+  direction: row;
+  margin: 0px 0 140px 0;
+  width: 450px;  /* Or whatever */
+  height: 60px; /* Or whatever */
+}
+
+.result-line2 {
+  position: absolute;
+  display: flex;
+  direction: row;
+  margin: 70px 0 70px 0;
+  width: 450px;  /* Or whatever */
+  height: 60px; /* Or whatever */
+}
+
+.result-line3 {
+  position: absolute;
+  display: flex;
+  direction: row;
+  margin: 140px 0 0px 0;
+  width: 450px;  /* Or whatever */
+  height: 60px; /* Or whatever */
+}
+.result-item {
+  width: 150px;  /* Or whatever */
+  height: 60px; /* Or whatever */
+}
