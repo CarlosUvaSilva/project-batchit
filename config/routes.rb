@@ -12,6 +12,10 @@ Rails.application.routes.draw do
 
 
 
+  # get 'vote/:id', to: "things#vote", as: "vote"
+  # get 'vote3/:id', to: "things#vote3", as: "vote3"
+
+  # get 'unvote/:id', to: "things#unvote", as: "unvote"
 
 
   get 'cities/:id/new_scraper', to: "things#new_scraper", as: "new_scraper"
