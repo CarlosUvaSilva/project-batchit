@@ -18,6 +18,8 @@ gem 'simple_form'
 gem 'autoprefixer-rails'
 gem 'acts_as_votable', '~> 0.10.0'
 
+gem "geocoder"
+
 group :development, :test do
   gem 'binding_of_caller'
   gem 'better_errors'

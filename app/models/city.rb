@@ -1,8 +1,11 @@
 class City < ApplicationRecord
 
-  has_many :things
+  has_many :things, dependent: :destroy
   belongs_to :project
   validates :name, presence: true
+
+  geocoded_by :name
+  after_validation :geocode, if: :name_changed?
 
   def restaurants
     self.things.where(thing_type: "restaurant")

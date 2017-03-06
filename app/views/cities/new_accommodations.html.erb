@@ -1,28 +1,19 @@
-<%= render "thing_selection", type: "accommodation", plural_type: "accommodations"  %>
-
-<div class="search-bar">
-  <h3 class="text-center">Our selection</h3>
-    <% @house_listing.each do |thing|  %>
-      <div class="add-card">
-        <%= render "shared/thingcard-small", type: "accommodation", thing: thing %>
+<!-- @things & @city -->
+<%= render "shared/progress-bar", type: @things.first.thing_type %>
+<div class="search-bar-new">
+  <div class="row">
+    <div class="col-xs-12">
+      <h3 class="text-center"><%= @things.first.thing_type.pluralize.capitalize %> proposition</h3>
+    </div>
+    <% @things.each do |thing|  %>
+      <div class="col-xs-6">
+        <%= render "shared/search_card", thing: thing %>
       </div>
     <% end %>
-  <div class="add-card add-perso" data-toggle="modal" data-target="#new_thing_modal">
-    <div class="add-personal-card">
-      <i class="fa fa-plus"></i>
-    </div>
-  </div>
-  <div class="search-more"><span>See more</span></div>
-</div>
-
-
-
-<div class="modal fade" id="new_thing_modal">
-  <div class="modal-container">
-    <div class="create-thing-modal-form">
-      <% @thing = Thing.new() %>
-      <%= render "new_accommodation_form"  %>
-      <i class="fa fa-close" data-dismiss="modal"></i>
-    </div>
   </div>
 </div>
+
+<div class="selection_container">
+  <%= render "cities/selection_container", city: @city %>
+</div>
+

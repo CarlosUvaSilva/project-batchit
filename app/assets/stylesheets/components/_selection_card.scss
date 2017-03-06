@@ -1,0 +1,48 @@
+.selection_card{
+  background-size: cover;
+  height: 80px;
+  width: 115px;
+  position: relative;
+  margin: 0px auto;
+  box-shadow: 0px 3px 3px $gray-light;
+  a{
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    right: 0px;
+    left: 0px;
+    background-color: $gray;
+    opacity: 0.3;
+    &:hover{
+      opacity: 0.5;
+    }
+  }
+  h5{
+    position: absolute;
+    padding: 5px;
+    top: 5px;
+    left: 5px;
+    margin: 0px;
+    font-size: 12px;
+    font-weight: bolder;
+    color: white;
+    z-index: 1;
+  }
+}
+
+
+.empty_selection{
+  height: 80px;
+  width: 115px;
+  margin: 0px auto;
+  box-shadow: 0px 3px 3px $gray-light;
+  background-color: $gray-very-very-very-light;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  p{
+    text-align: center;
+    font-size: 12px;
+    margin: 0px;
+  }
+}

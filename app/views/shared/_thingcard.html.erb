@@ -1,11 +1,14 @@
 <div class='thingcard'>
-  <div class='thingcard_left'>
-    <img src='https://unsplash.it/175/200/?random'>
+ <% if thing.photo_link.nil? || thing.photo_link.strip == "" %>
+    <div class='thingcard_left' style="background-image: url('https://unsplash.it/175/150/?random');">
+  <% else %>
+    <div class='thingcard_left' style="background-image: url('<%= thing.photo_link %>');">
+  <% end %>
   </div>
   <div class='thingcard_right'>
     <div class="thingcard_right_header">
       <h4>
-        <%= thing.name %>
+        <%= thing.name.capitalize %>
       </h4>
     </div>
     <div class='thingcard_right_details'>
@@ -27,9 +30,9 @@
           <% if thing.city.project.participants.where(user: 5) %>
             <p> <%= true %> </p>
           <% end %>
-
-
-
+       <!--  CAME FROM MASTER -->
+       <!--  <p><%= thing.address.size <= 50 ? thing.address : thing.address[0..50] + "..." %></p> -->
+       <!--  <p><%= thing.description.size <= 75 ? thing.description : thing.description[0..75] + "..." %></p> -->
       </div>
     </div>
     <div>

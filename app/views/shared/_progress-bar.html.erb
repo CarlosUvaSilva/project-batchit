@@ -1,0 +1,23 @@
+<div class="progress-bar">
+  <div class="thing-progress-content">
+    <div class="thing-circle <%= "full" if type == "accommodation" || type == "activity" || type == "bar"  %><%= " current" if type == "restaurant"  %>"><p>1</p></div>
+    <p>Restaurants</p>
+  </div>
+  <div class="connecting-line"></div>
+  <div class="thing-progress-content">
+    <div class="thing-circle <%= "full" if type == "activity" || type == "bar"  %><%= " current" if type == "accommodation"  %>"><p>2</p></div>
+    <p>Accommodations</p>
+  </div>
+  <div class="connecting-line"></div>
+  <div class="thing-progress-content">
+    <div class="thing-circle <%= "full" if type == "bar"  %><%= " current" if type == "activity"  %>" ><p>3</p></div>
+    <p>Activities</p>
+  </div>
+  <div class="connecting-line"></div>
+  <div class="thing-progress-content">
+    <div class="thing-circle <%= "current" if type == "bar"  %>"><p>4</p></div>
+    <p>Bars</p>
+  </div>
+</div>
+
+

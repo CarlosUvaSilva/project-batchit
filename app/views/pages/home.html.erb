@@ -1,16 +1,13 @@
-<%= render "banner" %>
-<% @project = Project.new %>
 
-<div class="hidden" id="hidden-form">
-  <div id="hidden-form_details">
-  <%= render "projects/new_project_form" %>
-  </div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<%= render "banner" %>
+
+
 
 
 <% content_for(:after_js) do %>
   <script>
     $("#create").click(function(){
+        $(".banner-content").addClass("hidden");
         $("#hidden-form").removeClass("hidden");
         $('html, body').animate({
           scrollTop: $("#hidden-form").offset().top
@@ -36,4 +33,3 @@
     });
   </script>
 <% end %>
-
