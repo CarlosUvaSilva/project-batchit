@@ -1,19 +1,36 @@
-<% @things = @city.things %>
-<%= render "shared/progress-bar", type: "accommodation" %>
-<div class="search-bar-new">
+<div class="container">
   <div class="row">
-    <div class="col-xs-12">
-      <h3 class="text-center"><%= @things.first.thing_type.pluralize.capitalize %> proposition</h3>
-    </div>
-    <% @things.each do |thing|  %>
-      <div class="col-xs-6">
-        <%= render "shared/search_card", thing: thing %>
+    <div class="col-xs-12 text-center"><h2>Restaurants</h2></div>
+    <% @restaurants.each do |thing| %>
+      <div class="col-xs-4">
+        <%= render "shared/vote_card", type: thing.thing_type, thing: thing %>
+      </div>
+    <% end %>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 text-center"><h2>Accommodations</h2></div>
+    <% @accommodations.each do |thing| %>
+      <div class="col-xs-4">
+        <%= render "shared/vote_card", type: thing.thing_type, thing: thing %>
+      </div>
+    <% end %>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 text-center"><h2>Activities</h2></div>
+    <% @activities.each do |thing| %>
+      <div class="col-xs-4">
+        <%= render "shared/vote_card", type: thing.thing_type, thing: thing %>
+      </div>
+    <% end %>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 text-center"><h2>Bars</h2></div>
+    <% @bars.each do |thing| %>
+      <div class="col-xs-4">
+        <%= render "shared/vote_card", type: thing.thing_type, thing: thing %>
       </div>
     <% end %>
   </div>
 </div>
 
-<div class="selection_container">
-  <%= render "cities/selection_container", city: @city %>
-</div>
 
