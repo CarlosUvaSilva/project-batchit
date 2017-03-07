@@ -30,7 +30,6 @@ class ProjectsController < ApplicationController
 
 # not sure about this function
   def dashboard
-    @dashboard = Project.find(params[:id])
   end
 
   private

@@ -1,42 +1,34 @@
 .main-container {
   width: 100%;
   margin: 0 auto;
-  height: 1000px;
+  min-height: 100vh;
   background-color: #FAFAFA;
 }
 
-.dashboard-left {
-  display: flex;
-  direction: column;
-  justify-content: space-around;
-}
-
-.dashboard-right {
-  display: flex;
-  direction: column;
-  justify-content: space-around;
-  background-color: #FAFAFA;
-}
-
-.tab {
-    overflow: hidden;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-.tab a {
-    float: left;
-    margin: auto;
-    display: block;
-    color: grey;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
+.tabs {
+    color: white;
     transition: 0.3s;
-    font-size: 17px;
+    background: #209EDA;
+    flex: 0 0 25%;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 16px;
 }
 
 .tab-content {
     padding: 6px 12px;
     background-color: #FAFAFA;
+}
+
+.tabs:first-child {
+  border-right: solid 1px $gray-very-light;
+}
+
+.tabs.active {
+  background: blue;
+  color: orange;
+}
+
+.tabs a {
+  color: white;
 }

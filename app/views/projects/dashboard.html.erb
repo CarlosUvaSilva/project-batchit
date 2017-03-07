@@ -1,32 +1,49 @@
 <div class="main-container">
-  <h1>Your Trip Dashboard</h1>
-  <ul class="nav nav-tabs">
+  <ul class="tabs">
     <li class="active"><a data-toggle="tab" href="#city1">City 1</a></li>
     <li><a data-toggle="tab" href="#city2">City 2</a></li>
   </ul>
   <div class="tab-content">
     <div id="city1" class="tab-pane fade in active">
-      <h3>City 1</h3>
-      <div class="dashboard-left">
-        <%= render partial: "results-card" %>
-        <%= render partial: "results-card" %>
-      </div>
-      <div class="dashboard-right">
-        <%= render partial: "results-card" %>
-        <%= render partial: "results-card" %>
+    <div class="row">
+      <div class="col-xs-12 text-center">
+        <h3>City 1</h3>
       </div>
     </div>
-    <div id="city2" class="tab-pane fade">
-      <h3>City 2</h3>
-      <div class="dashboard-left">
-        <%= render partial: "results-card" %>
-        <%= render partial: "results-card" %>
-      </div>
-      <div class="dashboard-right">
-        <%= render partial: "results-card" %>
-        <%= render partial: "results-card" %>
+      <div class="row">
+        <div class="col-xs-6">
+          <%= render "results-card", things: City.first.restaurants %>
+        </div>
+        <div class="col-xs-6">
+          <%= render "results-card", things: City.first.accommodations %>
+        </div>
+        <div class="col-xs-6">
+          <%= render "results-card", things: City.first.activities %>
+        </div>
+        <div class="col-xs-6">
+          <%= render "results-card", things: City.first.bars %>
+        </div>
       </div>
     </div>
+     <div id="city2" class="tab-pane fade in active">
+    <div class="row">
+      <div class="col-xs-12 text-center">
+        <h3>City 2</h3>
+      </div>
     </div>
-  </div>
+      <div class="row">
+        <div class="col-xs-6">
+          <%= render "results-card", things: City.second.restaurants %>
+        </div>
+        <div class="col-xs-6">
+          <%= render "results-card", things: City.second.accommodations %>
+        </div>
+        <div class="col-xs-6">
+          <%= render "results-card", things: City.second.activities %>
+        </div>
+        <div class="col-xs-6">
+          <%= render "results-card", things: City.second.bars %>
+        </div>
+      </div>
+    </div>
 </div>
