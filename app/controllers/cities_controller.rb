@@ -39,7 +39,7 @@ class CitiesController < ApplicationController
   end
 
   def new_bars
-    @things = GooglePlaces.to_things(city: @city, limit:10, type: "bar", keyword: "music")
+    @things = GooglePlaces.to_things(city: @city, limit:10, type: "night_club", keyword: "drink")
   end
 
   def new_activities
