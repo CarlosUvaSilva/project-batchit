@@ -12,11 +12,18 @@
     <p><%= thing.address.size <= 75 ? thing.address : thing.address[0..75] + "..." %></p>
     <p><%= thing.description.size <= 130 ? thing.description : thing.description[0..130] + "..." %></p>
   </div>
-  <div class="search_card_action text-center">
-    <div class="vote-tabs">
-      <%= link_to "First Choice", "", class:"toggle-tab" %>
-      <%= link_to "Second Choice", "", class:"toggle-tab" %>
-      <%= link_to "Third Choice", "", class:"toggle-tab" %>
-    </div>
+  <div class='vote-tabs <%= "#{thing.thing_type}-#{thing.city.id}" %>'>
+    <% vote = current_user.votes.where(votable_id: thing.id).first.vote_weight unless current_user.votes.where(votable_id: thing.id).empty?%>
+    <% vote == 3 ? first_choice_active = " active" : first_choice_active = "" %>
+    <% vote == 2 ? second_choice_active = " active" : second_choice_active = "" %>
+    <% vote == 1 ? third_choice_active = " active" : third_choice_active = "" %>
+    <% vote_id3 = thing.id.to_s + "-first" %>
+    <% vote_id2 = thing.id.to_s + "-second" %>
+    <% vote_id1 = thing.id.to_s + "-third" %>
+    <%= link_to "First Choice", voting_thing_path(thing, vote_type: "first"), class:"vote-tab#{first_choice_active}", id: vote_id3, method: "post", remote: true %>
+    <%= link_to "Second Choice", voting_thing_path(thing, vote_type: "second"), class:"vote-tab middle#{second_choice_active}", id: vote_id2, method: "post", remote: true  %>
+    <%= link_to "Third Choice", voting_thing_path(thing, vote_type: "third"), class:"vote-tab#{third_choice_active}", id: vote_id1, method: "post", remote: true  %>
   </div>
 </div>
+
+

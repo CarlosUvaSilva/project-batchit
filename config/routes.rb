@@ -8,7 +8,9 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
 
-  resources :things, only: [:index]
+  resources :things, only: [:index] do
+    post 'voting', on: :member
+  end
 
 
 

@@ -1,0 +1,41 @@
+.vote-tabs{
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  height: 30px;
+  padding: 0px;
+  margin: 0px;
+  display: flex;
+}
+
+.vote-tab {
+  flex: 1 1 auto;
+  background-color: $brand-color;
+  text-align: center;
+  padding-top: 7px;
+  color: white;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: bolder;
+  text-decoration: none;
+  &:hover{
+    color: white;
+    background-color: $brand-color-dark;
+    text-decoration: none;
+  }
+  &:focus{
+    text-decoration: none;
+    color: white;
+  }
+  &.middle{
+    border-right: solid 1px $gray-very-very-light;
+    border-left: solid 1px $gray-very-very-light;
+  }
+}
+
+.vote-tab.active {
+  background-color: $orange;
+  &:hover{
+    background-color: $orange-dark;
+  }
+}

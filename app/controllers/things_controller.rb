@@ -2,7 +2,7 @@ require 'json'
 require 'open-uri'
 
 class ThingsController < ApplicationController
-  before_action :set_city, only: [:show]
+  before_action :set_thing, only: [:voting]
 
   def create_restaurant
     create_thing("restaurant")
@@ -29,8 +29,20 @@ class ThingsController < ApplicationController
     @house_listing = scrape_to_thing(airbnb_scraper(4))
   end
 
-
-
+  def voting
+    city = @thing.city
+    type = @thing.thing_type
+    @vote_scope = "#{type}-#{city.id}"
+    vote_type = params[:vote_type]
+    vote_weight = get_vote_weight(vote_type)
+    vote(@thing, vote_weight)
+    @votes = current_user.votes.where(vote_scope: @vote_scope)
+    @votes_buttons_ids = get_vote_buttons_ids(@votes)
+    respond_to do |format|
+      format.html { redirect_to city_path(city)}
+      format.js  # <-- will render `app/views/things/voting.js.erb`
+    end
+  end
 
 
 
@@ -48,7 +60,7 @@ class ThingsController < ApplicationController
   private
 
   def set_thing
-    @thing = City.find(params[:id])
+    @thing = Thing.find(params[:id])
   end
 
 
@@ -76,22 +88,46 @@ class ThingsController < ApplicationController
     end
   end
 
-  def check_already_voted(thing,stars)
-    current_user.votes.any? { |h| h[:vote_weight] == stars && h[:vote_scope] == thing.thing_type}
-  end
-
-  def vote(thing,stars)
-    if check_already_voted(thing,stars)
-      redirect_to things_path, notice: " Already Voted"
-    else
-      thing.liked_by current_user, :vote_scope => thing.thing_type
-      redirect_to things_path
+  def conflicting_vote(thing,stars)
+    current_user.votes.select do |user_votes|
+      user_votes[:vote_weight] == stars && user_votes[:vote_scope] == "#{thing.thing_type}-#{thing.city.id}"
     end
   end
 
-  def unvote(thing)
-    thing.unliked_by current_user, :vote_scope => thing.thing_type
-    redirect_to things_path
+  def vote(thing,stars)
+    conflicting_vote(thing,stars).each {|vote| vote.destroy}
+    thing.liked_by current_user, :vote_scope => "#{thing.thing_type}-#{thing.city.id}", :vote_weight => stars
+  end
+
+  def get_vote_weight(vote_type)
+    if vote_type == "first"
+      return 3
+    elsif vote_type == "second"
+      return 2
+    elsif vote_type == "third"
+      return 1
+    else
+      return 0
+    end
+  end
+
+  def get_vote_buttons_ids(votes)
+    result = []
+    votes.each do |vote|
+      weight_s = vote_weight_to_s(vote.vote_weight)
+      result << "#{vote.votable_id}-#{weight_s}"
+    end
+    result
+  end
+
+  def vote_weight_to_s(weight)
+    if weight == 3
+      return "first"
+    elsif weight == 2
+      return "second"
+    elsif weight == 1
+      return "third"
+    end
   end
 end
 
