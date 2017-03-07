@@ -1,5 +1,5 @@
 <!-- @things & @city -->
-<%= render "shared/progress-bar", type: "bar", city: @city %>
+<%= render "shared/progress-bar", type: @things.first.thing_type, city: @city %>
 <div class="search-bar-new">
   <div class="row">
     <div class="col-xs-12">
