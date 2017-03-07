@@ -1,21 +1,29 @@
 <div class="progress-bar">
   <div class="thing-progress-content">
-    <div class="thing-circle <%= "full" if type == "accommodation" || type == "activity" || type == "bar"  %><%= " current" if type == "restaurant"  %>"><p>1</p></div>
+    <%= link_to new_city_restaurants_path(city) do %>
+      <div class="thing-circle <%= "full" if type == "accommodation" || type == "activity" || type == "bar"  %><%= " current" if type == "restaurant"  %>"><p>1</p></div>
+    <% end %>
     <p>Restaurants</p>
   </div>
   <div class="connecting-line"></div>
   <div class="thing-progress-content">
+    <%= link_to new_city_accommodations_path(city) do %>
     <div class="thing-circle <%= "full" if type == "activity" || type == "bar"  %><%= " current" if type == "accommodation"  %>"><p>2</p></div>
+    <% end %>
     <p>Accommodations</p>
   </div>
   <div class="connecting-line"></div>
   <div class="thing-progress-content">
+    <%= link_to new_city_activities_path(city) do %>
     <div class="thing-circle <%= "full" if type == "bar"  %><%= " current" if type == "activity"  %>" ><p>3</p></div>
+    <% end %>
     <p>Activities</p>
   </div>
   <div class="connecting-line"></div>
   <div class="thing-progress-content">
+    <%= link_to new_city_bars_path(city) do %>
     <div class="thing-circle <%= "current" if type == "bar"  %>"><p>4</p></div>
+    <% end %>
     <p>Bars</p>
   </div>
 </div>

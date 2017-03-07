@@ -10,12 +10,12 @@ class ProjectsController < ApplicationController
 
   def new
     @project = Project.new()
-    @disable_nav = true
   end
 
   def create
     @project = Project.new(project_params(params))
     if @project.save
+      @participant = Participant.create(email: current_user.email, project: @project, user: current_user, is_leader: true)
       if params[:city_1] != "" && params[:city_1] != ""
         @city_1 = City.create(name: params[:city_1], project: @project)
         @city_2 = City.create(name: params[:city_2], project: @project)
@@ -24,7 +24,6 @@ class ProjectsController < ApplicationController
         redirect_to new_project_city_path(@project)
       end
     else
-      @disable_nav = true
       render "new"
     end
   end

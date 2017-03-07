@@ -13,4 +13,8 @@ class Project < ApplicationRecord
   def leader
     self.participants.where(is_leader: true).user
   end
+
+  def completed?
+    self.cities.first.things.size == 12 && self.cities.second.things.size == 12
+  end
 end

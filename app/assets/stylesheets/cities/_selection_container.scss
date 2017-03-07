@@ -32,3 +32,13 @@
   height: 5px;
   border-bottom: solid 1px $gray-very-light;
 }
+
+.selection_left{
+  width: 50vw;
+  border-right: none;
+  left: 0px;
+}
+
+.selection_right{
+  width: 50vw;
+}

@@ -1,6 +1,4 @@
 #hidden-form {
-  height: 100vh;
-
   align-items: center;
   justify-content: center;
   display: flex;
@@ -23,6 +21,10 @@
   // filter: alpha(opacity=50);
 }
 
+#project_description{
+  height: 78px;
+}
+
 .help-block{
   margin: 0px;
   font-size: 10px;
@@ -33,6 +35,3 @@
   color: $gray-medium;
 }
 
-.form-group{
-
-}
