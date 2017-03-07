@@ -1,0 +1,8 @@
+var vote_scope = '<%= raw @vote_scope %>'
+$("."+vote_scope+">.vote-tab").removeClass("active");
+
+var vote_button_id = ""
+<% @votes_buttons_ids.each do |button_id| %>
+  vote_button_id = '<%= raw button_id %>'
+  $("#"+vote_button_id).addClass("active")
+<% end %>

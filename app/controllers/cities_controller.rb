@@ -27,6 +27,10 @@ class CitiesController < ApplicationController
   end
 
   def show
+    @restaurants = @city.restaurants
+    @accommodations = @city.accommodations
+    @activities = @city.activities
+    @bars = @city.bars
   end
 
   def new_restaurants

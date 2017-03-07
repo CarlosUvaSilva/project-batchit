@@ -10,7 +10,9 @@ Rails.application.routes.draw do
 
   root to: 'pages#home'
 
-  resources :things, only: [:index]
+  resources :things, only: [:index] do
+    post 'voting', on: :member
+  end
 
 
 
