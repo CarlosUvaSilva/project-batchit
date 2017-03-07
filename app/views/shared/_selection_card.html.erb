@@ -3,6 +3,6 @@
 <% else %>
   <div class='selection_card' style="background-image: url('<%= thing.photo_link %>');">
 <% end %>
-  <h5><%= thing.name %></h5>
+  <h5><%= thing.name.capitalize %></h5>
   <%= link_to "", thing.link, target: "_blank" %>
 </div>

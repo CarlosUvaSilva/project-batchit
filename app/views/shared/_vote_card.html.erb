@@ -1,0 +1,22 @@
+<div class="search_card">
+  <% if thing.photo_link.nil? || thing.photo_link.strip == "" %>
+    <div class='search_card_image' style="background-image: url('https://unsplash.it/175/150/?random');">
+  <% else %>
+    <div class='search_card_image' style="background-image: url('<%= thing.photo_link %>');">
+  <% end %>
+  </div>
+  <div class="search_card_information">
+    <div style="min-height: 55px">
+    <h5><%= thing.name.capitalize %></h5>
+    </div>
+    <p><%= thing.address.size <= 75 ? thing.address : thing.address[0..75] + "..." %></p>
+    <p><%= thing.description.size <= 130 ? thing.description : thing.description[0..130] + "..." %></p>
+  </div>
+  <div class="search_card_action text-center">
+    <div class="vote-tabs">
+      <%= link_to "First Choice", "", class:"toggle-tab" %>
+      <%= link_to "Second Choice", "", class:"toggle-tab" %>
+      <%= link_to "Third Choice", "", class:"toggle-tab" %>
+    </div>
+  </div>
+</div>

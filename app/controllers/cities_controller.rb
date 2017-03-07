@@ -31,15 +31,18 @@ class CitiesController < ApplicationController
 
   def new_restaurants
     @things = GooglePlaces.to_things(city: @city, limit:10, keyword:"wine")
+    @things = [Thing.new(thing_type: "restaurant", name:"", address:"", description:"")] if @things == []
   end
 
   def new_accommodations
     #@house_listing = scrape_to_thing(airbnb_scraper(5))
     @things = GooglePlaces.to_things(city: @city, limit:10, type: "lodging", keyword: "hostel")
+    @things = [Thing.new(thing_type: "accommodation", name:"", address:"", description:"")] if @things == []
   end
 
   def new_bars
     @things = GooglePlaces.to_things(city: @city, limit:10, type: "night_club", keyword: "drink")
+    @things = [Thing.new(thing_type: "bar", name:"", address:"", description:"")] if @things == []
   end
 
   def new_activities
