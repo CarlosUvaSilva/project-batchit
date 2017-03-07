@@ -28,8 +28,10 @@ class ProjectsController < ApplicationController
     end
   end
 
-# not sure about this function
   def dashboard
+    @project = Project.find(params[:id])
+    @city1 = @project.cities.first
+    @city2 = @project.cities.second
   end
 
   private
