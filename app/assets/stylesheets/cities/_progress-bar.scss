@@ -25,6 +25,16 @@
       color: $gray;
       text-align:center;
     }
+    a{
+      height: 30px;
+      width: 30px;
+      border-radius: 25px;
+      text-decoration: none;
+      &:hover{
+        text-decoration: none;
+        cursor: pointer;
+      }
+    }
   }
   .thing-circle{
     flex: 0 0 auto;

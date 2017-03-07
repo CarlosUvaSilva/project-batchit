@@ -3,7 +3,11 @@
     <h1>Bachelor Trip</h1>
     <p>Group planning made simple</p>
     <!-- <a class="btn btn-success btn-lg", id="create", class="button_red" >Create Trip</a> -->
-    <a class="btn btn-success btn-lg", id="create" >Create Trip</a>
+    <% if user_signed_in? %>
+      <a class="btn btn-brand", id="create" >Create a Trip</a>
+    <% else %>
+      <%= link_to "Sign up to create a Trip", new_user_registration_path, class:"btn btn-brand" %>
+    <% end %>
   </div>
   <div class="hidden" id="hidden-form">
     <div id="hidden-form_details">

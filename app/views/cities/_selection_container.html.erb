@@ -1,81 +1,79 @@
-<div class="selection_container">
-  <h2>Your current selection for <%= city.name %></h2>
-  <div class="selections" id="restaurants_selection">
-    <div class="col-xs-12"><h3>Restaurants</h3></div>
-    <% i = 1 %>
-    <% @city.restaurants.each do |thing|  %>
-      <div class="col-xs-4" id="restaurant<%=i.to_s%>">
-        <%= render "shared/selection_card", thing: thing %>
+<h2>Your current selection for <%= city.name %></h2>
+<div class="selections" id="restaurants_selection">
+  <div class="col-xs-12"><h3>Restaurants</h3></div>
+  <% i = 1 %>
+  <% city.restaurants.each do |thing|  %>
+    <div class="col-xs-4" id="restaurant<%=i.to_s%>">
+      <%= render "shared/selection_card", thing: thing %>
+    </div>
+    <% i = i+1  %>
+  <% end %>
+  <% (3 - city.restaurants.size).times do %>
+    <div class="col-xs-4" id="restaurant<%=i.to_s%>">
+      <div class="empty_selection">
+        <p>Add a restaurant</p>
       </div>
-      <% i = i+1  %>
-    <% end %>
-    <% (3 - @city.restaurants.size).times do %>
-      <div class="col-xs-4" id="restaurant<%=i.to_s%>">
-        <div class="empty_selection">
-          <p>Add a restaurant</p>
-        </div>
-      </div>
-      <% i = i+1  %>
-    <% end %>
-  </div>
-  <div class="selection-line"></div>
+    </div>
+    <% i = i+1  %>
+  <% end %>
+</div>
+<div class="selection-line"></div>
 
-  <div class="selections" id="accommodations_selection">
-    <div class="col-xs-12"><h3>Accommodations</h3></div>
-    <% i = 1 %>
-    <% @city.accommodations.each do |thing|  %>
-      <div class="col-xs-4" id="accommodation<%=i.to_s%>">
-        <%= render "shared/selection_card", thing: thing %>
+<div class="selections" id="accommodations_selection">
+  <div class="col-xs-12"><h3>Accommodations</h3></div>
+  <% i = 1 %>
+  <% city.accommodations.each do |thing|  %>
+    <div class="col-xs-4" id="accommodation<%=i.to_s%>">
+      <%= render "shared/selection_card", thing: thing %>
+    </div>
+    <% i = i+1  %>
+  <% end %>
+  <% (3 - city.accommodations.size).times do %>
+    <div class="col-xs-4" id="accommodation<%=i.to_s%>">
+      <div class="empty_selection">
+        <p>Add an accommodation</p>
       </div>
-      <% i = i+1  %>
-    <% end %>
-    <% (3 - @city.accommodations.size).times do %>
-      <div class="col-xs-4" id="accommodation<%=i.to_s%>">
-        <div class="empty_selection">
-          <p>Add an accommodation</p>
-        </div>
-      </div>
-      <% i = i+1  %>
-    <% end %>
-  </div>
-  <div class="selection-line"></div>
+    </div>
+    <% i = i+1  %>
+  <% end %>
+</div>
+<div class="selection-line"></div>
 
-  <div class="selections" id="activities_selection">
-    <div class="col-xs-12"><h3>Activities</h3></div>
-    <% i = 1 %>
-    <% @city.activities.each do |thing|  %>
-      <div class="col-xs-4" id="activity<%=i.to_s%>">
-        <%= render "shared/selection_card", thing: thing %>
+<div class="selections" id="activities_selection">
+  <div class="col-xs-12"><h3>Activities</h3></div>
+  <% i = 1 %>
+  <% city.activities.each do |thing|  %>
+    <div class="col-xs-4" id="activity<%=i.to_s%>">
+      <%= render "shared/selection_card", thing: thing %>
+    </div>
+    <% i = i+1  %>
+  <% end %>
+  <% (3 - city.activities.size).times do %>
+    <div class="col-xs-4" id="activity<%=i.to_s%>">
+      <div class="empty_selection">
+        <p>Add an activity</p>
       </div>
-      <% i = i+1  %>
-    <% end %>
-    <% (3 - @city.activities.size).times do %>
-      <div class="col-xs-4" id="activity<%=i.to_s%>">
-        <div class="empty_selection">
-          <p>Add an activity</p>
-        </div>
-      </div>
-      <% i = i+1  %>
-    <% end %>
-  </div>
-  <div class="selection-line"></div>
+    </div>
+    <% i = i+1  %>
+  <% end %>
+</div>
+<div class="selection-line"></div>
 
-  <div class="selections" id="bars_selection">
-    <div class="col-xs-12"><h3>Bars</h3></div>
-    <% i = 1 %>
-    <% @city.bars.each do |thing|  %>
-      <div class="col-xs-4" id="bar<%=i.to_s%>">
-        <%= render "shared/selection_card", thing: thing %>
+<div class="selections" id="bars_selection">
+  <div class="col-xs-12"><h3>Bars</h3></div>
+  <% i = 1 %>
+  <% city.bars.each do |thing|  %>
+    <div class="col-xs-4" id="bar<%=i.to_s%>">
+      <%= render "shared/selection_card", thing: thing %>
+    </div>
+    <% i = i+1  %>
+  <% end %>
+  <% (3 - city.bars.size).times do %>
+    <div class="col-xs-4" id="bar<%=i.to_s%>">
+      <div class="empty_selection">
+        <p>Add a bar</p>
       </div>
-      <% i = i+1  %>
-    <% end %>
-    <% (3 - @city.bars.size).times do %>
-      <div class="col-xs-4" id="bar<%=i.to_s%>">
-        <div class="empty_selection">
-          <p>Add a bar</p>
-        </div>
-      </div>
-      <% i = i+1  %>
-    <% end %>
-  </div>
+    </div>
+    <% i = i+1  %>
+  <% end %>
 </div>
