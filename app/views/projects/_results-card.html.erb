@@ -1,33 +1,14 @@
 <div class='results-card'>
-  <div class='result-line1'>
-    <div class='result-item' style="background-image: url('https://unsplash.it/175/150/?random');">
+  <% things.each do |thing| %>
+    <div class='result-line'>
+      <div class='result-item' style="background-image: url('<%= thing.photo_link %>');">
+      </div>
+      <div class='result-item'>
+        <p><%= thing.name  %></p>
+      </div>
+      <div class='result-item', style="color: #209EDA">
+        <p><strong>1 Vote</strong></p>
+      </div>
     </div>
-    <div class='result-item'>
-      <p>Thing 1 name</p>
-    </div>
-    <div class='result-item'>
-    <p>Most votes</p>
-    </div>
-  </div>
-  <div class='result-line2'>
-    <div class='result-item' style="background-image: url('https://unsplash.it/175/150/?random');">
-    </div>
-    <div class='result-item'>
-      <p>Thing 2 name</p>
-    </div>
-    <div class='result-item'>
-    <p>2n Most Votes</p>
-    </div>
-  </div>
-  <div class='result-line3'>
-    <div class='result-item' style="background-image: url('https://unsplash.it/175/150/?random');">
-    </div>
-    <div class='result-item'>
-      <p>Thing 3 name</p>
-    </div>
-    <div class='result-item'>
-    <p>3rd Most Votes</p>
-    </div>
-  </div>
+  <% end %>
 </div>
-
