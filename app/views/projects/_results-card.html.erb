@@ -1,13 +1,9 @@
 <div class='results-card'>
   <% things.each do |thing| %>
     <div class='result-line'>
-      <div class='result-item' style="background-image: url('<%= thing.photo_link %>');">
-      </div>
-      <div class='result-item'>
-        <p><%= thing.name  %></p>
-      </div>
+      <%= render "shared/selection_card", thing: thing %>
       <div class='result-item', style="color: #209EDA">
-        <p><strong>1 Vote</strong></p>
+        <p><strong><%= thing.total_votes %> Votes</strong></p>
       </div>
     </div>
   <% end %>

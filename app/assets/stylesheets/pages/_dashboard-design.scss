@@ -1,34 +1,12 @@
-.main-container {
-  width: 100%;
-  margin: 0 auto;
-  min-height: 100vh;
-  background-color: #FAFAFA;
+.dashboard-city-box{
+  margin: 50px 5px;
+  padding: 0px 20px;
+  background-color: $gray-very-very-light;
+  h3{
+    margin: 0px;
+    margin-top: 10px;
+    font-size: 24px;
+    font-weight: bolder;
+  }
 }
 
-.tabs {
-    color: white;
-    transition: 0.3s;
-    background: #209EDA;
-    flex: 0 0 25%;
-    text-align: center;
-    padding: 10px 0;
-    font-size: 16px;
-}
-
-.tab-content {
-    padding: 6px 12px;
-    background-color: #FAFAFA;
-}
-
-.tabs:first-child {
-  border-right: solid 1px $gray-very-light;
-}
-
-.tabs.active {
-  background: blue;
-  color: orange;
-}
-
-.tabs a {
-  color: white;
-}

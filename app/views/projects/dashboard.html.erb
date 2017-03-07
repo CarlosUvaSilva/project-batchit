@@ -1,49 +1,50 @@
-<div class="main-container">
-  <ul class="tabs">
-    <li class="active"><a data-toggle="tab" href="#city1">City 1</a></li>
-    <li><a data-toggle="tab" href="#city2">City 2</a></li>
-  </ul>
-  <div class="tab-content">
-    <div id="city1" class="tab-pane fade in active">
-    <div class="row">
-      <div class="col-xs-12 text-center">
-        <h3>City 1</h3>
-      </div>
-    </div>
-      <div class="row">
-        <div class="col-xs-6">
-          <%= render "results-card", things: City.first.restaurants %>
+<div class="container reduced-container-size">
+  <div class="row">
+    <div class="col-xs-6">
+      <div class="dashboard-city-box">
+        <div class="row">
+          <div class="col-xs-12 text-center">
+            <h3><%= @city1.name.capitalize %></h3>
+          </div>
         </div>
-        <div class="col-xs-6">
-          <%= render "results-card", things: City.first.accommodations %>
-        </div>
-        <div class="col-xs-6">
-          <%= render "results-card", things: City.first.activities %>
-        </div>
-        <div class="col-xs-6">
-          <%= render "results-card", things: City.first.bars %>
+        <div class="row">
+          <div class="col-xs-6">
+            <%= render "results-card", things: @city1.restaurants %>
+          </div>
+          <div class="col-xs-6">
+            <%= render "results-card", things: @city1.accommodations %>
+          </div>
+          <div class="col-xs-6">
+            <%= render "results-card", things: @city1.activities %>
+          </div>
+          <div class="col-xs-6">
+            <%= render "results-card", things: @city1.bars %>
+          </div>
         </div>
       </div>
     </div>
-     <div id="city2" class="tab-pane fade in active">
-    <div class="row">
-      <div class="col-xs-12 text-center">
-        <h3>City 2</h3>
+    <div class="col-xs-6">
+      <div class="dashboard-city-box">
+        <div class="row">
+          <div class="col-xs-12 text-center">
+            <h3><%= @city2.name.capitalize %></h3>
+          </div>
+        </div>
+          <div class="row">
+            <div class="col-xs-6">
+              <%= render "results-card", things: @city2.restaurants %>
+            </div>
+            <div class="col-xs-6">
+              <%= render "results-card", things: @city2.accommodations %>
+            </div>
+            <div class="col-xs-6">
+              <%= render "results-card", things: @city2.activities %>
+            </div>
+            <div class="col-xs-6">
+              <%= render "results-card", things: @city2.bars %>
+            </div>
+          </div>
       </div>
     </div>
-      <div class="row">
-        <div class="col-xs-6">
-          <%= render "results-card", things: City.second.restaurants %>
-        </div>
-        <div class="col-xs-6">
-          <%= render "results-card", things: City.second.accommodations %>
-        </div>
-        <div class="col-xs-6">
-          <%= render "results-card", things: City.second.activities %>
-        </div>
-        <div class="col-xs-6">
-          <%= render "results-card", things: City.second.bars %>
-        </div>
-      </div>
-    </div>
+  </div>
 </div>

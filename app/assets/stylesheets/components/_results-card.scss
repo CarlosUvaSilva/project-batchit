@@ -1,24 +1,30 @@
 .results-card {
-  height: 210px;
+  height: 250px;
   background: white;
-  width: 450px;
+  width: 195px;
   margin: 30px auto;
   box-shadow: 0px 3px 3px $gray-light;
-    font-size: 16px;
-    font-weight: lighter;
     color: $gray;
 }
 
 .result-line {
   width: 100%;
   display: flex;
-  height: 70px;
+  height: 80px;
+  margin: 5px 0px;
   margin: 2 0 0 0;
+  background-color: $gray-very-light;
+  .selection_card{
+    box-shadow: none;
+    p{
+      font-weight: bolder;
+    }
+  }
 }
 
 .result-item {
   margin: 0px;
-  width: 150px;
+  width: 80px;
   height: 68px;
   white-space: nowrap;
   overflow: hidden;
@@ -31,7 +37,6 @@
 
 .result-item p {
   margin: 0px;
-  width: 150px;
   height: 68px;
   white-space: nowrap;
   overflow: hidden;
@@ -40,6 +45,6 @@
   text-align: center;
   font-size: 12px;
   strong{
-    font-size: 16px;
+    font-size: 14px;
   }
 }
