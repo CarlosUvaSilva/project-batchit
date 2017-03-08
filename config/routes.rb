@@ -12,7 +12,8 @@ Rails.application.routes.draw do
 
   resources :things, only: [:index]
 
-
+  resources :messages
+  mount ActionCable.server, at: '/cable'
 
   # get 'vote/:id', to: "things#vote", as: "vote"
   # get 'vote3/:id', to: "things#vote3", as: "vote3"
