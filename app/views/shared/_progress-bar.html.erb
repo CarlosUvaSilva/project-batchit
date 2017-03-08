@@ -26,6 +26,20 @@
     <% end %>
     <p>Bars</p>
   </div>
+  <% if type != "bar" %>
+    <% params = [city] %>
+  <% else %>
+    <% if city.id == city.project.cities.first.id %>
+      <% params = [city.project.cities.second] %>
+      <% target = "new_city_restaurants_path" %>
+    <% else %>
+      <% params = [city.project] %>
+      <% target = "project_path" %>
+    <% end %>
+  <% end %>
+  <%= link_to send(target, params), class: "btn-brand next-btn" do %>
+    <i class="fa fa-angle-double-right"></i>
+  <% end %>
 </div>
 
 

@@ -1,13 +1,4 @@
-<div class="container">
-  <div class="row">
-    <div class="col-xs-4 col-xs-offset-4">
-      <%= simple_form_for @participant, method: "post", url: project_participants_path(project_id: @project.id), remote: true do |f| %>
-        <div class="form-group">
-          <%= f.input :email, label: "E-mail of your buddy: ", input_html: {class: "form-control", id:"email-input-participant"} %>
-        </div>
-        <br>
-        <%= f.button :submit, class: "btn btn-primary", value: "Add participant" %>
-      <% end %>
-    </div>
-  </div>
-</div>
+<%= simple_form_for participant, html: {class:"form-inline"}, method: "post", url: project_participants_path(project_id: @project.id), remote: true do |f| %>
+  <%= f.input :email, label: "E-mail of your buddy: ", input_html: {class: "form-control", style: "width: 250px;", id:"email-input-participant"}, label_html: {style: "margin-right: 10px;"} %>
+  <%= f.button :submit, class: "btn btn-primary brand-color", value: "Add participant" %>
+<% end %>

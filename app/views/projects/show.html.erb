@@ -18,10 +18,31 @@
     </div>
   </div>
 <% else %>
-  <div class="selection_container selection_left">
-    <%= render "cities/selection_container", city: @project.cities.first %>
+  <div class="general_selection_container">
+    <div class="selection_container selection_left">
+      <%= render "cities/selection_container", city: @project.cities.first %>
+    </div>
+    <div class="selection_container selection_right">
+      <%= render "cities/selection_container", city: @project.cities.second %>
+    </div>
   </div>
-  <div class="selection_container selection_right">
-    <%= render "cities/selection_container", city: @project.cities.second %>
+  <div class="friends-invite">
+    <h2>List of participants for this project</h2>
+    <div id="participant-box">
+      <% @project.participants.each do |participant| %>
+        <div class="row">
+          <div class="col-xs-12 text-center">
+            <%= render "shared/participant_card", participant: participant  %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 text-center">
+        <div id="new-participant-form">
+          <%= render 'participants/new_participant_form', participant: Participant.new %>
+        </div>
+      </div>
+    </div>
   </div>
 <% end %>

@@ -21,3 +21,18 @@
   margin:0 auto;
   display:block;
 }
+
+.next-btn{
+  font-size: 20px;
+  font-weight: bolder;
+  padding: 2px 5px 2px 8px;
+  margin: 0px 10px 26px 10px;
+  border: solid 1px $gray-very-light;
+}
+
+.brand-color{
+  background-color: $brand-color;
+  &:hover{
+    background-color: $brand-color-dark;
+  }
+}

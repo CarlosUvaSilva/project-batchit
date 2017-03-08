@@ -1,3 +1,8 @@
+.general_selection_container{
+  display: flex;
+  width: 100vw;
+}
+
 .selection_container{
   border: solid 1px $gray-very-light;
   z-index:1;
@@ -34,11 +39,19 @@
 }
 
 .selection_left{
-  width: 50vw;
+  position: relative;
+  z-index:0;
+  top: 0px;
+  width: 50%;
   border-right: none;
   left: 0px;
+  height: calc(100vh - 50px);
 }
 
 .selection_right{
-  width: 50vw;
+  position: relative;
+  z-index:0;
+  top:0px;
+  width: 50%;
+  height: calc(100vh - 50px);
 }
