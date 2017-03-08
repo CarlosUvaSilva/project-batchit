@@ -20,6 +20,9 @@ gem 'autoprefixer-rails'
 gem 'acts_as_votable', '~> 0.10.0'
 
 gem "geocoder"
+gem 'coffee-rails'
+gem 'turbolinks',              '5.0.0'
+
 
 group :development, :test do
   gem 'binding_of_caller'
