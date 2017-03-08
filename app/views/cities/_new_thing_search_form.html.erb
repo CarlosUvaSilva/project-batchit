@@ -1,0 +1,12 @@
+<div class="search-form-container">
+  <form action="<%= search_things_path %>" data-remote="true" method="post" class="form-inline">
+    <div class="form-group">
+      <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+      <input name="city_id" value="<%= city.id %>" type="hidden">
+      <input name="type" value="<%= type %>" type="hidden">
+      <input type="text" name="keywords" placeholder="eg: pizzeria, chinese, hotel, hostel, bar, name..." class="form-control text-search" >
+      <input type="number" name="limit" placeholder="max. results" class="form-control number-search">
+      <input type="submit" class="btn btn-primary brand-color" value="Search">
+    </div>
+  </form>
+</div>

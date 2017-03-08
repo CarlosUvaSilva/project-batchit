@@ -43,9 +43,11 @@
   z-index:0;
   top: 0px;
   width: 50%;
-  border-right: none;
   left: 0px;
   height: calc(100vh - 50px);
+  margin: 40px;
+  padding: 40px;
+  background-color: white;
 }
 
 .selection_right{
@@ -54,4 +56,7 @@
   top:0px;
   width: 50%;
   height: calc(100vh - 50px);
+  margin: 40px;
+  padding: 40px;
+  background-color: white;
 }

@@ -31,6 +31,19 @@ class GooglePlaces
     result_array
   end
 
+  def self.get_type(thing_type)
+    case thing_type
+    when "accommodation"
+      "lodging"
+    when "restaurant"
+      "restaurant"
+    when "bar"
+      "night_club"
+    when "activity"
+      ""
+    end
+  end
+
   private
 
   def self.thing_ids(lat, lon, type, keyword)

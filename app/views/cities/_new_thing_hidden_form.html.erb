@@ -1,4 +1,4 @@
-<%= simple_form_for thing, method: "post", url: send("create_" + type + "_path"), remote: true do |f| %>
+<%= simple_form_for thing, method: "post", url: send("create_" + type + "_path", city), remote: true do |f| %>
   <%= f.input :name, as: :hidden %>
   <%= f.input :description, as: :hidden %>
   <%= f.input :price_range, as: :hidden %>

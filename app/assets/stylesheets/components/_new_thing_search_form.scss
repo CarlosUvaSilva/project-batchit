@@ -1,0 +1,22 @@
+.search-form-container{
+width: 700px;
+margin: 15px 5px;
+padding: 10px;
+box-shadow: 0px 1px 1px $gray-very-light;
+  .form-group{
+    display: flex
+  }
+  .text-search{
+    flex: 1 1 auto;
+  }
+  .number-search{
+    width: 120px;
+  }
+  .form-control{
+    border: none;
+    border-bottom: solid 1px $gray-very-light;
+    box-shadow: none;
+    font-size: 14px;
+    margin: 0px 10px;
+  }
+}

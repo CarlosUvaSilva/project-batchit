@@ -3,11 +3,18 @@
 <div class="search-bar-new">
   <div class="row">
     <div class="col-xs-12">
+      <%= render "cities/new_thing_search_form", city: @city, type: @things.first.thing_type  %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
       <h3 class="text-center"><%= @things.first.thing_type.pluralize.capitalize %> proposition</h3>
     </div>
+  </div>
+  <div class="row" id="search-results-container">
     <% @things.each do |thing|  %>
       <div class="col-xs-6">
-        <%= render "shared/search_card", thing: thing %>
+        <%= render "shared/search_card", thing: thing, city: @city %>
       </div>
     <% end %>
   </div>
