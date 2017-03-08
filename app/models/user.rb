@@ -10,6 +10,8 @@ class User < ApplicationRecord
 
   has_many :participants
 
+  after_save :check_for_participant
+
   def self.find_for_facebook_oauth(auth)
     user_params = auth.slice(:provider, :uid)
     user_params.merge! auth.info.slice(:email, :first_name, :last_name)
@@ -30,4 +32,15 @@ class User < ApplicationRecord
 
     return user
   end
+
+  def check_for_participant
+    Participant.where(email: self.email).each do |participant|
+      if participant.user.nil?
+        participant.user = User.where(email: self.email).first
+        participant.save
+      end
+    end
+  end
+
+
 end
