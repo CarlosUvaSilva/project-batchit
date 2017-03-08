@@ -40,7 +40,7 @@ class GooglePlaces
     when "bar"
       "night_club"
     when "activity"
-      ""
+      "activity"
     end
   end
 
@@ -48,8 +48,8 @@ class GooglePlaces
 
   def self.thing_ids(lat, lon, type, keyword)
     radius = 50000
-    type = type
-    url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=#{lat},#{lon}&radius=#{radius}&type=#{type}&keyword=#{keyword}&key=#{ENV["GOOGLE_API_SERVER_KEY"]}"
+    type == "activity" ? type_long = "" : type_long = "type=#{type}&"
+    url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=#{lat},#{lon}&radius=#{radius}&#{type_long}keyword=#{keyword}&key=#{ENV["GOOGLE_API_SERVER_KEY"]}"
     document = JSON.parse(open(url).read)
     id_array = []
     document["results"].each do |result|
@@ -66,6 +66,8 @@ class GooglePlaces
       "bar"
     elsif type == "lodging"
       "accommodation"
+    elsif type == "activity"
+      "activity"
     end
   end
 end
