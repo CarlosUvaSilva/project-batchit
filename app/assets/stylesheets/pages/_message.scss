@@ -1,9 +1,10 @@
 
-
 .message-wr {
-  height: 75vh;
   margin: auto;
-  width: 80vw;
+  padding: 100px;
+  padding-top: 30px;
+  height: calc(100vh - 50px);
+  width: 100vw;
   }
 
 .messages {
@@ -70,24 +71,25 @@
 .message-input {
   background-color: rgba(0,0,0,0.03);
   box-sizing: border-box;
-  height: 13%;
-  padding: 0 5px 5px;
+  height: 8%;
+  padding: 0px 5px 5px;
+
+
+  form{
+      height: 100%;
   }
 
-form{
-    height: 100%;
-}
+  textarea {
+      height: 100%;
+      width: 84.5%;
+  }
 
-textarea {
-    height: 100%;
-    width: 84.5%;
-}
-
-input {
-    float: right;
-    height: 100%;
-    vertical-align: top;
-    width: 14.5%;
+  input {
+      float: right;
+      height: 100%;
+      vertical-align: top;
+      width: 14.5%;
+  }
 }
 
 

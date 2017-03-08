@@ -3,6 +3,7 @@ class MessagesController < ApplicationController
   before_action :get_messages
 
   def index
+    byebug
   end
 
   def create

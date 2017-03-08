@@ -1,6 +1,8 @@
 class ProjectsController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :create ]
   before_action :check_leader, only: [:show, :finalize]
+  before_action :get_messages, only: [:dashboard]
+
 
   def index
   end
@@ -31,6 +33,7 @@ class ProjectsController < ApplicationController
 
   def dashboard
     @project = Project.find(params[:id])
+    @messages = get_project_messages(@messages)
     @city1 = @project.cities.first
     @city2 = @project.cities.second
   end
@@ -63,5 +66,19 @@ class ProjectsController < ApplicationController
     unless project.is_leader?(current_user)
       redirect_to root_path
     end
+  end
+
+  def get_messages
+      @messages = Message.for_display
+      @message  = current_user.messages.build
+  end
+
+  # TO BE IMPROVED IN THE DB AT A LATER STAGE
+  def get_project_messages(messages)
+    result = []
+    messages.each do |message|
+      result << message if @project.is_participant?(message.user)
+    end
+    result
   end
 end
