@@ -31,4 +31,13 @@ class Thing < ApplicationRecord
   def total_votes
     self.votes_for.sum(:vote_weight)
   end
+
+  def is_favorite?(a_user)
+    vote = self.votes_for.where(voter_id: a_user.id).first
+    if vote.nil?
+      false
+    else
+      vote.vote_weight == 3
+    end
+  end
 end

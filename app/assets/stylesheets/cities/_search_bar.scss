@@ -12,5 +12,16 @@
     font-size: 24px;
     font-weight: bolder;
   }
+  .loading-gif{
+    margin: 50px auto;
+    text-align: center;
+    img{
+      height: 100px;
+      width: 100px;
+    }
+  }
 }
 
+#search-results-container{
+  min-height: 700px;
+}

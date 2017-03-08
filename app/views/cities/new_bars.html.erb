@@ -23,3 +23,13 @@
 <div class="selection_container">
   <%= render "cities/selection_container", city: @city, back: false %>
 </div>
+
+<% content_for(:after_js) do %>
+  <script>
+    $("#search-submit").on("click", function(){
+      $("#search-results-container").html("");
+      var new_card = $('<%= j render "shared/loading-gif" %>');
+      $("#search-results-container").append(new_card);
+    });
+  </script>
+<% end %>

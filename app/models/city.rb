@@ -1,6 +1,7 @@
 class City < ApplicationRecord
 
   has_many :things, dependent: :destroy
+  has_many :votes_for, through: :things
   belongs_to :project
   validates :name, presence: true
 

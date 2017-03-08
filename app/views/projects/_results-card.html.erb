@@ -3,7 +3,11 @@
     <div class='result-line'>
       <%= render "shared/selection_card", thing: thing %>
       <div class='result-item', style="color: #209EDA">
-        <p><strong><%= thing.total_votes %> Votes</strong></p>
+        <% if thing.city.project.get_participant_votes(current_user) < 24 %>
+          <p><strong>? Votes</strong></p>
+        <% else %>
+          <p><strong><%= thing.total_votes %> Votes</strong></p>
+        <% end %>
       </div>
     </div>
   <% end %>
