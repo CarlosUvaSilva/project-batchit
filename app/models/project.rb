@@ -29,4 +29,10 @@ class Project < ApplicationRecord
   def get_participant(user)
     self.participants.where(user_id: user.id).first
   end
+
+  def get_participant_votes(user)
+    city1_votes = self.cities.first.votes_for.where(voter_id: user.id).size
+    city2_votes = self.cities.second.votes_for.where(voter_id: user.id).size
+    city1_votes + city2_votes
+  end
 end
