@@ -25,4 +25,8 @@ class Project < ApplicationRecord
   def is_participant?(user)
     !self.participants.where(user_id: user.id).first.nil?
   end
+
+  def get_participant(user)
+    self.participants.where(user_id: user.id).first
+  end
 end

@@ -1,49 +1,51 @@
-<div class="container reduced-container-size">
-  <div class="row">
-    <div class="col-xs-6">
-      <div class="dashboard-city-box">
-        <div class="row">
-          <div class="col-xs-12 text-center">
-            <h3><%= @city1.name.capitalize %></h3>
+<div class="dashboard-container">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-6">
+        <div class="dashboard-city-box">
+          <div class="row">
+            <div class="col-xs-12 text-center">
+              <h3><%= @city1.name.capitalize %></h3>
+            </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="col-xs-6">
-            <%= render "results-card", things: @city1.restaurants %>
-          </div>
-          <div class="col-xs-6">
-            <%= render "results-card", things: @city1.accommodations %>
-          </div>
-          <div class="col-xs-6">
-            <%= render "results-card", things: @city1.activities %>
-          </div>
-          <div class="col-xs-6">
-            <%= render "results-card", things: @city1.bars %>
+          <div class="row">
+            <div class="col-xs-6">
+              <%= render "results-card", things: @city1.restaurants %>
+            </div>
+            <div class="col-xs-6">
+              <%= render "results-card", things: @city1.accommodations %>
+            </div>
+            <div class="col-xs-6">
+              <%= render "results-card", things: @city1.activities %>
+            </div>
+            <div class="col-xs-6">
+              <%= render "results-card", things: @city1.bars %>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="col-xs-6">
-      <div class="dashboard-city-box">
-        <div class="row">
-          <div class="col-xs-12 text-center">
-            <h3><%= @city2.name.capitalize %></h3>
-          </div>
-        </div>
+      <div class="col-xs-6">
+        <div class="dashboard-city-box">
           <div class="row">
-            <div class="col-xs-6">
-              <%= render "results-card", things: @city2.restaurants %>
-            </div>
-            <div class="col-xs-6">
-              <%= render "results-card", things: @city2.accommodations %>
-            </div>
-            <div class="col-xs-6">
-              <%= render "results-card", things: @city2.activities %>
-            </div>
-            <div class="col-xs-6">
-              <%= render "results-card", things: @city2.bars %>
+            <div class="col-xs-12 text-center">
+              <h3><%= @city2.name.capitalize %></h3>
             </div>
           </div>
+            <div class="row">
+              <div class="col-xs-6">
+                <%= render "results-card", things: @city2.restaurants %>
+              </div>
+              <div class="col-xs-6">
+                <%= render "results-card", things: @city2.accommodations %>
+              </div>
+              <div class="col-xs-6">
+                <%= render "results-card", things: @city2.activities %>
+              </div>
+              <div class="col-xs-6">
+                <%= render "results-card", things: @city2.bars %>
+              </div>
+            </div>
+        </div>
       </div>
     </div>
   </div>

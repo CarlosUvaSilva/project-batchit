@@ -5,11 +5,27 @@
     font-weight: bolder;
   }
   margin: 50px auto;
-  max-width: 400px;
+  max-width: 440px;
+  padding: 20px;
+  background-color: $gray-very-very-very-light;
+
 
   #new-participant-form{
     margin-bottom: 40px;
     margin-top: 20px;
+  }
+}
+
+.finalize-project-container{
+  width:100%;
+  height: 200px;
+  background-color: $gray-very-very-very-light;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  a{
+    font-size: 22px;
+    padding: 15px;
   }
 }
 

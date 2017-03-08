@@ -7,7 +7,9 @@
   </div>
   <div class="search_card_information">
     <div style="min-height: 55px">
-    <h5><%= thing.name.capitalize %></h5>
+    <%= link_to thing.link, target:"_blank" do %>
+      <h5><%= thing.name.capitalize %></h5>
+    <% end %>
     </div>
     <p><%= thing.address.size <= 75 ? thing.address : thing.address[0..75] + "..." %></p>
     <p><%= thing.description.size <= 130 ? thing.description : thing.description[0..130] + "..." %></p>

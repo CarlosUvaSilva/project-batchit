@@ -1,36 +1,44 @@
 <div class="container">
-  <div class="row">
-    <div class="col-xs-12 text-center"><h2>Restaurants</h2></div>
+  <div class="row text-center"><h1>Cast your votes for <%= @city.name.capitalize %></h1></div>
+  <div class="row voting-row">
+    <div class="col-xs-12"><h2>Restaurants</h2></div>
     <% @restaurants.each do |thing| %>
       <div class="col-xs-4">
         <%= render "shared/vote_card", type: thing.thing_type, thing: thing %>
       </div>
     <% end %>
   </div>
-  <div class="row">
-    <div class="col-xs-12 text-center"><h2>Accommodations</h2></div>
+  <div class="row voting-row">
+    <div class="col-xs-12"><h2>Accommodations</h2></div>
     <% @accommodations.each do |thing| %>
       <div class="col-xs-4">
         <%= render "shared/vote_card", type: thing.thing_type, thing: thing %>
       </div>
     <% end %>
   </div>
-  <div class="row">
-    <div class="col-xs-12 text-center"><h2>Activities</h2></div>
+  <div class="row voting-row">
+    <div class="col-xs-12"><h2>Activities</h2></div>
     <% @activities.each do |thing| %>
       <div class="col-xs-4">
         <%= render "shared/vote_card", type: thing.thing_type, thing: thing %>
       </div>
     <% end %>
   </div>
-  <div class="row">
-    <div class="col-xs-12 text-center"><h2>Bars</h2></div>
+  <div class="row voting-row">
+    <div class="col-xs-12"><h2>Bars</h2></div>
     <% @bars.each do |thing| %>
       <div class="col-xs-4">
         <%= render "shared/vote_card", type: thing.thing_type, thing: thing %>
       </div>
     <% end %>
   </div>
+</div>
+<div class="finalize-voting-container">
+  <% if @city.project.cities.first == @city %>
+    <%= link_to "Next City", project_city_path(@city.project, @city.project.cities.second), class: "btn btn-primary brand-color" %>
+  <% else %>
+    <%= link_to "Vote results", project_dashboard_path(@city.project), class: "btn btn-primary brand-color" %>
+  <% end %>
 </div>
 
 

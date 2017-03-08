@@ -20,10 +20,10 @@
 <% else %>
   <div class="general_selection_container">
     <div class="selection_container selection_left">
-      <%= render "cities/selection_container", city: @project.cities.first %>
+      <%= render "cities/selection_container", city: @project.cities.first, back: true %>
     </div>
     <div class="selection_container selection_right">
-      <%= render "cities/selection_container", city: @project.cities.second %>
+      <%= render "cities/selection_container", city: @project.cities.second, back: true %>
     </div>
   </div>
   <div class="friends-invite">
@@ -44,5 +44,8 @@
         </div>
       <% end %>
     </div>
+  </div>
+  <div class="finalize-project-container">
+    <%= link_to "Close and Finalize Project", finalize_project_path(@project), class: "btn btn-primary brand-color", method: "post"  %>
   </div>
 <% end %>

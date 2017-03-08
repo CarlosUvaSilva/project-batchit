@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :create ]
-  before_action :check_leader, only: [:show]
+  before_action :check_leader, only: [:show, :finalize]
 
   def index
   end
@@ -33,6 +33,14 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
     @city1 = @project.cities.first
     @city2 = @project.cities.second
+  end
+
+  def finalize
+    @project = Project.find(params[:id])
+    participant = @project.get_participant(current_user)
+    participant.is_leader = nil
+    participant.save
+    redirect_to project_city_path(@project, @project.cities.first)
   end
 
   private
