@@ -1,12 +1,17 @@
-.dashboard-city-box{
-  margin: 50px 5px;
-  padding: 0px 20px;
-  background-color: $gray-very-very-light;
-  h3{
-    margin: 0px;
-    margin-top: 10px;
-    font-size: 24px;
-    font-weight: bolder;
+.dashboard-container{
+  width: 100%;
+  background-color: $gray-very-very-very-light;
+  .dashboard-city-box{
+    margin: 50px 5px;
+    padding: 0px 20px;
+    background-color: white;
+    border: solid 1px $gray-very-light;
+    h3{
+      margin: 0px;
+      margin-top: 10px;
+      font-size: 24px;
+      font-weight: bolder;
+    }
   }
 }
 

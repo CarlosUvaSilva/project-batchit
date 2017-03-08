@@ -10,17 +10,19 @@
 
 .vote-tab {
   flex: 1 1 auto;
-  background-color: $brand-color;
+  background-color: white;
   text-align: center;
   padding-top: 7px;
-  color: white;
+  color: $brand-color;
   text-decoration: none;
   font-size: 12px;
   font-weight: bolder;
   text-decoration: none;
+  border-top: solid 1px $brand-color;
+  border-radius: 5px 5px 0px 0px;
   &:hover{
     color: white;
-    background-color: $brand-color-dark;
+    background-color: $brand-color;
     text-decoration: none;
   }
   &:focus{
@@ -28,14 +30,12 @@
     color: white;
   }
   &.middle{
-    border-right: solid 1px $gray-very-very-light;
-    border-left: solid 1px $gray-very-very-light;
+    border-right: solid 1px $brand-color;
+    border-left: solid 1px $brand-color;
   }
 }
 
 .vote-tab.active {
-  background-color: $orange;
-  &:hover{
-    background-color: $orange-dark;
-  }
+  background-color: $brand-color;
+  color: white;
 }

@@ -10,7 +10,6 @@ class ParticipantsController < ApplicationController
     @project = Project.find(params[:project_id])
     @participant.project = @project
     if @participant.save
-
       @participant = check_user_presence(@participant)
       respond_to do |format|
         format.html { redirect_to project_path(@project) }
