@@ -13,6 +13,6 @@
     <p><%= thing.description.size <= 130 ? thing.description : thing.description[0..130] + "..." %></p>
   </div>
   <div class="search_card_action text-center">
-        <%= render "cities/new_thing_hidden_form", type: thing.thing_type, thing: thing %>
+        <%= render "cities/new_thing_hidden_form", type: thing.thing_type, thing: thing, city: city %>
   </div>
 </div>

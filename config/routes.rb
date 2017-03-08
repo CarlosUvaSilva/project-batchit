@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
   resources :things, only: [:index] do
     post 'voting', on: :member
+    post 'search', on: :collection
   end
 
 

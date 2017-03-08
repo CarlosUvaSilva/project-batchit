@@ -44,17 +44,16 @@ class ThingsController < ApplicationController
     end
   end
 
-
-
-  # def vote3
-  #   thing = Thing.find(params[:id])
-  #   thing.liked_by current_user, :vote_scope => thing.thing_type, :vote_weight => 3
-
-  #   redirect_to things_path
-  # end
-
-
-
+  def search
+    type = GooglePlaces.get_type(params[:type])
+    keywords = params[:keywords]
+    params[:limit].to_i == 0 ? limit = 5 : limit = params[:limit].to_i - 1
+    @city = City.find(params[:city_id])
+    @things = GooglePlaces.to_things(city: @city, limit: limit, type: type, keyword: keywords)
+    respond_to do |format|
+      format.js  # <-- will render `app/views/things/search.js.erb`
+    end
+  end
 
 
   private

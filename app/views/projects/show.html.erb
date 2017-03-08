@@ -28,6 +28,13 @@
   </div>
   <div class="friends-invite">
     <h2>List of participants for this project</h2>
+    <div class="row">
+      <div class="col-xs-12 text-center">
+        <div id="new-participant-form">
+          <%= render 'participants/new_participant_form', participant: Participant.new %>
+        </div>
+      </div>
+    </div>
     <div id="participant-box">
       <% @project.participants.each do |participant| %>
         <div class="row">
@@ -36,13 +43,6 @@
           </div>
         </div>
       <% end %>
-    </div>
-    <div class="row">
-      <div class="col-xs-12 text-center">
-        <div id="new-participant-form">
-          <%= render 'participants/new_participant_form', participant: Participant.new %>
-        </div>
-      </div>
     </div>
   </div>
 <% end %>
