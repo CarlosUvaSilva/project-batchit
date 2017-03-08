@@ -1,5 +1,6 @@
 class ProjectsController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :create ]
+  before_action :check_leader, only: [:show]
 
   def index
   end
@@ -47,5 +48,12 @@ class ProjectsController < ApplicationController
     {name: params[:project][:name], description: params[:project][:description],
      group_size: params[:project][:group_size].to_i, start_date: start_date,
      end_date: end_date, ongoing: true }
+  end
+
+  def check_leader
+    project = Project.find(params[:id])
+    unless project.is_leader?(current_user)
+      redirect_to root_path
+    end
   end
 end

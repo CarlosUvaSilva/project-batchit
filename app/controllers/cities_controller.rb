@@ -1,6 +1,8 @@
 class CitiesController < ApplicationController
 
   before_action :set_city, only: [:show, :new_restaurants, :new_accommodations, :new_bars, :new_activities]
+  before_action :check_leader, only: [:new_restaurants, :new_accommodations, :new_bars, :new_activities]
+  before_action :check_participant, only: [:show]
 
   def index
     @cities = City.all
@@ -63,5 +65,19 @@ class CitiesController < ApplicationController
 
   def city_params
     params.require(:city).permit(:name)
+  end
+
+  def check_leader
+    project = @city.project
+    unless project.is_leader?(current_user)
+      redirect_to root_path
+    end
+  end
+
+  def check_participant
+    project = @city.project
+    unless project.is_participant?(current_user)
+      redirect_to root_path
+    end
   end
 end

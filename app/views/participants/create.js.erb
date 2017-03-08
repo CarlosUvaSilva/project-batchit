@@ -1,11 +1,10 @@
 <% if @participant.errors.any? %>
   // Render new review form with errors
-  $('#new-participant-form').html('<%= j render "new_participant_form" %>')
+  $('#new-participant-form').html('<%= j render "participants/new_participant_form", participant: @participant %>')
 <% else %>
   // Add it to the DOM, at the end of the existing reviews. It's still hidden.
-  $('#no-participants').remove();
-  var new_participant = $("<li> <%= @participant.email %> </li>").hide();
-  $('#participants-list').append(new_participant);
+  var new_participant = $('<%= j render "shared/participant_card", participant: @participant %>').hide();
+  $('#participant-box').append(new_participant);
   new_participant.slideDown();
   $('#email-input-participant').val("");
 <% end %>
