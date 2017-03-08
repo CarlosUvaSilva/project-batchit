@@ -1,2 +1,4 @@
-
-<%= render "cities/new_thing_search_form"  %>
+<h2>Your projects</h2>
+<% @projects.each do |project| %>
+  <h5> <%= project.name.capitalize %> - <%= link_to "start", new_city_restaurants_path(project.cities.first) %> </h5>
+<% end %>

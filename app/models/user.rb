@@ -8,7 +8,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, omniauth_providers: [:facebook]
 
-  has_many :participants
+  has_many :participants, dependent: :destroy
+  has_many :projects, through: :participants
 
   after_save :check_for_participant
 
