@@ -9,6 +9,7 @@ class Project < ApplicationRecord
   has_many :participants
   has_many :users, through: :participants
   has_many :cities, dependent: :destroy
+  has_many :things, through: :cities
 
   def leader
     self.participants.where(is_leader: true).user
@@ -20,6 +21,14 @@ class Project < ApplicationRecord
 
   def is_leader?(user)
     self.is_participant?(user) && !self.participants.where(user_id: user.id).first.is_leader.nil?
+  end
+
+  def leader_participant
+    self.participants.where(is_leader: true).first
+  end
+
+  def leader_user
+    self.leader_participant.user
   end
 
   def is_participant?(user)
