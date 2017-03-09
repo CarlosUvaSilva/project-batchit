@@ -1,11 +1,15 @@
 .banner{
+  position:relative;
   background-size: cover;
   color: white;
+  width:100vw;
   height: calc(100vh - 50px);
   display: flex;
   justify-content: space-around;
   align-items: center;
   text-align: center;
+  background-color: grey 0.8;
+  overflow:hidden;
 }
 
 .banner h1 {
@@ -25,8 +29,18 @@
   display: 100vh;
 }
 
-.info-box {
-  position: absolute;
-  margin-right: 50px;
-  background-color: grey;
+#background {
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    z-index: -100;
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    background: url(polina.jpg) no-repeat;
+    background-size: cover;
+}
+
+.container h1 {
+    color: white;
 }
