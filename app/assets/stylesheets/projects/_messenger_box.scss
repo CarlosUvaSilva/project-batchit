@@ -24,8 +24,8 @@
       .single-message-container{
         width: calc(100% - 20px);
         min-height: 50px;
-        margin: 5px 10px 10px 10px;
-        display: block;
+        margin: 0px 10px;
+        display: table;
         .message{
         margin-bottom: 5px;
         float:left;
