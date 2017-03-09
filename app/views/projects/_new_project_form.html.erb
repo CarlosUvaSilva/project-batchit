@@ -1,36 +1,34 @@
 
 <%= simple_form_for @project, method: "post", url: projects_path do |f| %>
-  <div class="col-xs-5 col-xs-offset-1">
-    <div class="form-group">
-      <%= f.input :name, label: "Please name your Batch: ", input_html: {class: "form-control"} %>
-    </div>
-    <div class="form-group">
-      <%= f.input :description, label: "Please describe your project for your buddies: ", input_html: {class: "form-control"} %>
-    </div>
-    <div class="form-group">
-      <%= f.input :group_size, as: :integer, label: "Please enter the expected number of participants: ", input_html: {class: "form-control"} %>
-    </div>
+  <div class="form-group">
+    <%= f.input :name, label: "Batch's name", input_html: {class: "form-control"} %>
   </div>
-  <div class="col-xs-5">
-    <div class="form-group">
-      <%= f.input :start_date, as: :string, label: "Please enter the start date: ", input_html: {class: "form-control", id: "datepicker_start_date" }, placeholder: "dd/mm/yyyy" %>
-    </div>
-    <div class="form-group">
-      <%= f.input :end_date, as: :string, label: "Please enter the end date: ", input_html: {class: "form-control", id: "datepicker_end_date"}, placeholder: "dd/mm/yyyy" %>
-    </div>
-    <div class="form-group">
-      <%= f.input :city1, label: "Provide your first city choice" do %>
-        <%= text_field_tag 'city_1' %>
-      <% end %>
-    </div>
-    <div class="form-group">
-      <%= f.input :city2, label: "Provide your second city choice" do %>
-        <%= text_field_tag 'city_2' %>
-      <% end %>
-    </div>
+  <div class="form-group">
+    <%= f.input :description, label: "Description", input_html: {class: "form-control"} %>
   </div>
-  <div class="col-xs-12 text-center">
-    <%= f.button :submit, class: "btn btn-brand", value: "Create Trip" %>
+  <div class="form-group">
+    <%= f.input :group_size, as: :integer, label: "Expected number of participants", input_html: {class: "form-control"} %>
+  </div>
+  <div class="form-group">
+    <%= f.input :start_date, as: :string, label: "Start date", input_html: {class: "form-control", id: "datepicker_start_date" }, placeholder: "dd/mm/yyyy" %>
+  </div>
+  <div class="form-group">
+    <%= f.input :end_date, as: :string, label: "End date", input_html: {class: "form-control", id: "datepicker_end_date"}, placeholder: "dd/mm/yyyy" %>
+  </div>
+  <div class="form-group">
+    <%= f.input :city1, label: "First city choice" do %>
+      <%= text_field_tag 'city_1' %>
+    <% end %>
+  </div>
+  <div class="form-group">
+    <%= f.input :city2, label: "Second city choice" do %>
+      <%= text_field_tag 'city_2' %>
+    <% end %>
+  </div>
+  <div class="form-group" style="height:50px;">
+    <div class="col-xs-12 text-center">
+      <%= f.button :submit, class: "btn btn-brand", value: "Create" %>
+    </div>
   </div>
 <% end %>
 

@@ -1,11 +1,18 @@
-<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('<%= image_path "background.jpg"%>');">
-  <div id="hidden-form">
-    <div id="hidden-form_details">
-    <% @project = Project.new if @project.nil?%>
-    <%= render "projects/new_project_form" %>
+
+
+<div class="banner-container sign">
+  <div class="banner" style="background-image: linear-gradient(0deg, rgba(50,50,50,0.6) 0%, rgba(50,50,50,0.6) 0%), url('<%= image_path "background.jpg"%>');">
+    <div class="banner-main-content">
+      <br>
+      <br>
+      <div class="sign-form-container" style: "width: 500px;">
+        <% @project = Project.new if @project.nil?%>
+        <%= render "projects/new_project_form" %>
+      </div>
     </div>
   </div>
 </div>
+
 
 
 <% content_for(:after_js) do %>

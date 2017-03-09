@@ -1,56 +1,117 @@
-    <%= render "banner" %>
-<br>
-<br>
-<center><h1>Why use Batch-It?</h1></center>
-<div class="front-info">
-  <div class="info-box">
-            <div class="info-left">
-<i class="fa fa-rocket fa-5x" aria-hidden="true" ></i></div>
-        <div class="info-right">
-Batch-It helps you plan a bachelor trip in no time and takes all the hassle of coordinating with friends and of choosing places and activities out of the equation.</div>
-  </div>
+<%= render "banner" %>
+<div class="the-whys section-container">
+  <h2 class="text-center">Why use BatchIt?</h2>
+  <div class="front-info">
+    <div class="info-box">
+      <div class="info-left whys">
+        <i class="fa fa-rocket fa-5x" aria-hidden="true" ></i>
+      </div>
+      <div class="info-right whys">
+        <p>BatchIt helps you plan a bachelor trip in no time and takes all the hassle of coordinating with friends and of choosing places and activities out of the equation.</p>
+      </div>
+    </div>
 
-  <br>
+    <div class="info-box">
+      <div class="info-left whys">
+        <i class="fa fa-star fa-5x" aria-hidden="true"></i>
+      </div>
+      <div class="info-right whys">
+        <p>BatchIt has already pre-curated a list of the best restaurants, bars, activities and places to stay.</p>
+      </div>
+    </div>
 
-  <div class="info-box">
-    <div class="info-left">
-<i class="fa fa-star fa-5x" aria-hidden="true"></i></div>
-    <div class="info-right">
-      Batch-It has already pre-curated a list of the best restaurants, bars, activities and places to stay
+    <div class="info-box">
+      <div class="info-left whys">
+        <i class="fa fa-users fa-5x" aria-hidden="true"></i>
+      </div>
+      <div class="info-right whys">
+        <p>The best man sets the basics, but everyone on the trip can get involved.</p>
+      </div>
     </div>
   </div>
+</div>
 
-<br>
 
+<div class="the-hows section-container">
+  <h2 class="text-center">How to use BatchIt?</h2>
   <div class="info-box">
-        <div class="info-left">
-<i class="fa fa-users fa-5x" aria-hidden="true"></i></div>
-        <div class="info-right">The best man sets the basics, but everyone on the trip can get involved.</div>
-  </div>
-
-  <center><h1>How it works</h1></center>
-
-<div class="info-box">
-  <div class="info-left2">
-    <div><p>The trip-planner can easily set up an account and pre-select the choices for the group.
-    He choses two cities, and for every city three restaurants, bars, accommodations and activities out of which the other trip participants can chose their favourite two. In the end you will be able to see the voting results and can easily book the trip.</p></div>
-  </div>
-
-  <div class="info-right">
+    <div class="info-left hows">
+      <h4>Setup your trip!</h4>
+      <p>
+        <ol>
+          <li>As the trip-leader, set up an account and <strong>define a trip</strong> in which two cities are selected.</li>
+          <li><strong>Select</strong> restaurants, accommodations, activities and bars for each city using the BatchIt curated results or by using our powerful search engine.</li>
+          <li><strong>Invite</strong> your buddies to vote and participate to this trip.</li>
+        </ol>
+      </p>
     </div>
-    <%= image_tag "screenshot-batchit.png", style: "height: 270px; width:550px; margin-right: 100px; margin-top: 75px;"%>
+    <div class="info-right hows">
+      <%= image_tag "how_to_selection.gif", style: "height: 270px; width:550px;"%>
     </div>
   </div>
+  <div class="info-box">
+    <div class="info-left hows">
+      <h4>Join a trip and vote!</h4>
+      <p>
+        <ol>
+          <li><strong>Sign in/up</strong> with your e-mail.</li>
+          <li>Check your <strong>projects</strong>.</li>
+          <li><strong>Vote</strong> for your favorite restaurants, accommodations, acitivities and bars listed in the trip. Rank your selections by first, second or third choice.</li>
+        </ol>
+      </p>
+    </div>
+    <div class="info-right hows">
+      <%= image_tag "how_to_vote.gif", style: "height: 270px; width:550px;"%>
+    </div>
+  </div>
+  <div class="info-box">
+    <div class="info-left hows">
+      <h4>Check the vote results and discuss your trip</h4>
+      <p>
+        <ol>
+          <li>Check the voting <strong>results</strong> on your trip dashboard.</li>
+          <li><strong>Discuss</strong> the trip with your buddies using the chatbox.</li>
+          <li><strong>Enjoy</strong> your trip!</li>
+        </ol>
+      </p>
+    </div>
+    <div class="info-right hows">
+      <%= image_tag "how_to_message.gif", style: "height: 270px; width:550px;"%>
+    </div>
+  </div>
+  <div class="text-center" style="margin: 50px;">
+    <% if user_signed_in? %>
+      <a class="btn btn-brand", id="create_down" >Create your Trip</a>
+    <% else %>
+      <%= link_to "Sign up to create your Trip", new_user_registration_path, class:"btn btn-brand" %>
+    <% end %>
+  </div>
+</div>
+<div class="hidden" id="hidden-form-container">
+  <div class="form-container">
+    <% @project = Project.new %>
+    <%= render "projects/new_project_form"  %>
+  </div>
+</div>
 
-<div class="footer"><strong>About Team Contact</strong></div>
+<div class="basic-footer">
+
+</div>
 
   <% content_for(:after_js) do %>
     <script>
       $("#create").click(function(){
           $(".banner-content").addClass("hidden");
-          $("#hidden-form").removeClass("hidden");
+          $("#hidden-form-container").removeClass("hidden");
           $('html, body').animate({
-            scrollTop: $("#hidden-form").offset().top
+            scrollTop: $("#hidden-form-container").offset().top - 100
+          }, 1000);
+      });
+      $("#create_down").click(function(){
+          $(".banner-content").addClass("hidden");
+          $("#hidden-form-container").removeClass("hidden");
+          $('html, body').animate({
+            scrollTop: $("#hidden-form-container").offset().top - 100
           }, 1000);
       });
 
