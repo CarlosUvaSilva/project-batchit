@@ -7,12 +7,22 @@
     <%= action_cable_meta_tag %>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+     <meta name="description" content="BatchIt helps you plan a bachelor trip in no time and takes all the hassle of coordinating with friends and of choosing places and activities out of the equation.">
+     <meta name="keywords" content="trip bachelor party organize groom">
+     <meta name="author" content="BatchIt">
+
+     <meta property="og:url"                content="https://project-batchit.herokuapp.com/" />
+     <meta property="og:type"               content="website" />
+     <meta property="og:title"              content="BatchIt - Group planning made simple" />
+     <meta property="og:description"        content="BatchIt helps you plan a bachelor trip in no time and takes all the hassle of coordinating with friends and of choosing places and activities out of the equation." />
+     <meta property="og:image"              content="">
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   </head>
   <body>
     <%= render 'shared/navbar' unless @disable_nav %>
     <%= render 'shared/flashes' %>
+    <%= image_tag "thumbnail.png", class:"hidden"  %>
     <%= yield %>
     <%= javascript_include_tag 'application' %>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
