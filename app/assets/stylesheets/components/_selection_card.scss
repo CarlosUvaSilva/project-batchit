@@ -1,10 +1,11 @@
 .selection_card{
+  position: relative;
   background-size: cover;
   height: 80px;
   width: 115px;
   position: relative;
   margin: 0px auto;
-  box-shadow: 0px 3px 3px $gray-light;
+  box-shadow: 0px 2px 2px $gray-light;
   a{
     position: absolute;
     top: 0px;
@@ -35,7 +36,7 @@
   height: 80px;
   width: 115px;
   margin: 0px auto;
-  box-shadow: 0px 3px 3px $gray-light;
+  box-shadow: 0px 2px 2px $gray-light;
   background-color: $gray-very-very-very-light;
   display: flex;
   justify-content: space-around;

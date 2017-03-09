@@ -1,48 +1,44 @@
-<% unless @project.completed? %>
-  <div class="banner signup-background" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('<%= image_path "background.jpg"%>');">
-    <div>
-      <h2><%= @project.name %></h2>
-      <div class="signup-container">
-          <h2>We are preparing the best tips for your trip with the following information</h2>
-          <div class="inside-signup">
-            <p><strong>Description: </strong> <%= @project.description  %></p>
-            <p><strong>Group size: </strong> <%= @project.group_size  %></p>
-            <p><strong> From </strong> <%= @project.start_date  %><strong> to </strong> <%= @project.end_date  %></p>
-            <p><strong>City 1: </strong> <%= @project.cities.first.name %></p>
-            <p><strong>City 2: </strong> <%= @project.cities.second.name %></p>
-          </div>
-        <div class="show-project-btn-container">
-          <%= link_to 'Continue', new_city_restaurants_path(@project.cities.first), class: "btn btn-brand"%>
-        </div>
+<div class="project-info-container" style="background-image: linear-gradient(0deg, rgba(50,50,50,0.6) 0%, rgba(50,50,50,0.6) 0%), url('<%= image_path "background.jpg"%>');">
+  <div class="project-info-container-content">
+    <h2><%= @project.name %></h2>
+    <p><strong>Group size: </strong> <%= @project.group_size  %></p>
+    <p><strong> From </strong> <%= @project.start_date  %><strong> to </strong> <%= @project.end_date  %></p>
+    <p><strong>City 1: </strong> <%= @project.cities.first.name %></p>
+    <p><strong>City 2: </strong> <%= @project.cities.second.name %></p>
+    <% if @project.things.size < 24 %>
+      <%= link_to "Setup your Project" ,new_city_restaurants_path(@project.cities.first), class:"btn btn-primary brand-color" %>
+    <% end %>
+  </div>
+</div>
+
+
+<div class="general_selection_container">
+  <div class="selection_container selection_left">
+    <%= render "cities/selection_container", city: @project.cities.first, back: true %>
+  </div>
+  <div class="selection_container selection_right">
+    <%= render "cities/selection_container", city: @project.cities.second, back: true %>
+  </div>
+</div>
+<div class="friends-invite">
+  <h2>List of participants for this project</h2>
+  <div class="row">
+    <div class="col-xs-12 text-center">
+      <div id="new-participant-form">
+        <%= render 'participants/new_participant_form', participant: Participant.new %>
       </div>
     </div>
   </div>
-<% else %>
-  <div class="general_selection_container">
-    <div class="selection_container selection_left">
-      <%= render "cities/selection_container", city: @project.cities.first %>
-    </div>
-    <div class="selection_container selection_right">
-      <%= render "cities/selection_container", city: @project.cities.second %>
-    </div>
-  </div>
-  <div class="friends-invite">
-    <h2>List of participants for this project</h2>
-    <div class="row">
-      <div class="col-xs-12 text-center">
-        <div id="new-participant-form">
-          <%= render 'participants/new_participant_form', participant: Participant.new %>
+  <div id="participant-box">
+    <% @project.participants.each do |participant| %>
+      <div class="row">
+        <div class="col-xs-12 text-center">
+          <%= render "shared/participant_card", participant: participant  %>
         </div>
       </div>
-    </div>
-    <div id="participant-box">
-      <% @project.participants.each do |participant| %>
-        <div class="row">
-          <div class="col-xs-12 text-center">
-            <%= render "shared/participant_card", participant: participant  %>
-          </div>
-        </div>
-      <% end %>
-    </div>
+    <% end %>
   </div>
-<% end %>
+</div>
+<div class="finalize-project-container">
+  <%= link_to "Close and Finalize Project", finalize_project_path(@project), class: "btn btn-primary brand-color", method: "post"  %>
+</div>

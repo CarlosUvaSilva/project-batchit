@@ -8,7 +8,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, omniauth_providers: [:facebook]
 
-  has_many :participants
+  has_many :participants, dependent: :destroy
+  has_many :projects, through: :participants
+
+  after_save :check_for_participant
 
   def self.find_for_facebook_oauth(auth)
     user_params = auth.slice(:provider, :uid)
@@ -30,4 +33,15 @@ class User < ApplicationRecord
 
     return user
   end
+
+  def check_for_participant
+    Participant.where(email: self.email).each do |participant|
+      if participant.user.nil?
+        participant.user = User.where(email: self.email).first
+        participant.save
+      end
+    end
+  end
+
+
 end

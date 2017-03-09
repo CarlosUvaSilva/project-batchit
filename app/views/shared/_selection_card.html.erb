@@ -5,4 +5,7 @@
 <% end %>
   <h5><%= thing.name.capitalize %></h5>
   <%= link_to "", thing.link, target: "_blank" %>
+  <% if thing.is_favorite?(current_user) %>
+    <i class="fa fa-star" style="color:orange; position: absolute; bottom: 5px; right: 5px;"></i>
+  <% end %>
 </div>

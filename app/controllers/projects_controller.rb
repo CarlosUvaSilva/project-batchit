@@ -1,8 +1,12 @@
 class ProjectsController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :create ]
-  before_action :check_leader, only: [:show]
+  before_action :check_leader, only: [:show, :finalize]
+  before_action :check_participant, only: [:dashboard]
+
+
 
   def index
+    @projects = current_user.projects
   end
 
   def show
@@ -33,6 +37,22 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
     @city1 = @project.cities.first
     @city2 = @project.cities.second
+    @city1_restaurants = city_things_sort(@city1.restaurants)
+    @city1_accommodations = city_things_sort(@city1.accommodations)
+    @city1_activities = city_things_sort(@city1.activities)
+    @city1_bars = city_things_sort(@city1.bars)
+    @city2_restaurants = city_things_sort(@city2.restaurants)
+    @city2_accommodations = city_things_sort(@city2.accommodations)
+    @city2_activities = city_things_sort(@city2.activities)
+    @city2_bars = city_things_sort(@city2.bars)
+  end
+
+  def finalize
+    @project = Project.find(params[:id])
+    participant = @project.get_participant(current_user)
+    participant.is_leader = nil
+    participant.save
+    redirect_to project_city_path(@project, @project.cities.first)
   end
 
   private
@@ -55,5 +75,16 @@ class ProjectsController < ApplicationController
     unless project.is_leader?(current_user)
       redirect_to root_path
     end
+  end
+
+  def check_participant
+    project = Project.find(params[:id])
+    unless project.is_participant?(current_user)
+      redirect_to root_path
+    end
+  end
+
+  def city_things_sort(things)
+    things.sort_by { |thing| thing.total_votes }.reverse
   end
 end

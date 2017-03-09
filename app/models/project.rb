@@ -9,6 +9,8 @@ class Project < ApplicationRecord
   has_many :participants
   has_many :users, through: :participants
   has_many :cities, dependent: :destroy
+  has_many :things, through: :cities
+  has_many :messages, dependent: :destroy
 
   def leader
     self.participants.where(is_leader: true).user
@@ -22,7 +24,25 @@ class Project < ApplicationRecord
     self.is_participant?(user) && !self.participants.where(user_id: user.id).first.is_leader.nil?
   end
 
+  def leader_participant
+    self.participants.where(is_leader: true).first
+  end
+
+  def leader_user
+    self.leader_participant.user
+  end
+
   def is_participant?(user)
     !self.participants.where(user_id: user.id).first.nil?
+  end
+
+  def get_participant(user)
+    self.participants.where(user_id: user.id).first
+  end
+
+  def get_participant_votes(user)
+    city1_votes = self.cities.first.votes_for.where(voter_id: user.id).size
+    city2_votes = self.cities.second.votes_for.where(voter_id: user.id).size
+    city1_votes + city2_votes
   end
 end

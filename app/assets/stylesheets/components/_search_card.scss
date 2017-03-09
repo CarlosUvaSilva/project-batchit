@@ -18,13 +18,19 @@
     h5{
       font-size: 24px;
       font-weight: bolder;
-      color: $gray
+      color: $gray;
+      &:hover{
+        color: $brand-color-dark;
+      }
     }
     p{
       text-align: justify;
       font-size: 12px;
       font-weight: lighter;
       color: $gray
+    }
+    a:hover{
+      text-decoration: none;
     }
   }
   &_action{

@@ -77,3 +77,12 @@
     <% i = i+1  %>
   <% end %>
 </div>
+<div class="row">
+  <div class="col-xs-12 text-center" style="height: 50px; margin-top:30px;">
+    <% if back %>
+    <%= link_to new_city_restaurants_path(city), class:"btn btn-primary brand-color back-button" do %>
+      <i class="fa fa-angle-double-left"></i><span>  Back to selections</span>
+    <% end %>
+  <% end %>
+  </div>
+</div>

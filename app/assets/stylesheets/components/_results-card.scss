@@ -3,7 +3,8 @@
   background: white;
   width: 195px;
   margin: 30px auto;
-  box-shadow: 0px 3px 3px $gray-light;
+  margin-top: 10px;
+  box-shadow: 0px 1px 1px $gray-light;
     color: $gray;
 }
 
@@ -13,7 +14,7 @@
   height: 80px;
   margin: 5px 0px;
   margin: 2 0 0 0;
-  background-color: $gray-very-light;
+  background-color: $gray-very-very-light;
   .selection_card{
     box-shadow: none;
     p{
