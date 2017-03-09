@@ -7,8 +7,15 @@ Rails.application.configure do
   # since you don't have to restart the web server when you make code changes.
   config.cache_classes = false
 
+
+
+
   # Do not eager load code on boot.
   config.eager_load = false
+
+
+  #config custom error messages
+  config.exceptions_app = self.routes
 
   # Show full error reports.
   config.consider_all_requests_local = true
