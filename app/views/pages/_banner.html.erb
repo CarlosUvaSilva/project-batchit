@@ -1,25 +1,13 @@
-<div class="banner">
-<video autoplay loop muted poster="screenshot.jpg" id="background">
-    <source src="http://techslides.com/demos/sample-videos/small.mp4" type="video/mp4">
-</video>
-
-  <div class="banner-main-content">
-    <h1>Bachelor Trip</h1>
-    <p>Group planning made simple</p>
-    <% if user_signed_in? %>
-      <a class="btn btn-brand", id="create" >Create a Trip</a>
-    <% else %>
-      <%= link_to "Sign up to create a Trip", new_user_registration_path, class:"btn btn-brand" %>
-    <% end %>
-
-  <div class="hidden" id="hidden-form">
-    <div id="hidden-form_details">
-    <% @project = Project.new %>
-    <%= render "projects/new_project_form" %>
+<div class="banner-container">
+  <div class="banner" style="background-image: linear-gradient(0deg, rgba(50,50,50,0.6) 0%, rgba(50,50,50,0.6) 0%), url('<%= image_path "background.jpg"%>');">
+    <div class="banner-main-content">
+      <h1>Bachelor Trip</h1>
+      <p>Group planning made simple</p>
+      <% if user_signed_in? %>
+        <a class="btn btn-brand", id="create" >Create a Trip</a>
+      <% else %>
+        <%= link_to "Sign up to create a Trip", new_user_registration_path, class:"btn btn-brand" %>
+      <% end %>
     </div>
   </div>
-</div>
-
-  <div class="arrow"></div>
-  <div><a>Find out more</a></div>
 </div>

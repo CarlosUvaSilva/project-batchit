@@ -1,9 +1,14 @@
+.banner-container{
+  height: 500px;
+  width: 100%;
+  position:relative;
+}
+
 .banner{
   position:relative;
   background-size: cover;
   color: white;
-  width:100vw;
-  height: calc(100vh - 50px);
+
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -12,35 +17,14 @@
   overflow:hidden;
 }
 
-.banner h1 {
-  color: white;
-  font-size: 70px;
-}
-
-.banner>div>p {
-  color: yellow;
-  font-size: 30px;
-  margin-bottom: 90px;
-}
-
-.banner1{
-  background-size: cover;
-  height: 100vh;
-  display: 100vh;
-}
-
-#background {
-    position:absolute;
-    top: 50%;
-    left: 50%;
-    width: 100%;
-    z-index: -100;
-    -webkit-transform: translateX(-50%) translateY(-50%);
-    transform: translateX(-50%) translateY(-50%);
-    background: url(polina.jpg) no-repeat;
-    background-size: cover;
-}
-
-.container h1 {
-    color: white;
-}
+  .form-container{
+    position: absolute;
+    right: 40px;
+    bottom: -300px;
+    input{
+      font-size: 12px;
+    }
+    label{
+      font-size: 12px;
+    }
+  }
