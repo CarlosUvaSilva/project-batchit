@@ -1,62 +1,36 @@
+.banner-container.sign{
+  height: calc(100vh - 0px);
+  position: fixed;
+  top: 0px;
+  left: 0px;
+}
 
-.form-container {
-  margin-top: 50px;
-  min-height: 350px;
-  width: 400px;
-  background-color: #E3E3E6;
-  border-radius: 5px;
-  margin: auto;
-  padding: 20px;
-  background: rgba(204, 204, 204, .8);
-  label{
-    text-align: left;
-    color: $gray;
-  }
-  .help-block{
+.sign-form-container{
+    margin-top: 50px;
+    min-height: 350px;
+    width: 400px;
+    border-radius: 5px;
+    margin: auto;
+    padding: 20px;
+    background-color: $gray-very-light;
+    input{
+      font-size: 12px;
+    }
+    label{
+      font-size: 12px;
+      text-align: left;
+      color: $gray;
+    }
+
+    .form-group{
+      margin-bottom: 0px;
+    }
+
+    .btn-primary{
+      margin-top: 10px;
+    }
+    .help-block{
     font-size: 12px;
     color: $brand-color;
-  }
-}
-
-.signup-background {
-  height: calc(100vh - 70px);
-  h2{
-    font-size: 38px;
-  }
-}
-
-.signup-container {
-  position: relative;
-  height: 450px;
-  width: 700px;
-  background-color: #E3E3E6;
-  border-radius: 5px;
-  text-align: center;
-  margin: auto;
-  padding: 10px;
-  background: rgba(204, 204, 204, .8);
-  h2{
-    color: $brand-color;
-    font-size: 28px;
-  }
-  .show-project-btn-container{
-    position: absolute;
-    bottom: 50px;
-    width: 100%;
-  }
-}
-
-.inside-signup {
-  text-align: left;
-  width: 95%;
-  padding: 20px;
-  padding-bottom: 5px;
-  text-align: justify;
-  margin: 20px;
-  margin-bottom:0px;
-  p{
-    font-size: 18px;
-    color: $gray;
-    margin-bottom: 9px;
   }
 }

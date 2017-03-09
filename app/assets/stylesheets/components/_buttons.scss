@@ -6,6 +6,9 @@
   background: $brand-color;
   transition: background 0.1s ease;
   text-decoration: none;
+   &:focus{
+    text-decoration: none;
+  }
 }
 
 .btn-brand:hover {
@@ -28,12 +31,18 @@
   padding: 2px 5px 2px 8px;
   margin: 0px 10px 26px 10px;
   border: solid 1px $gray-very-light;
+   &:focus{
+    text-decoration: none;
+  }
 }
 
 .brand-color{
   background-color: $brand-color;
   &:hover{
     background-color: $brand-color-dark;
+  }
+  &:focus{
+    text-decoration: none;
   }
 }
 
