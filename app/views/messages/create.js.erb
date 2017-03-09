@@ -1,0 +1,6 @@
+  var new_card = $('<%= j render "projects/message", message: @message %>').hide();
+  $("#messages").append(new_card);
+  new_card.slideDown();
+  $("#message-content").val('');
+  var scroll_distance = $("#messages>:last-child").position().top + 100;
+  $("#messages").scrollTop(scroll_distance);

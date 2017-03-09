@@ -1,0 +1,5 @@
+<form action="<%= project_messages_path(project) %>" method="post" class="form-inline" data-remote="true">
+  <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+  <input name="content" type="text-area" placeholder="Type your message" class="form-control" id="message-content">
+  <input type="submit" class="btn btn-primary brand-color" id="search-submit" value="Send">
+</form>

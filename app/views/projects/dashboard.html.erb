@@ -72,3 +72,23 @@
     </div>
   </div>
 </div>
+<div class="messenger-container">
+  <div class="message-box">
+    <h2 class="text-center">Discuss the trip with your buddies!</h2>
+    <div class="messages" id="messages">
+      <% @project.messages.each do |message| %>
+        <%= render "message", message: message %>
+      <% end %>
+    </div>
+    <div class="message-form">
+      <%= render "new_message_form", project: @project %>
+    </div>
+  </div>
+</div>
+
+<% content_for(:after_js) do %>
+  <script>
+    var scroll_distance = $("#messages>:last-child").position().top;
+    $("#messages").scrollTop(scroll_distance);
+  </script>
+<% end %>
