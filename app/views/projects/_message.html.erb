@@ -1,0 +1,7 @@
+<% message.participant.user == current_user ? own = "own" : own = "" %>
+<div class="single-message-container <%= own %>">
+  <p><strong> <%= message.participant.email %></strong></p>
+  <div class="message">
+    <p><%= message.content %></p>
+  </div>
+</div>

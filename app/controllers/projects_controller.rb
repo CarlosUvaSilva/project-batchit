@@ -1,6 +1,8 @@
 class ProjectsController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :create ]
   before_action :check_leader, only: [:show, :finalize]
+  before_action :check_participant, only: [:dashboard]
+
 
 
   def index
@@ -71,6 +73,13 @@ class ProjectsController < ApplicationController
   def check_leader
     project = Project.find(params[:id])
     unless project.is_leader?(current_user)
+      redirect_to root_path
+    end
+  end
+
+  def check_participant
+    project = Project.find(params[:id])
+    unless project.is_participant?(current_user)
       redirect_to root_path
     end
   end
