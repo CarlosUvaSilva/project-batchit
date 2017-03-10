@@ -39,6 +39,16 @@
     <% end %>
   </div>
 </div>
-<div class="finalize-project-container">
-  <%= link_to "Close and Finalize Project", finalize_project_path(@project), class: "btn btn-primary brand-color", method: "post"  %>
+<% if @project.things.size == 24 %>
+  <div class="finalize-project-container">
+    <%= link_to "Close and Finalize Project", finalize_project_path(@project), class: "btn btn-primary brand-color", method: "post"  %>
+  </div>
+<% end %>
+
+<div class="basic-footer" style="position:relative; top:200px">
+  <a href="https://www.facebook.com" target="_blank"><i class="fa fa-facebook"></i></a>
+  |
+  <a href="https://www.instagram.com" target="_blank"><i class="fa fa-instagram"></i></a>
+  |
+  <a href="https://www.twitter.com" target="_blank"><i class="fa fa-twitter"></i></a>
 </div>
