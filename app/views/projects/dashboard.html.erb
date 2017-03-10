@@ -104,8 +104,10 @@
 
 <% content_for(:after_js) do %>
   <script>
-    var scroll_distance = $("#messages>:last-child").position().top;
-    $("#messages").scrollTop(scroll_distance);
+    if (!($("#messages>:last-child").size() == 0)){
+      var scroll_distance = $("#messages>:last-child").position().top;
+      $("#messages").scrollTop(scroll_distance);
+    }
 
     $("#city1_star1").on("click", function(){
       $("#city1_star1").addClass("orange");
