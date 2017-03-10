@@ -25,6 +25,7 @@
   align-items: center;
   justify-content: space-around;
   &-content{
+    padding: 10px;
     position: relative;
     top: 200px;
     width: 700px;
@@ -41,5 +42,23 @@
   }
   a{
     margin-bottom: 20px;
+  }
+}
+
+.star-div{
+  height: 50px;
+  width: 100%;
+  padding: 10px;
+  padding-top: 0px;
+  i{
+    font-size: 28px;
+    padding: 10px;
+    &:hover{
+      color: orange;
+    }
+  }
+
+  .orange{
+    color: orange;
   }
 }
