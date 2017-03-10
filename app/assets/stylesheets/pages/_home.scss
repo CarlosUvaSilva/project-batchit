@@ -124,6 +124,9 @@
 }
 
 .basic-footer{
+  position: fixed;
+  bottom:0px;
+  left:0px;
   height: 50px;
   width: 100vw;
   background-color: $gray;
@@ -133,6 +136,7 @@
   padding: 0px 100px;
   font-size: 28px;
   color: $gray-very-very-light;
+  margin-top: 40px;
   a{
     font-size: 28px;
     color: $gray-very-very-light;
@@ -145,5 +149,44 @@
   }
   i{
     margin: 0px 20px;
+  }
+}
+
+
+
+
+
+
+#wrapper-features{
+  text-align:center;
+  margin:0px 0px;
+  padding: 80px 0px;
+  background-color: $gray-very-very-very-light;
+}
+
+#wrapper-features h2{
+  font-size: 22px;
+}
+
+.feature-img{
+  height:100px;
+  width:100px;
+}
+
+.feature{
+  display: flex;
+  flex-direction: column;
+  height: 280px;
+  background-color:white;
+  padding:20px 5px;
+  margin:10px 10px;
+  box-shadow: 0px 2px 2px $gray-very-very-light;
+  i{
+    font-size: 150px;
+    color: $brand-color;
+  }
+  p{
+    padding-top: 20px;
+    font-weight: lighter;
   }
 }
