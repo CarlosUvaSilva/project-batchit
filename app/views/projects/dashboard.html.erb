@@ -20,7 +20,9 @@
           <div class="row">
             <div class="col-xs-12 text-center">
               <h3><%= @city1.name.capitalize %></h3>
+              <% if @project.get_participant_votes(current_user) == 24 %>
               <div class="star-div"><i class="fa fa-star" id="city1_star1"> </i><i class="fa fa-star" id="city1_star2"></i></div>
+              <% end %>
             </div>
           </div>
           <div class="row">
@@ -48,7 +50,9 @@
           <div class="row">
             <div class="col-xs-12 text-center">
               <h3><%= @city2.name.capitalize %></h3>
+              <% if @project.get_participant_votes(current_user) == 24 %>
               <div class="star-div"><i class="fa fa-star" id="city2_star1"> </i><i class="fa fa-star" id="city2_star2"></i></div>
+              <% end %>
             </div>
           </div>
             <div class="row">
