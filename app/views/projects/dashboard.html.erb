@@ -2,7 +2,7 @@
   <div class="thank-container-content">
     <% if @project.get_participant_votes(current_user) == 24 %>
       <h2 class="text-center">Thank you for voting!</h2>
-      <p class="text-center">You will be informed once all participants have voted! We hope you enjoyed casting your votes for this trip! You can now check the current status of all votes and leave your comments!</p>
+      <p class="text-center">The final results will be emailed once all participants have voted!  You can now check the current status of all votes and leave your comments!</p>
     <% elsif @project.get_participant_votes(current_user) > 0 %>
       <h2 class="text-center">Oops, it looks like you did not cast all your votes!</h2>
       <%= link_to "Complete votes!", project_city_path(@project, @city1), class: "btn btn-primary brand-color" %>
@@ -20,6 +20,7 @@
           <div class="row">
             <div class="col-xs-12 text-center">
               <h3><%= @city1.name.capitalize %></h3>
+              <div class="star-div"><i class="fa fa-star" id="city1_star1"> </i><i class="fa fa-star" id="city1_star2"></i></div>
             </div>
           </div>
           <div class="row">
@@ -47,6 +48,7 @@
           <div class="row">
             <div class="col-xs-12 text-center">
               <h3><%= @city2.name.capitalize %></h3>
+              <div class="star-div"><i class="fa fa-star" id="city2_star1"> </i><i class="fa fa-star" id="city2_star2"></i></div>
             </div>
           </div>
             <div class="row">
@@ -76,8 +78,10 @@
   <div class="message-box">
     <h2 class="text-center">Discuss the trip with your buddies!</h2>
     <div class="messages" id="messages">
+      <% previous_message = Message.new %>
       <% @project.messages.each do |message| %>
-        <%= render "message", message: message %>
+        <%= render "message", message: message, previous_message: previous_message %>
+        <% previous_message = message %>
       <% end %>
     </div>
     <div class="message-form">
@@ -90,5 +94,26 @@
   <script>
     var scroll_distance = $("#messages>:last-child").position().top;
     $("#messages").scrollTop(scroll_distance);
+
+    $("#city1_star1").on("click", function(){
+      $("#city1_star1").addClass("orange");
+      $("#city1_star2").removeClass("orange");
+    });
+
+    $("#city1_star2").on("click", function(){
+      $("#city1_star1").addClass("orange");
+      $("#city1_star2").addClass("orange");
+    });
+
+    $("#city2_star1").on("click", function(){
+      $("#city2_star1").addClass("orange");
+      $("#city2_star2").removeClass("orange");
+    });
+
+    $("#city2_star2").on("click", function(){
+      $("#city2_star1").addClass("orange");
+      $("#city2_star2").addClass("orange");
+    });
+
   </script>
 <% end %>
