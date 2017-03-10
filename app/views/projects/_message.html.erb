@@ -1,7 +1,11 @@
 <% message.participant.user == current_user ? own = "own" : own = "" %>
 <div class="single-message-container <%= own %>">
   <% unless previous_message.participant == message.participant %>
-    <p><strong> <%= message.participant.email %></strong></p>
+    <% if message.participant.user == current_user %>
+      <p><strong> You   </strong></p>
+    <% else %>
+      <p><strong> <%= message.participant.email %></strong></p>
+    <% end %>
   <% end %>
   <div class="message">
     <p><%= message.content %></p>

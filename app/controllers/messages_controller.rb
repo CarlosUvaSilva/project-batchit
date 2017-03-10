@@ -4,6 +4,7 @@ class MessagesController < ApplicationController
     content = params[:content]
     participant = @project.get_participant(current_user)
     @message = Message.create(content: content, participant: participant, project: @project)
+    @message_previous = Message.find(@message.id - 1)
     respond_to do |format|
       format.html { redirect_to project_dashboard(@project)}
       format.js  # <-- will render `app/views/messages/create.js.erb`

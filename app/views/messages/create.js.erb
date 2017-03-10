@@ -1,4 +1,4 @@
-  var new_card = $('<%= j render "projects/message", message: @message %>').hide();
+  var new_card = $('<%= j render "projects/message", message: @message, previous_message: @message_previous %>').hide();
   $("#messages").append(new_card);
   new_card.slideDown();
   $("#message-content").val('');
