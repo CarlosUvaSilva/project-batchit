@@ -1,19 +1,29 @@
 .dashboard-container{
   width: 100%;
   background-color: $gray-very-very-very-light;
-  padding-top:100px;
+  padding-top:20px;
   .dashboard-city-box{
     margin: 50px 5px;
-    padding: 0px 20px;
+    padding: 0px;
     background-color: white;
     border: solid 1px $gray-very-light;
     h3{
       margin: 0px;
-      margin-top: 10px;
+      margin-bottom: 10px;
       font-size: 24px;
       font-weight: bolder;
     }
   }
+  .line-div{
+    border-bottom: solid 1px $gray-very-light;
+    margin: 0px auto;
+    width: 400px
+  }
+}
+
+.separator-container{
+  height: 100px;
+  background-color: $gray-very-very-very-light;
 }
 
 .thank-container{
@@ -60,5 +70,54 @@
 
   .orange{
     color: orange;
+  }
+}
+
+.thing-graphs-box{
+  padding: 10px;
+  margin: 10px;
+  .thing-graph{
+    display: flex;
+    align-items: center;
+    .graph-title{
+      width: 200px;
+      height: 20px;
+      border-right: solid 1px $gray-very-light;
+      font-size: 14px;
+      font-weight: bolder;
+      color: $gray-medium;
+    }
+    .graph-bar{
+      height: 20px;
+      margin: 10px;
+      border-radius: 5px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      p{
+        padding: 0px;
+        margin: 0px;
+        font-size: 14px;
+        font-weight: bolder;
+        color: white;
+      }
+      .star{
+        position: absolute;
+        font-size: 10px;
+        top: 5px;
+        left: 5px;
+        color: $yellow;
+      }
+    }
+    .bar1{
+      background-color: $brand-color;
+    }
+    .bar2{
+      background-color: $green;
+    }
+    .bar3{
+      background-color: $red;
+    }
   }
 }

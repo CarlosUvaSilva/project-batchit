@@ -1,83 +1,203 @@
+<% voted = @project.get_participant_votes(current_user) == 24 %>
 <div class="thank-container" style="background-image: linear-gradient(0deg, rgba(50,50,50,0.6) 0%, rgba(50,50,50,0.6) 0%), url('<%= image_path "background.jpg"%>');">
   <div class="thank-container-content">
-    <% if @project.get_participant_votes(current_user) == 24 %>
+    <% if voted %>
       <h2 class="text-center">Thank you for voting!</h2>
       <p class="text-center">The final results will be emailed once all participants have voted!  You can now check the current status of all votes and leave your comments!</p>
     <% elsif @project.get_participant_votes(current_user) > 0 %>
       <h2 class="text-center">Oops, it looks like you did not cast all your votes!</h2>
+      <p class="text-center">Cast all your votes to see the results</p>
       <%= link_to "Complete votes!", project_city_path(@project, @city1), class: "btn btn-primary brand-color" %>
     <% else %>
       <h2 class="text-center">Welcome to <%= @project.name.capitalize %>.</h2>
+      <p class="text-center">Cast all your votes to see the results</p>
       <%= link_to "Vote now for this trip!", project_city_path(@project, @city1), class: "btn btn-primary brand-color" %>
     <% end %>
   </div>
 </div>
-<div class="dashboard-container">
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-6">
-        <div class="dashboard-city-box">
-          <div class="row">
-            <div class="col-xs-12 text-center">
-              <h3><%= @city1.name.capitalize %></h3>
-              <% if @project.get_participant_votes(current_user) == 24 %>
-              <div class="star-div"><i class="fa fa-star" id="city1_star1"> </i><i class="fa fa-star" id="city1_star2"></i></div>
+<div class="separator-container"></div>
+<% if voted %>
+  <div class="dashboard-container">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-6">
+          <div class="dashboard-city-box">
+            <div class="thing-graphs-box">
+              <h3>Restaurants</h3>
+              <% total_votes = @city1_restaurants.inject(0){ |sum, thing| sum + thing.total_votes }.to_f %>
+              <% i = 1 %>
+              <% @city1_restaurants.each do |thing| %>
+                <div class="thing-graph">
+                  <% thing.name.length < 20 ? name = thing.name.capitalize : name = thing.name[0..20] + "..." %>
+                  <div class="graph-title">
+                    <p><%= name %></p>
+                  </div>
+                  <div class="graph-bar bar<%= i%>" style="width: <%= thing.total_votes * 400 / total_votes %>px">
+                    <p><%= (thing.total_votes * 100 / total_votes).round %>%</p>
+                    <% if thing.is_favorite?(current_user) %>
+                      <i class="fa fa-star star"></i>
+                    <% end %>
+                  </div>
+                </div>
+                <% i = i + 1 %>
               <% end %>
             </div>
-          </div>
-          <div class="row">
-            <div class="col-xs-6">
-              <h5 style="margin-left:20px;">Restaurants</h5>
-              <%= render "results-card", things: @city1_restaurants %>
+            <div class="line-div"></div>
+            <div class="thing-graphs-box">
+              <h3>Accommodations</h3>
+              <% total_votes = @city1_accommodations.inject(0){ |sum, thing| sum + thing.total_votes }.to_f %>
+              <% i = 1 %>
+              <% @city1_accommodations.each do |thing| %>
+                <div class="thing-graph">
+                  <% thing.name.length < 20 ? name = thing.name.capitalize : name = thing.name.capitalize[0..20] + "..." %>
+                  <div class="graph-title">
+                    <p><%= name %></p>
+                  </div>
+                  <div class="graph-bar bar<%= i%>" style="width: <%= thing.total_votes * 400 / total_votes %>px">
+                    <p><%= (thing.total_votes * 100 / total_votes).round %>%</p>
+                    <% if thing.is_favorite?(current_user) %>
+                      <i class="fa fa-star star"></i>
+                    <% end %>
+                  </div>
+                </div>
+                <% i = i + 1 %>
+              <% end %>
             </div>
-            <div class="col-xs-6">
-              <h5 style="margin-left:20px;">Accommodations</h5>
-              <%= render "results-card", things: @city1_accommodations %>
+            <div class="line-div"></div>
+            <div class="thing-graphs-box">
+              <h3>Activities</h3>
+              <% total_votes = @city1_activities.inject(0){ |sum, thing| sum + thing.total_votes }.to_f %>
+              <% i = 1 %>
+              <% @city1_activities.each do |thing| %>
+                <div class="thing-graph">
+                  <% thing.name.length < 20 ? name = thing.name.capitalize : name = thing.name.capitalize[0..20] + "..." %>
+                  <div class="graph-title">
+                    <p><%= name %></p>
+                  </div>
+                  <div class="graph-bar bar<%= i%>" style="width: <%= thing.total_votes * 400 / total_votes %>px">
+                    <p><%= (thing.total_votes * 100 / total_votes).round %>%</p>
+                    <% if thing.is_favorite?(current_user) %>
+                      <i class="fa fa-star star"></i>
+                    <% end %>
+                  </div>
+                </div>
+                <% i = i + 1 %>
+              <% end %>
             </div>
-            <div class="col-xs-6">
-              <h5 style="margin-left:20px;">Activities</h5>
-              <%= render "results-card", things: @city1_activities %>
-            </div>
-            <div class="col-xs-6">
-              <h5 style="margin-left:20px;">Bars</h5>
-              <%= render "results-card", things: @city1_bars %>
+            <div class="line-div"></div>
+            <div class="thing-graphs-box">
+              <h3>Bars</h3>
+              <% total_votes = @city1_bars.inject(0){ |sum, thing| sum + thing.total_votes }.to_f %>
+              <% i = 1 %>
+              <% @city1_bars.each do |thing| %>
+                <div class="thing-graph">
+                  <% thing.name.length < 20 ? name = thing.name.capitalize : name = thing.name.capitalize[0..20] + "..." %>
+                  <div class="graph-title">
+                    <p><%= name %></p>
+                  </div>
+                  <div class="graph-bar bar<%= i%>" style="width: <%= thing.total_votes * 400 / total_votes %>px">
+                    <p><%= (thing.total_votes * 100 / total_votes).round %>%</p>
+                    <% if thing.is_favorite?(current_user) %>
+                      <i class="fa fa-star star"></i>
+                    <% end %>
+                  </div>
+                </div>
+                <% i = i + 1 %>
+              <% end %>
             </div>
           </div>
         </div>
-      </div>
-      <div class="col-xs-6">
-        <div class="dashboard-city-box">
-          <div class="row">
-            <div class="col-xs-12 text-center">
-              <h3><%= @city2.name.capitalize %></h3>
-              <% if @project.get_participant_votes(current_user) == 24 %>
-              <div class="star-div"><i class="fa fa-star" id="city2_star1"> </i><i class="fa fa-star" id="city2_star2"></i></div>
+        <div class="col-xs-6">
+          <div class="dashboard-city-box">
+            <div class="thing-graphs-box">
+              <h3>Restaurants</h3>
+              <% total_votes = @city2_restaurants.inject(0){ |sum, thing| sum + thing.total_votes }.to_f %>
+              <% i = 1 %>
+              <% @city2_restaurants.each do |thing| %>
+                <div class="thing-graph">
+                  <% thing.name.length < 20 ? name = thing.name.capitalize : name = thing.name.capitalize[0..20] + "..." %>
+                  <div class="graph-title">
+                    <p><%= name %></p>
+                  </div>
+                  <div class="graph-bar bar<%= i%>" style="width: <%= thing.total_votes * 400 / total_votes %>px">
+                    <p><%= (thing.total_votes * 100 / total_votes).round %>%</p>
+                    <% if thing.is_favorite?(current_user) %>
+                      <i class="fa fa-star star"></i>
+                    <% end %>
+                  </div>
+                </div>
+                <% i = i + 1 %>
+              <% end %>
+            </div>
+            <div class="line-div"></div>
+            <div class="thing-graphs-box">
+              <h3>Accommodations</h3>
+              <% total_votes = @city2_accommodations.inject(0){ |sum, thing| sum + thing.total_votes }.to_f %>
+              <% i = 1 %>
+              <% @city2_accommodations.each do |thing| %>
+                <div class="thing-graph">
+                  <% thing.name.length < 20 ? name = thing.name.capitalize : name = thing.name.capitalize[0..20] + "..." %>
+                  <div class="graph-title">
+                    <p><%= name %></p>
+                  </div>
+                  <div class="graph-bar bar<%= i%>" style="width: <%= thing.total_votes * 400 / total_votes %>px">
+                    <p><%= (thing.total_votes * 100 / total_votes).round %>%</p>
+                    <% if thing.is_favorite?(current_user) %>
+                      <i class="fa fa-star star"></i>
+                    <% end %>
+                  </div>
+                </div>
+                <% i = i + 1 %>
+              <% end %>
+            </div>
+            <div class="line-div"></div>
+            <div class="thing-graphs-box">
+              <h3>Activities</h3>
+              <% total_votes = @city2_activities.inject(0){ |sum, thing| sum + thing.total_votes }.to_f %>
+              <% i = 1 %>
+              <% @city2_activities.each do |thing| %>
+                <div class="thing-graph">
+                  <% thing.name.length < 20 ? name = thing.name.capitalize : name = thing.name.capitalize[0..20] + "..." %>
+                  <div class="graph-title">
+                    <p><%= name %></p>
+                  </div>
+                  <div class="graph-bar bar<%= i%>" style="width: <%= thing.total_votes * 400 / total_votes %>px">
+                    <p><%= (thing.total_votes * 100 / total_votes).round %>%</p>
+                    <% if thing.is_favorite?(current_user) %>
+                      <i class="fa fa-star star"></i>
+                    <% end %>
+                  </div>
+                </div>
+                <% i = i + 1 %>
+              <% end %>
+            </div>
+            <div class="line-div"></div>
+            <div class="thing-graphs-box">
+              <h3>Bars</h3>
+              <% total_votes = @city2_bars.inject(0){ |sum, thing| sum + thing.total_votes }.to_f %>
+              <% i = 1 %>
+              <% @city2_bars.each do |thing| %>
+                <div class="thing-graph">
+                  <% thing.name.length < 20 ? name = thing.name.capitalize : name = thing.name.capitalize[0..20] + "..." %>
+                  <div class="graph-title">
+                    <p><%= name %></p>
+                  </div>
+                  <div class="graph-bar bar<%= i%>" style="width: <%= thing.total_votes * 400 / total_votes %>px">
+                    <p><%= (thing.total_votes * 100 / total_votes).round %>%</p>
+                    <% if thing.is_favorite?(current_user) %>
+                      <i class="fa fa-star star"></i>
+                    <% end %>
+                  </div>
+                </div>
+                <% i = i + 1 %>
               <% end %>
             </div>
           </div>
-            <div class="row">
-              <div class="col-xs-6">
-                <h5 style="margin-left:20px;">Restaurants</h5>
-                <%= render "results-card", things: @city2_restaurants %>
-              </div>
-              <div class="col-xs-6">
-                <h5 style="margin-left:20px;">Accommodations</h5>
-                <%= render "results-card", things: @city2_accommodations %>
-              </div>
-              <div class="col-xs-6">
-                <h5 style="margin-left:20px;">Activities</h5>
-                <%= render "results-card", things: @city2_activities %>
-              </div>
-              <div class="col-xs-6">
-                <h5 style="margin-left:20px;">Bars</h5>
-                <%= render "results-card", things: @city2_bars %>
-              </div>
-            </div>
         </div>
       </div>
     </div>
   </div>
-</div>
+<% end %>
 <div class="messenger-container">
   <div class="message-box">
     <h2 class="text-center">Discuss the trip with your buddies!</h2>
