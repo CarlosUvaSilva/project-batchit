@@ -15,23 +15,15 @@
   <div class="form-group">
     <%= f.input :end_date, as: :string, label: "End date", input_html: {class: "form-control", id: "datepicker_end_date"}, placeholder: "dd/mm/yyyy" %>
   </div>
-
   <div class="form-group">
-    <%= f.input :city_1, as: :string, label: "First City", input_html: {class: "form-control"}%>
+    <%= f.input :city_1, as: :string, label: "First City", required: true , input_html: {class: "form-control"}%>
   </div>
   <div class="form-group">
-    <%= f.input :city_2, as: :string, label: "Second City", input_html: {class: "form-control"}%>
+    <%= f.input :city_2, as: :string, label: "Second City", required: true , input_html: {class: "form-control"}%>
   </div>
   <div class="form-group" style="height:50px;">
     <div class="col-xs-12 text-center">
       <%= f.button :submit, class: "btn btn-brand", value: "Create" %>
     </div>
   </div>
-<% end %>
-
-<% content_for(:after_js) do %>
-  <script>
-     $('input#city_1').addClass('form-control');
-     $('input#city_2').addClass('form-control');
-  </script>
 <% end %>

@@ -20,6 +20,7 @@ class ProjectsController < ApplicationController
   def create
     @project = Project.new(project_params(params))
     if params[:project][:city_1] == "" || params[:project][:city_2] == "" || !@project.valid?
+      @project.valid?
       @project.errors.add(:city_1, :blank, message: "City name cannot be blank") if params[:project][:city_1] == ""
       @project.errors.add(:city_2, :blank, message: "City name cannot be blank") if params[:project][:city_2] == ""
       render "new"
