@@ -41,7 +41,6 @@ class CitiesController < ApplicationController
   end
 
   def new_accommodations
-    #@house_listing = scrape_to_thing(airbnb_scraper(5))
     @things = GooglePlaces.to_things(city: @city, limit:3, type: "lodging", keyword: "hostel")
     @things = [Thing.new(thing_type: "accommodation", name:"", address:"", description:"")] if @things == []
   end
