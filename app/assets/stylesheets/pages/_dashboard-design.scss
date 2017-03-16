@@ -85,7 +85,14 @@
       border-right: solid 1px $gray-very-light;
       font-size: 14px;
       font-weight: bolder;
-      color: $gray-medium;
+      a{
+        text-decoration: none;
+        color: $gray-medium;
+      }
+      a:hover{
+        text-decoration: none;
+        color: $brand-color;
+      }
     }
     .graph-bar{
       height: 20px;

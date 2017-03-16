@@ -22,6 +22,12 @@
       <div class="row">
         <div class="col-xs-6">
           <div class="dashboard-city-box">
+            <div class="row">
+              <div class="col-xs-12 text-center">
+                <h3 style="margin-top: 20px;"><%= @city1.name.capitalize %></h3>
+                <div class="star-div"><i class="fa fa-star" id="city1_star1"> </i><i class="fa fa-star" id="city1_star2"></i></div>
+              </div>
+            </div>
             <div class="thing-graphs-box">
               <h3>Restaurants</h3>
               <% total_votes = @city1_restaurants.inject(0){ |sum, thing| sum + thing.total_votes }.to_f %>
@@ -30,7 +36,9 @@
                 <div class="thing-graph">
                   <% thing.name.length < 20 ? name = thing.name.capitalize : name = thing.name[0..20] + "..." %>
                   <div class="graph-title">
-                    <p><%= name %></p>
+                    <%= link_to thing.link, target:"_blank" do %>
+                      <p><%= name %></p>
+                    <% end %>
                   </div>
                   <div class="graph-bar bar<%= i%>" style="width: <%= thing.total_votes * 400 / total_votes %>px">
                     <p><%= (thing.total_votes * 100 / total_votes).round %>%</p>
@@ -51,7 +59,9 @@
                 <div class="thing-graph">
                   <% thing.name.length < 20 ? name = thing.name.capitalize : name = thing.name.capitalize[0..20] + "..." %>
                   <div class="graph-title">
-                    <p><%= name %></p>
+                    <%= link_to thing.link, target:"_blank" do %>
+                      <p><%= name %></p>
+                    <% end %>
                   </div>
                   <div class="graph-bar bar<%= i%>" style="width: <%= thing.total_votes * 400 / total_votes %>px">
                     <p><%= (thing.total_votes * 100 / total_votes).round %>%</p>
@@ -72,7 +82,9 @@
                 <div class="thing-graph">
                   <% thing.name.length < 20 ? name = thing.name.capitalize : name = thing.name.capitalize[0..20] + "..." %>
                   <div class="graph-title">
-                    <p><%= name %></p>
+                    <%= link_to thing.link, target:"_blank" do %>
+                      <p><%= name %></p>
+                    <% end %>
                   </div>
                   <div class="graph-bar bar<%= i%>" style="width: <%= thing.total_votes * 400 / total_votes %>px">
                     <p><%= (thing.total_votes * 100 / total_votes).round %>%</p>
@@ -93,7 +105,9 @@
                 <div class="thing-graph">
                   <% thing.name.length < 20 ? name = thing.name.capitalize : name = thing.name.capitalize[0..20] + "..." %>
                   <div class="graph-title">
-                    <p><%= name %></p>
+                    <%= link_to thing.link, target:"_blank" do %>
+                      <p><%= name %></p>
+                    <% end %>
                   </div>
                   <div class="graph-bar bar<%= i%>" style="width: <%= thing.total_votes * 400 / total_votes %>px">
                     <p><%= (thing.total_votes * 100 / total_votes).round %>%</p>
@@ -109,6 +123,12 @@
         </div>
         <div class="col-xs-6">
           <div class="dashboard-city-box">
+            <div class="row">
+              <div class="col-xs-12 text-center">
+                <h3 style="margin-top: 20px;"><%= @city2.name.capitalize %></h3>
+                <div class="star-div"><i class="fa fa-star" id="city2_star1"> </i><i class="fa fa-star" id="city2_star2"></i></div>
+              </div>
+            </div>
             <div class="thing-graphs-box">
               <h3>Restaurants</h3>
               <% total_votes = @city2_restaurants.inject(0){ |sum, thing| sum + thing.total_votes }.to_f %>
@@ -117,7 +137,9 @@
                 <div class="thing-graph">
                   <% thing.name.length < 20 ? name = thing.name.capitalize : name = thing.name.capitalize[0..20] + "..." %>
                   <div class="graph-title">
-                    <p><%= name %></p>
+                    <%= link_to thing.link, target:"_blank" do %>
+                      <p><%= name %></p>
+                    <% end %>
                   </div>
                   <div class="graph-bar bar<%= i%>" style="width: <%= thing.total_votes * 400 / total_votes %>px">
                     <p><%= (thing.total_votes * 100 / total_votes).round %>%</p>
@@ -138,7 +160,9 @@
                 <div class="thing-graph">
                   <% thing.name.length < 20 ? name = thing.name.capitalize : name = thing.name.capitalize[0..20] + "..." %>
                   <div class="graph-title">
-                    <p><%= name %></p>
+                    <%= link_to thing.link, target:"_blank" do %>
+                      <p><%= name %></p>
+                    <% end %>
                   </div>
                   <div class="graph-bar bar<%= i%>" style="width: <%= thing.total_votes * 400 / total_votes %>px">
                     <p><%= (thing.total_votes * 100 / total_votes).round %>%</p>
@@ -159,7 +183,9 @@
                 <div class="thing-graph">
                   <% thing.name.length < 20 ? name = thing.name.capitalize : name = thing.name.capitalize[0..20] + "..." %>
                   <div class="graph-title">
-                    <p><%= name %></p>
+                    <%= link_to thing.link, target:"_blank" do %>
+                      <p><%= name %></p>
+                    <% end %>
                   </div>
                   <div class="graph-bar bar<%= i%>" style="width: <%= thing.total_votes * 400 / total_votes %>px">
                     <p><%= (thing.total_votes * 100 / total_votes).round %>%</p>
@@ -180,7 +206,9 @@
                 <div class="thing-graph">
                   <% thing.name.length < 20 ? name = thing.name.capitalize : name = thing.name.capitalize[0..20] + "..." %>
                   <div class="graph-title">
-                    <p><%= name %></p>
+                    <%= link_to thing.link, target:"_blank" do %>
+                      <p><%= name %></p>
+                    <% end %>
                   </div>
                   <div class="graph-bar bar<%= i%>" style="width: <%= thing.total_votes * 400 / total_votes %>px">
                     <p><%= (thing.total_votes * 100 / total_votes).round %>%</p>
