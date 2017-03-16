@@ -15,15 +15,12 @@
   <div class="form-group">
     <%= f.input :end_date, as: :string, label: "End date", input_html: {class: "form-control", id: "datepicker_end_date"}, placeholder: "dd/mm/yyyy" %>
   </div>
+
   <div class="form-group">
-    <%= f.input :city1, label: "First city choice" do %>
-      <%= text_field_tag 'city_1' %>
-    <% end %>
+    <%= f.input :city_1, as: :string, label: "First City", input_html: {class: "form-control"}%>
   </div>
   <div class="form-group">
-    <%= f.input :city2, label: "Second city choice" do %>
-      <%= text_field_tag 'city_2' %>
-    <% end %>
+    <%= f.input :city_2, as: :string, label: "Second City", input_html: {class: "form-control"}%>
   </div>
   <div class="form-group" style="height:50px;">
     <div class="col-xs-12 text-center">
@@ -38,13 +35,3 @@
      $('input#city_2').addClass('form-control');
   </script>
 <% end %>
-
-    <!-- <option value="Amsterdam">Amsterdam</option>
-    <option value="Hamburg">Hamburg</option>
-    <option value="Berlin">Berlin</option>
-    <option value="Ibiza">Ibiza</option>
-    <option value="Prague">Prague</option>
-    <option value="Budapest">Budapest</option>
-    <option value="London">London</option>
-    <option value="Barcelona">Barcelona</option>
-    <option value="Madrid">Madrid</option> -->
