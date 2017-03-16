@@ -1,6 +1,3 @@
-require 'json'
-require 'open-uri'
-
 class ThingsController < ApplicationController
   before_action :set_thing, only: [:voting]
 
@@ -23,10 +20,6 @@ class ThingsController < ApplicationController
 
   def index
     @things = Thing.all
-  end
-
-  def new_scraper
-    @house_listing = scrape_to_thing(airbnb_scraper(4))
   end
 
   def voting
