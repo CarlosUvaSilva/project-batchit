@@ -19,17 +19,16 @@ class ProjectsController < ApplicationController
 
   def create
     @project = Project.new(project_params(params))
-    if @project.save
-      @participant = Participant.create(email: current_user.email, project: @project, user: current_user, is_leader: true)
-      if params[:city_1] != "" && params[:city_1] != ""
-        @city_1 = City.create(name: params[:city_1], project: @project)
-        @city_2 = City.create(name: params[:city_2], project: @project)
-        redirect_to project_path(@project.id)
-      else
-        redirect_to new_project_city_path(@project)
-      end
-    else
+    if params[:project][:city_1] == "" || params[:project][:city_2] == "" || !@project.valid?
+      @project.valid?
+      @project.errors.add(:city_1, :blank, message: "City name cannot be blank") if params[:project][:city_1] == ""
+      @project.errors.add(:city_2, :blank, message: "City name cannot be blank") if params[:project][:city_2] == ""
       render "new"
+    else
+      @participant = Participant.create(email: current_user.email, project: @project, user: current_user, is_leader: true)
+      @city_1 = City.create(name: params[:project][:city_1], project: @project)
+      @city_2 = City.create(name: params[:project][:city_2], project: @project)
+      redirect_to project_path(@project.id)
     end
   end
 
@@ -67,7 +66,7 @@ class ProjectsController < ApplicationController
     end
     {name: params[:project][:name], description: params[:project][:description],
      group_size: params[:project][:group_size].to_i, start_date: start_date,
-     end_date: end_date, ongoing: true }
+     end_date: end_date, ongoing: true, city_1: params[:project][:city_1], city_2: params[:project][:city_2]}
   end
 
   def check_leader

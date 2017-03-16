@@ -11,6 +11,8 @@ class Project < ApplicationRecord
   has_many :cities, dependent: :destroy
   has_many :things, through: :cities
   has_many :messages, dependent: :destroy
+  attr_accessor :city_1
+  attr_accessor :city_2
 
   def leader
     self.participants.where(is_leader: true).user
