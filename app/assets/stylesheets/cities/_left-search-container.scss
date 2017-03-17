@@ -1,0 +1,27 @@
+.left-search-container{
+  width: 60vw;
+  height: calc(100vh - 100px);
+  background-color: white;
+  overflow-y:scroll;
+  border-top: solid 1px $gray-very-light;
+  border-right: solid 1px $gray-very-light;
+
+
+  h3{
+    font-size: 28px;
+    margin: 20px 20px 0px 20px;
+    font-weight: bolder;
+    color: $gray-medium;
+  }
+
+  .search-box{
+    overflow-x: scroll;
+    display: flex;
+    margin-right: 20px;
+  }
+
+  .search-form-container{
+    padding-left: 0px;
+    margin: 5px 20px 0px 20px;
+  }
+}

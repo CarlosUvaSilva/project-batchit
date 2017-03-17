@@ -1,8 +1,56 @@
+<% @restaurants = City.first.restaurants %>
+<% @accommodations = City.first.accommodations %>
+<% @activities = City.first.activities %>
+<% @bars = City.first.bars %>
+<% @city = City.first %>
+<div class="top-progress-container">
 
+</div>
+<div class="general-search-selection-container" style="display:flex">
+  <div class="left-search-container">
+    <div id="restaurants-search-box">
+      <h3>Restaurants search</h3>
+      <%= render "cities/new_thing_search_form", city: @city, type: "restaurant"  %>
+      <div class="search-box">
+        <% @restaurants.each do |thing|  %>
+          <%= render "shared/search_card", thing: thing, city: @city %>
+        <% end %>
+      </div>
+    </div>
 
-<% @cities.each do |city| %>
-  <ul>
-    <li> <%= link_to city.name, city_path(city) %></li>
-  </ul>
+    <div id="accommodations-search-box">
+      <h3>Accommodations search</h3>
+      <%= render "cities/new_thing_search_form", city: @city, type: "accommodation"  %>
+      <div class="search-box">
+        <% @accommodations.each do |thing|  %>
+          <%= render "shared/search_card", thing: thing, city: @city %>
+        <% end %>
+      </div>
+    </div>
 
-<% end %>
+    <div id="activities-search-box">
+      <h3>Activities search</h3>
+      <%= render "cities/new_thing_search_form", city: @city, type: "activity"  %>
+      <div class="search-box">
+        <% @activities.each do |thing|  %>
+          <%= render "shared/search_card", thing: thing, city: @city %>
+        <% end %>
+      </div>
+    </div>
+
+    <div id="bars-search-box">
+      <h3>Bars search</h3>
+      <%= render "cities/new_thing_search_form", city: @city, type: "bar"  %>
+      <div class="search-box">
+        <% @bars.each do |thing|  %>
+          <%= render "shared/search_card", thing: thing, city: @city %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="right-selection-container">
+    <div class="things-bar">
+
+    </div>
+  </div>
+</div>

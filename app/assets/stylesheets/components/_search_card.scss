@@ -1,9 +1,12 @@
 .search_card{
   width: 300px;
+  min-width: 300px;
   height: 410px;
   padding: 0px;
   margin: 20px;
-  box-shadow: 0px 3px 3px $gray-light;
+  box-shadow: 0px 2px 0px $gray-light;
+  border: solid 0.5px $gray-very-light;
+  border-bottom: none;
   position: relative;
   background-color: white;
   &_image{

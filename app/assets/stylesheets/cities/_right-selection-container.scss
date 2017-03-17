@@ -1,0 +1,10 @@
+.right-selection-container{
+  width: 40vw;
+  height: calc(100vh - 100px);
+  background-color: $gray-very-very-very-light;
+  .things-bar{
+    width:100%;
+    height: 100px;
+    color: red;
+  }
+}
