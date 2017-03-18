@@ -39,10 +39,39 @@
         </div>
       <% end %>
     </div>
-    <div class="show-selection-container">
+    <div class="show-selection-container" id="restaurants-selection">
       <div class="new-thing-selection">
-
+        Restaurant
+      </div>
+    </div>
+    <div class="show-selection-container hidden" id="accommodations-selection">
+      <div class="new-thing-selection">
+        Accommodation
+      </div>
+    </div>
+    <div class="show-selection-container hidden" id="activities-selection">
+      <div class="new-thing-selection">
+        Activity
+      </div>
+    </div>
+    <div class="show-selection-container hidden" id="bars-selection">
+      <div class="new-thing-selection">
+        Bar
       </div>
     </div>
   </div>
 </div>
+
+<% content_for(:after_js) do %>
+  <script>
+  <% types.each do |type| %>
+    $("#<%= type %>-tab").on("click", function(){
+      $(".things-bar-tab").removeClass("active");
+      $("#<%= type %>-tab").addClass("active");
+      $(".show-selection-container").removeClass("hidden");
+      $(".show-selection-container").addClass("hidden");
+      $("#<%= type.pluralize %>-selection").removeClass("hidden");
+    });
+  <% end %>
+  </script>
+<% end %>
