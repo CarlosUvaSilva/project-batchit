@@ -26,6 +26,7 @@ class GooglePlaces
         tag = "<li><strong>Rating: </strong>" + details["result"]["rating"].to_s + "</li>"
         link = details["result"]["url"]
         result_array << Thing.new(name: name, address: address, link: link, description: description, tag: tag, thing_type: GooglePlaces.thing_type(type), photo_link: @photo_link)
+        byebug
       end
     end
     result_array

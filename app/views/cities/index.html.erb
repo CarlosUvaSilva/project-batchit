@@ -1,56 +1,48 @@
 <% @restaurants = City.first.restaurants %>
 <% @accommodations = City.first.accommodations %>
-<% @activities = City.first.activities %>
-<% @bars = City.first.bars %>
+<% @activities = City.first.activities[0..1] %>
+<% @bars = City.first.bars[0...3] %>
 <% @city = City.first %>
+<% types = %w(restaurant accommodation activity bar) %>
+
 <div class="top-progress-container">
 
 </div>
+
 <div class="general-search-selection-container" style="display:flex">
   <div class="left-search-container">
-    <div id="restaurants-search-box">
-      <h3>Restaurants search</h3>
-      <%= render "cities/new_thing_search_form", city: @city, type: "restaurant"  %>
-      <div class="search-box">
-        <% @restaurants.each do |thing|  %>
-          <%= render "shared/search_card", thing: thing, city: @city %>
-        <% end %>
+    <% types.each do |type| %>
+      <div id="<%= type.pluralize %>-search-box">
+        <h3><%= type.pluralize.capitalize %> search</h3>
+        <%= render "cities/new_thing_search_form", city: @city, type: type  %>
+        <div class="search-box">
+          <% eval("@"+type.pluralize).each do |thing|  %>
+            <%= render "shared/search_card", thing: thing, city: @city %>
+          <% end %>
+        </div>
       </div>
-    </div>
-
-    <div id="accommodations-search-box">
-      <h3>Accommodations search</h3>
-      <%= render "cities/new_thing_search_form", city: @city, type: "accommodation"  %>
-      <div class="search-box">
-        <% @accommodations.each do |thing|  %>
-          <%= render "shared/search_card", thing: thing, city: @city %>
-        <% end %>
-      </div>
-    </div>
-
-    <div id="activities-search-box">
-      <h3>Activities search</h3>
-      <%= render "cities/new_thing_search_form", city: @city, type: "activity"  %>
-      <div class="search-box">
-        <% @activities.each do |thing|  %>
-          <%= render "shared/search_card", thing: thing, city: @city %>
-        <% end %>
-      </div>
-    </div>
-
-    <div id="bars-search-box">
-      <h3>Bars search</h3>
-      <%= render "cities/new_thing_search_form", city: @city, type: "bar"  %>
-      <div class="search-box">
-        <% @bars.each do |thing|  %>
-          <%= render "shared/search_card", thing: thing, city: @city %>
-        <% end %>
-      </div>
-    </div>
+    <% end %>
   </div>
+
   <div class="right-selection-container">
     <div class="things-bar">
+      <% types.each do |type| %>
+        <% active = "active" if type == "restaurant" %>
+        <div class="things-bar-tab <%= active %>" id="<%= type %>-tab">
+          <% selection_qty = eval("@"+type.pluralize).size %>
+          <% full = "full" if selection_qty == 3 %>
+          <div class="circle-status <%= full %>">
+            <p><span id=<%= type %>-status-number><%= selection_qty %>
+            </span>/ 3</p>
+          </div>
+          <p><%= type.pluralize.capitalize %></p>
+        </div>
+      <% end %>
+    </div>
+    <div class="show-selection-container">
+      <div class="new-thing-selection">
 
+      </div>
     </div>
   </div>
 </div>
