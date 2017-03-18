@@ -1,10 +1,9 @@
 .left-search-container{
   width: 60vw;
-  height: calc(100vh - 100px);
+  height: calc(100vh - 50px);
   background-color: white;
   overflow-y:scroll;
   border-top: solid 1px $gray-very-light;
-  border-right: solid 1px $gray-very-light;
   h3{
     font-size: 28px;
     margin: 20px 20px 0px 20px;
@@ -16,6 +15,11 @@
     overflow-x: scroll;
     display: flex;
     margin-right: 20px;
+    .loading-gif{
+      margin: 40px 100px;
+      height: 100px;
+      width: 100px;
+    }
   }
 
   .search-form-container{
