@@ -3,31 +3,23 @@
   $('#new_thing').html('<%= j render "cities/new_bar_form" %>')
 <% else %>
   // Add it to the DOM, at the end of the existing reviews. It's still hidden.
-  var new_card = $('<%= j render "shared/selection_card", thing: @thing %>').hide();
-  if ($("#bar1>div").attr("class") == "empty_selection"){
-    $('#bar1').html('');
-    $('#bar1').append(new_card);
-    new_card.fadeIn();
-  } else if ($("#bar2>div").attr("class") == "empty_selection"){
-    $('#bar2').html('');
-    $('#bar2').append(new_card);
-    new_card.fadeIn();
-  } else if ($("#bar3>div").attr("class") == "empty_selection"){
-    $('#bar3').html('');
-    $('#bar3').append(new_card);
-    new_card.fadeIn();
-  } else {
-    var new_card1 = $($('#bar2').html()).hide();
-    var new_card2 = $($('#bar3').html()).hide();
-    $('#bar1').html('');
-    $('#bar1').append(new_card1);
-    $('#bar2').html('');
-    $('#bar2').append(new_card2);
-    $('#bar3').html('');
-    $('#bar3').append(new_card);
-    new_card1.fadeIn();
-    new_card2.fadeIn();
-    new_card.fadeIn();
-    $('#new_thing_modal').modal("hide");
+  $("#bars-selection").html('');
+  <% i = 1 %>
+  var new_cards = ""
+  <% @things.each do |thing| %>
+    new_cards = new_cards + '<%= j render "cities/updated_thing_selection", thing: thing, i: 1, type: @thing.thing_type, empty: false %>'
+    <% i = i + 1  %>
+  <% end %>
+  <% while i <= 3 do %>
+    new_cards = new_cards + '<%= j render "cities/updated_thing_selection", type: @thing.thing_type, i: i, empty: true %>'
+    <% i = i + 1 %>
+  <% end %>
+    new_cards = $(new_cards).hide();
+  $("#bars-selection").append(new_cards);
+  new_cards.fadeIn();
+  bars_qty = '<%= @things.size %>' + ' '
+  $("#bar-status-number").html(bars_qty)
+  if (bars_qty == '3 '){
+    $("#bar-tab>.circle-status").addClass("full");
   }
 <% end %>

@@ -1,8 +1,3 @@
-<% @restaurants = City.first.restaurants %>
-<% @accommodations = City.first.accommodations[0..1] %>
-<% @activities = City.first.activities %>
-<% @bars = City.first.bars %>
-<% @city = City.first %>
 <% types = %w(restaurant accommodation activity bar) %>
 
 
@@ -13,9 +8,7 @@
         <h3><%= type.pluralize.capitalize %> search</h3>
         <%= render "cities/new_thing_search_form", city: @city, type: type  %>
         <div class="search-box">
-          <% eval("@"+type.pluralize).each do |thing|  %>
-            <%= render "shared/search_card", thing: thing, city: @city %>
-          <% end %>
+          <%= render "shared/loading-gif"  %>
         </div>
       </div>
     <% end %>
@@ -42,22 +35,11 @@
       <div class="show-selection-container <%= hidden_selection %>" id="<%= type.pluralize %>-selection">
         <% i = 1 %>
         <% eval("@"+type.pluralize).each do |thing| %>
-          <% if thing.photo_link.nil? || thing.photo_link.strip == "" %>
-           <div class="new-thing-selection" style="background-image: linear-gradient(0deg, rgba(50,50,50,0.6) 0%, rgba(50,50,50,0.6) 0%), url('https://unsplash.it/175/150/?random');" id="selected-<%= type %>-<%= i %>">
-          <% else %>
-           <div class="new-thing-selection" style="background-image: linear-gradient(0deg, rgba(50,50,50,0.6) 0%, rgba(50,50,50,0.6) 0%), url('<%= thing.photo_link %>');" id="selected-<%= type %>-<%= i %>">
-          <% end %>
-            <h5><%= thing.name.capitalize %></h5>
-            <div class="selection-content hidden">
-              <p><%= thing.address.size <= 75 ? thing.address : thing.address[0..75] + "..." %></p>
-              <p><%= thing.description.size <= 130 ? thing.description : thing.description[0..130] + "..." %></p>
-              <%= link_to thing.link, target:"_blank" do %><i class="fa fa-globe"></i><% end %>
-            </div>
-          </div>
+          <%= render "cities/updated_thing_selection", thing: thing, type: type, i: i, empty: false %>
           <% i = i + 1 %>
         <% end %>
         <% while i <= 3 do %>
-          <div class="empty-thing-selection" id="selected-<%= type %>-<%= i %>"></div>
+          <%= render "cities/updated_thing_selection", type: type, i: i, empty: true %>
           <% i = i + 1 %>
         <% end %>
       </div>
@@ -95,6 +77,20 @@
       $("#<%= type.pluralize %>-search-box>.search-box").html("");
       var new_card = $('<%= j render "shared/loading-gif" %>');
       $("#<%= type.pluralize %>-search-box>.search-box").append(new_card);
+    });
+  <% end %>
+
+  <% types.each do |type| %>
+    $.ajax({
+      type: 'post',
+      url: "/things/search",
+      data: {type: "<%= type %>", city_id:"<%= @city.id %>", keywords: ""},
+      success: function(response){
+        refreshPosts();
+      },
+      error: function(error){
+        alert("Problem loading search results")
+      },
     });
   <% end %>
 

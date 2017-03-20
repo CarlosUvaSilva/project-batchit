@@ -40,6 +40,15 @@ class ThingsController < ApplicationController
   def search
     type = GooglePlaces.get_type(params[:type])
     keywords = params[:keywords]
+    if params[:type] == "restaurant" && keywords == ""
+      keywords = "wine"
+    elsif params[:type] == "activity" && keywords == ""
+      keywords = "paintball"
+    elsif params[:type] == "accommodation" && keywords == ""
+      keywords = "hostel"
+    elsif params[:type] == "bar" && keywords == ""
+      keywords = "drink"
+    end
     params[:limit].to_i == 0 ? limit = 5 : limit = params[:limit].to_i - 1
     @city = City.find(params[:city_id])
     @things = GooglePlaces.to_things(city: @city, limit: limit, type: type, keyword: keywords)
@@ -66,6 +75,7 @@ class ThingsController < ApplicationController
     @city = City.find(params[:id])
     @thing.thing_type = type
     @thing.city = @city
+    @things = @city.send(type.pluralize)
     if @thing.save
       @city.send(type.pluralize).first.destroy if @city.send(type.pluralize).size > 3
       respond_to do |format|

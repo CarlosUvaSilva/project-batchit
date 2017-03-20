@@ -6,6 +6,15 @@ class CitiesController < ApplicationController
 
   def index
     @cities = City.all
+    @city = City.first
+    # @search_restaurants = GooglePlaces.to_things(city: @city, limit:3, keyword:"wine")
+    # @search_accommodations = GooglePlaces.to_things(city: @city, limit:3, type: "lodging", keyword: "hostel")
+    # @search_bars = GooglePlaces.to_things(city: @city, limit:3, type: "night_club", keyword: "drink")
+    # @search_activities = GooglePlaces.to_things(city: @city, limit:3, type: "activity", keyword: "paintball")
+    @restaurants = @city.restaurants
+    @accommodations = @city.accommodations
+    @activities = @city.activities
+    @bars = @city.bars
   end
 
   def new
