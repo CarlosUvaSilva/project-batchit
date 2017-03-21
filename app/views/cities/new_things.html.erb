@@ -3,6 +3,11 @@
 
 <div class="general-search-selection-container" style="display:flex">
   <div class="left-search-container">
+    <div class="actions-bar">
+      <% @city == @city.project.cities.first ? next_city = @city.project.cities.second : next_city = @city.project.cities.first  %>
+      <%= link_to "To #{next_city.name} selections", new_city_things_path(next_city), class: "btn btn-primary brand-color" %>
+      <%= link_to "To trip finalization page", project_path(@city.project), class: "btn btn-primary brand-color" %>
+    </div>
     <% types.each do |type| %>
       <div id="<%= type.pluralize %>-search-box">
         <h3><%= type.pluralize.capitalize %> search</h3>
@@ -15,6 +20,7 @@
   </div>
 
   <div class="right-selection-container">
+    <h3>Make your selections for <%= @city.name %></h3>
     <div class="things-bar">
       <% types.each do |type| %>
         <% active = "active" if type == "restaurant" %>
@@ -86,7 +92,6 @@
       url: "/things/search",
       data: {type: "<%= type %>", city_id:"<%= @city.id %>", keywords: ""},
       success: function(response){
-        refreshPosts();
       },
       error: function(error){
         alert("Problem loading search results")
@@ -96,3 +101,5 @@
 
   </script>
 <% end %>
+
+

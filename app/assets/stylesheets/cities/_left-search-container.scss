@@ -1,9 +1,24 @@
 .left-search-container{
   width: 60vw;
   height: calc(100vh - 50px);
+  min-height: 700px;
   background-color: white;
   overflow-y:scroll;
   border-top: solid 1px $gray-very-light;
+  position: relative;
+  .actions-bar{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    a{
+      font-size: 12px;
+      margin: 0px 10px;
+      padding: 3px;
+    }
+  }
   h3{
     font-size: 28px;
     margin: 20px 20px 0px 20px;

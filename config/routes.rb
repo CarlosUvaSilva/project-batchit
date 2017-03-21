@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   get 'errors/not_found'
 
   get 'errors/internal_server_error'
-  resources :cities, only: [:index]
 
 
   match "/404", :to => "errors#not_found", :via => :all
@@ -34,17 +33,13 @@ Rails.application.routes.draw do
   # get 'unvote/:id', to: "things#unvote", as: "unvote"
 
 
-  get 'cities/:id/new_scraper', to: "things#new_scraper", as: "new_scraper"
-
   post 'cities/:id/create_restaurant', to: "things#create_restaurant", as: "create_restaurant"
   post 'cities/:id/create_bar', to: "things#create_bar", as: "create_bar"
   post 'cities/:id/create_accommodation', to: "things#create_accommodation", as: "create_accommodation"
   post 'cities/:id/create_activity', to: "things#create_activity", as: "create_activity"
 
-  get 'cities/:id/new_restaurants', to: "cities#new_restaurants", as: "new_city_restaurants"
-  get 'cities/:id/new_accommodations', to: "cities#new_accommodations", as: "new_city_accommodations"
-  get 'cities/:id/new_bars', to: "cities#new_bars", as: "new_city_bars"
-  get 'cities/:id/new_activities', to: "cities#new_activities", as: "new_city_activities"
+
+  get 'cities/:id/new_things', to: "cities#new_things", as: "new_city_things"
 
 
   get 'projects/:id/dashboard', to: "projects#dashboard", as: "project_dashboard"

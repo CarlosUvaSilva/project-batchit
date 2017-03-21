@@ -6,7 +6,7 @@
     <p><strong>City 1: </strong> <%= @project.cities.first.name %></p>
     <p><strong>City 2: </strong> <%= @project.cities.second.name %></p>
     <% if @project.things.size < 24 %>
-      <%= link_to "Setup your Project" ,new_city_restaurants_path(@project.cities.first), class:"btn btn-primary brand-color" %>
+      <%= link_to "Setup your Project" ,new_city_things_path(@project.cities.first), class:"btn btn-primary brand-color" %>
     <% end %>
   </div>
 </div>

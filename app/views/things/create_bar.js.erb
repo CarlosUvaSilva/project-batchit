@@ -1,25 +1,38 @@
 <% if @thing.errors.any? %>
   // Render new review form with errors
-  $('#new_thing').html('<%= j render "cities/new_bar_form" %>')
+  $('#new_thing').html('<%= j render "cities/new_bar_form" %>');
 <% else %>
   // Add it to the DOM, at the end of the existing reviews. It's still hidden.
   $("#bars-selection").html('');
   <% i = 1 %>
   var new_cards = ""
   <% @things.each do |thing| %>
-    new_cards = new_cards + '<%= j render "cities/updated_thing_selection", thing: thing, i: 1, type: @thing.thing_type, empty: false %>'
+    new_cards = new_cards + '<%= j render "cities/updated_thing_selection", thing: thing, i: i, type: @thing.thing_type, empty: false %>';
     <% i = i + 1  %>
   <% end %>
   <% while i <= 3 do %>
-    new_cards = new_cards + '<%= j render "cities/updated_thing_selection", type: @thing.thing_type, i: i, empty: true %>'
+    new_cards = new_cards + '<%= j render "cities/updated_thing_selection", type: @thing.thing_type, i: i, empty: true %>';
     <% i = i + 1 %>
   <% end %>
     new_cards = $(new_cards).hide();
   $("#bars-selection").append(new_cards);
   new_cards.fadeIn();
-  bars_qty = '<%= @things.size %>' + ' '
-  $("#bar-status-number").html(bars_qty)
+  bars_qty = '<%= @things.size %>' + ' ';
+  $("#bar-status-number").html(bars_qty);
   if (bars_qty == '3 '){
     $("#bar-tab>.circle-status").addClass("full");
   }
+
+  <% i = 1 %>
+  <% @things.each do |thing| %>
+    $("#selected-<%= @thing.thing_type %>-<%= i %>").hover(function(){
+      $("#selected-<%= @thing.thing_type %>-<%= i %>>h5").addClass("hidden");
+      $("#selected-<%= @thing.thing_type %>-<%= i %>>.selection-content").removeClass("hidden");
+    });
+    $("#selected-<%= @thing.thing_type %>-<%= i %>").mouseleave(function(){
+      $("#selected-<%= @thing.thing_type %>-<%= i %>>h5").removeClass("hidden");
+      $("#selected-<%= @thing.thing_type %>-<%= i %>>.selection-content").addClass("hidden");
+    });
+    <% i = i + 1 %>
+  <% end %>
 <% end %>
