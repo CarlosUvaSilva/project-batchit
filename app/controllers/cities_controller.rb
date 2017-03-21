@@ -1,12 +1,8 @@
 class CitiesController < ApplicationController
 
-  before_action :set_city, only: [:show, :new_restaurants, :new_accommodations, :new_bars, :new_activities]
-  before_action :check_leader, only: [:new_restaurants, :new_accommodations, :new_bars, :new_activities]
+  before_action :set_city, only: [:show, :new_restaurants, :new_accommodations, :new_bars, :new_activities, :new_things]
+  before_action :check_leader, only: [:new_restaurants, :new_accommodations, :new_bars, :new_activities, :new_things]
   before_action :check_participant, only: [:show]
-
-  def index
-    @cities = City.all
-  end
 
   def new
     @project = Project.find(params[:project_id])
@@ -35,24 +31,12 @@ class CitiesController < ApplicationController
     @bars = @city.bars
   end
 
-  def new_restaurants
-    @things = GooglePlaces.to_things(city: @city, limit:3, keyword:"wine")
-    @things = [Thing.new(thing_type: "restaurant", name:"", address:"", description:"")] if @things == []
-  end
 
-  def new_accommodations
-    @things = GooglePlaces.to_things(city: @city, limit:3, type: "lodging", keyword: "hostel")
-    @things = [Thing.new(thing_type: "accommodation", name:"", address:"", description:"")] if @things == []
-  end
-
-  def new_bars
-    @things = GooglePlaces.to_things(city: @city, limit:3, type: "night_club", keyword: "drink")
-    @things = [Thing.new(thing_type: "bar", name:"", address:"", description:"")] if @things == []
-  end
-
-  def new_activities
-    @things = GooglePlaces.to_things(city: @city, limit:3, type: "activity", keyword: "paintball")
-    @things = StoredActivity.get_things(@city.name) if @things.empty?
+  def new_things
+    @restaurants = @city.restaurants
+    @accommodations = @city.accommodations
+    @activities = @city.activities
+    @bars = @city.bars
   end
 
   private

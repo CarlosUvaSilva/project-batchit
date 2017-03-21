@@ -1,5 +1,5 @@
-$("#search-results-container").html('');
+$("#<%= @things.first.thing_type.pluralize %>-search-box>.search-box").html('');
 <% @things.each do |thing| %>
   var new_card = $('<%= j render "cities/injection_search_card", thing: thing, city: @city %>')
-  $("#search-results-container").append(new_card);
+  $("#<%= thing.thing_type.pluralize %>-search-box>.search-box").append(new_card);
 <% end %>

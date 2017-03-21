@@ -1,33 +1,38 @@
 <% if @thing.errors.any? %>
   // Render new review form with errors
-  $('#new_thing').html('<%= j render "cities/new_activity_form" %>')
+  $('#new_thing').html('<%= j render "cities/new_activity_form" %>');
 <% else %>
   // Add it to the DOM, at the end of the existing reviews. It's still hidden.
-  var new_card = $('<%= j render "shared/selection_card", thing: @thing %>').hide();
-  if ($("#activity1>div").attr("class") == "empty_selection"){
-    $('#activity1').html('');
-    $('#activity1').append(new_card);
-    new_card.fadeIn();
-  } else if ($("#activity2>div").attr("class") == "empty_selection"){
-    $('#activity2').html('');
-    $('#activity2').append(new_card);
-    new_card.fadeIn();
-  } else if ($("#activity3>div").attr("class") == "empty_selection"){
-    $('#activity3').html('');
-    $('#activity3').append(new_card);
-    new_card.fadeIn();
-  } else {
-    var new_card1 = $($('#activity2').html()).hide();
-    var new_card2 = $($('#activity3').html()).hide();
-    $('#activity1').html('');
-    $('#activity1').append(new_card1);
-    $('#activity2').html('');
-    $('#activity2').append(new_card2);
-    $('#activity3').html('');
-    $('#activity3').append(new_card);
-    new_card1.fadeIn();
-    new_card2.fadeIn();
-    new_card.fadeIn();
-    $('#new_thing_modal').modal("hide");
+  $("#activities-selection").html('');
+  <% i = 1 %>
+  var new_cards = ""
+  <% @things.each do |thing| %>
+    new_cards = new_cards + '<%= j render "cities/updated_thing_selection", thing: thing, i: i, type: @thing.thing_type, empty: false %>';
+    <% i = i + 1  %>
+  <% end %>
+  <% while i <= 3 do %>
+    new_cards = new_cards + '<%= j render "cities/updated_thing_selection", type: @thing.thing_type, i: i, empty: true %>';
+    <% i = i + 1 %>
+  <% end %>
+    new_cards = $(new_cards).hide();
+  $("#activities-selection").append(new_cards);
+  new_cards.fadeIn();
+  activities_qty = '<%= @things.size %>' + ' ';
+  $("#activity-status-number").html(activities_qty);
+  if (activities_qty == '3 '){
+    $("#activity-tab>.circle-status").addClass("full");
   }
+
+  <% i = 1 %>
+  <% @things.each do |thing| %>
+    $("#selected-<%= @thing.thing_type %>-<%= i %>").hover(function(){
+      $("#selected-<%= @thing.thing_type %>-<%= i %>>h5").addClass("hidden");
+      $("#selected-<%= @thing.thing_type %>-<%= i %>>.selection-content").removeClass("hidden");
+    });
+    $("#selected-<%= @thing.thing_type %>-<%= i %>").mouseleave(function(){
+      $("#selected-<%= @thing.thing_type %>-<%= i %>>h5").removeClass("hidden");
+      $("#selected-<%= @thing.thing_type %>-<%= i %>>.selection-content").addClass("hidden");
+    });
+    <% i = i + 1 %>
+  <% end %>
 <% end %>

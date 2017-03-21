@@ -1,0 +1,16 @@
+<% if empty %>
+  <div class="empty-thing-selection" id="selected-<%= type %>-<%= i %>"></div>
+<% else %>
+  <% if thing.photo_link.nil? || thing.photo_link.strip == "" %>
+    <div class="new-thing-selection" style="background-image: linear-gradient(0deg, rgba(50,50,50,0.6) 0%, rgba(50,50,50,0.6) 0%), url('https://unsplash.it/175/150/?random');" id="selected-<%= type %>-<%= i %>">
+  <% else %>
+    <div class="new-thing-selection" style="background-image: linear-gradient(0deg, rgba(50,50,50,0.6) 0%, rgba(50,50,50,0.6) 0%), url('<%= thing.photo_link %>');" id="selected-<%= type %>-<%= i %>">
+  <% end %>
+    <h5><%= thing.name.capitalize %></h5>
+    <div class="selection-content hidden">
+      <p><%= thing.address.size <= 75 ? thing.address : thing.address[0..75] + "..." %></p>
+      <p><%= thing.description.size <= 130 ? thing.description : thing.description[0..130] + "..." %></p>
+      <%= link_to thing.link, target:"_blank" do %><i class="fa fa-globe"></i><% end %>
+    </div>
+</div>
+<% end %>
