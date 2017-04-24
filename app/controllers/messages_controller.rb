@@ -1,4 +1,9 @@
 class MessagesController < ApplicationController
+  def index
+    project = Project.find(params[:project_id])
+    @messages = project.messages.last(50)
+  end
+
   def create
     @project = Project.find(params[:project_id])
     content = params[:content]

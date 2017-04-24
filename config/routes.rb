@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   resources :projects, only: [:index, :show, :new, :create] do
     resources :participants, only: [:index, :create, :destroy]
     resources :cities, only: [:show, :new, :create]
-    resources :messages, only: [:create]
+    resources :messages, only: [:create, :index]
     post 'finalize', on: :member
   end
 

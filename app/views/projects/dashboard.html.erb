@@ -277,5 +277,17 @@
       $("#city2_star2").addClass("orange");
     });
 
+    setInterval(function() {
+      $.ajax
+      ({
+        type: "get",
+        url: "<%= project_messages_path(@project) %>",
+        success: function(data)
+        {
+          eval(data);
+        }
+      });
+    }, 5000);
+
   </script>
 <% end %>

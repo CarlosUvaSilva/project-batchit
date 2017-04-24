@@ -1,0 +1,7 @@
+<% message_previous = Message.new %>
+$("#messages").html('')
+<% content = "" %>
+<% @messages.each do |message| %>
+  $("#messages").append($('<%= j render "projects/message", message: message, previous_message: message_previous %>'));
+  <% message_previous = message %>
+<% end %>
